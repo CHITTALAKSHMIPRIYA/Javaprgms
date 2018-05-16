@@ -1,6 +1,6 @@
 /*************************************************************************************************************
  * 
- * purpose:LeapYear
+ * purpose:Print Nth Harmonic Number
  * 
  * @author Lakshmi Priya
  * @version 1.0
@@ -8,24 +8,26 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.functions;
-import com.bridgelabz.util.*;
+
 import java.util.Scanner;
 
-public class Main {
+public class HarmonicNum {
 
 	public static void main(String[] args) {
+		//initialization
+		double num=0;
+	
 		Scanner sc=new Scanner(System.in);
-	
-		System.out.println("enter num");
-		int num=sc.nextInt();
-		LeapYear.main(num);
+		//Input data
+		System.out.println("enter harmonic");
+		int n=sc.nextInt();
+		for(double i=1;i<=n;i++)
+		{
+			num=num+(1/i);
+			
+		}
+		System.out.println("harmonic value of"+n+ "is"+num);
 
-	
 	}
 
-
-
-
-		
-	}
-	
+}
