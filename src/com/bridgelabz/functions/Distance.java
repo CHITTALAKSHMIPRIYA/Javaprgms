@@ -24,11 +24,6 @@ public class Distance {
 		double dist=Math.sqrt(dist1+dist2);
 		System.out.println("distance="+dist);
 		
-
+	}
 	}
 
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b

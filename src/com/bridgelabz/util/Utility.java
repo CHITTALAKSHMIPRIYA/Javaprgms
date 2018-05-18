@@ -5,15 +5,13 @@ import java.util.Scanner;
 
 public class Utility
 {
-<<<<<<< HEAD
+
 /**
  * Function to check leap year or not
- *
+ *@param year
  * 
  */
-=======
-	//leap year
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
+
 public  static void leap(int year)
 {
 if(year%400==0)
@@ -25,24 +23,18 @@ System.out.println("it is a leap year");
 else
 System.out.println("it is not leap year");
 }
-<<<<<<< HEAD
 /**
  * Function to generate random number
  *
  * @param number the number to generate random number
  */
-   public static void random(int n,int ar[])
-=======
-
-
-//to generate random number
 
     public static void random(int n,int ar[])
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
+
     {
     	for(int i=0;i<n;i++)
     	{
-    		ar[i]=(int)(Math.random()*9999);
+    		ar[i]=(int)(Math.random()*100);
     		for(int j=0;j<i;j++)
     		{
     			if(ar[i]==ar[j])
@@ -53,13 +45,11 @@ System.out.println("it is not leap year");
     		}
     	}
     }
-<<<<<<< HEAD
+
  /**
   * Function to eliminate duplicate number and print distinct coupon number
   */
-=======
-    //to eliminate duplicate number and print distinct coupon number
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
+
     public static void distinct(int arr[])
     {
     	for(int i=0;i<arr.length;i++)
@@ -77,15 +67,12 @@ System.out.println("it is not leap year");
     	}
     		System.out.println();;
     }
-<<<<<<< HEAD
 /**
  * Function for power of 2
  *
  * @param number for power of 2
  */
-=======
-  //power of 2  
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
+
 public static void pwr(int n,int pw)
 {
 	
@@ -98,15 +85,13 @@ int p=1;
 	}
 	
 }
-<<<<<<< HEAD
+
 /**
  * Function for 2D Array
  *
  * @param number for 2D Array
  */
-=======
-//methods for Array2D
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
+
 public static int[][] arInt(int m,int n)
 {
 	Scanner sc=new Scanner(System.in);
@@ -206,15 +191,13 @@ public static void sum(int n,int b[])
 			System.out.println("count="+count);
 	}
 
-<<<<<<< HEAD
 /**
  * Function to replace String
  *
  * 
  */
-=======
-    //replace string
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
+    
+
 	public static String replace(String input)
 	{
 		
@@ -222,7 +205,7 @@ public static void sum(int n,int b[])
 		String str=s.replaceAll("username",input);
 		return str;
 	}
-<<<<<<< HEAD
+
 /**
  * Function for permutation of a String
  *
@@ -250,13 +233,5 @@ public static void sum(int n,int b[])
 		ch[j]=t;
 		return String.valueOf(ch);
 	}
-=======
-	
-	
-	
-	
-	
-	
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 }
 

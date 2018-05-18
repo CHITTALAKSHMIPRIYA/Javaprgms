@@ -1,4 +1,15 @@
-package com.bridgelabz.functions;
+
+/*************************************************************************************************************
+ * 
+ * 
+ * purpose:Stopwatch Program for measuring the time that elapses between the start and end clicks
+ * 
+ * @author Lakshmi Priya
+ * @version 1.0
+ * @since 18-05-18
+ * 
+ * *************************************************************************************************/
+ package com.bridgelabz.functions;
 
 import java.util.Scanner;
 

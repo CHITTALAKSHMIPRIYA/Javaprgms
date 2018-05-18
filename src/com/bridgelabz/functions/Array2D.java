@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 /*************************************************************************************************************
  * 
- * purpose:Permutation of a string
+ * purpose:Array 2D
  * 
  * @author Lakshmi Priya
  * @version 1.0
@@ -13,16 +12,6 @@ import java.util.Scanner;
 import com.bridgelabz.util.*;
 public class Array2D {
    public static void main(String[] args) {
-=======
-package com.bridgelabz.functions;
-
-import java.util.Scanner;
-import com.bridgelabz.util.*;
-
-public class Array2D {
-
-	public static void main(String[] args) {
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter num of rows");
 		int m=sc.nextInt();
@@ -33,9 +22,4 @@ public class Array2D {
 		String[][] c=Utility.arStr(m,n);
          Utility.print(a,b,c,m,n);
 	}
-<<<<<<< HEAD
    }
-=======
-
-}
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
