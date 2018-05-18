@@ -5,24 +5,45 @@ import java.util.Scanner;
 
 public class Utility
 {
-
+public static void scanner(int num)
+{
+	Scanner sc=new Scanner(System.in);
+	num =sc.nextInt();
+}
+public static void scanner(String string)
+{
+	Scanner sc=new Scanner(System.in);
+	string =sc.nextLine();
+}
+public static void scanner(double num)
+{
+	Scanner sc=new Scanner(System.in);
+	num =sc.nextDouble();
+}
+public static boolean scanner(boolean num)
+{
+	Scanner sc=new Scanner(System.in);
+	num =sc.nextBoolean();
+	return num;
+}
 /**
  * Function to check leap year or not
  *@param year
  * 
  */
 
-public  static void leap(int year)
+public  static boolean leap(int year)
 {
-if(year%400==0)
-System.out.println("it is a leap year");
-else if(year%100==0) 
-System.out.println("it is not leap year");
-else if(year%4==0) 
-System.out.println("it is a leap year");
-else
-System.out.println("it is not leap year");
+if(year>1000)
+{
+	if((year%400==0)||(year%4==0&&year%100!=0))
+	{
+		return true;
+	}
 }
+return false;
+}
+
 /**
  * Function to generate random number
  *
@@ -73,17 +94,12 @@ System.out.println("it is not leap year");
  * @param number for power of 2
  */
 
-public static void pwr(int n,int pw)
+public static void pwr(int num)
 {
-	
-int p=1;
-	for(int i=0;i<pw;i++)
+	for(int i=0;i<num;i++)
 	{
-	 p=p*n;
-	
-	System.out.println(p);
+	System.out.println("power of 2^ "+i+" is "+Math.pow(2,i));
 	}
-	
 }
 
 /**
@@ -201,8 +217,8 @@ public static void sum(int n,int b[])
 	public static String replace(String input)
 	{
 		
-		String s="Hello username, How are you?";
-		String str=s.replaceAll("username",input);
+		String s="Hello <<username>>, How are you?";
+		String str=s.replaceAll("<<username>>",input);
 		return str;
 	}
 

@@ -1,10 +1,6 @@
 /*************************************************************************************************************
  * 
-<<<<<<< HEAD
- * purpose:Flip the Coin and print percentage of heads and tails
-=======
  * purpose:FlipCoin and print percentage of heads and tails
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
  * 
  * @author Lakshmi Priya
  * @version 1.0
@@ -22,15 +18,15 @@ public class FlipCoin {
 	public static void main(String[] args) {
 		
 		//INITIALIZATION
-		int n,h_cn=0,t_cn=0;
+		int num,h_cn=0,t_cn=0;
 		double head,tail;
 		
 		Scanner sc =new Scanner(System.in);
 		//INPUT DATA
 		System.out.print("enter the number of times to flip coin");
-		n=sc.nextInt();
+		num=sc.nextInt();
 		
-		for(int k=0;k<n;k++)
+		for(int k=0;k<num;k++)
 		{
 			double random=Math.random();
 			if(random<0.5)
@@ -38,8 +34,8 @@ public class FlipCoin {
 			else
 				h_cn++;
 		}
-		head = h_cn/(double) n*100;
-		tail = t_cn / (double)n*100;
+		head = h_cn/(double) num*100;
+		tail = t_cn / (double)num*100;
 		System.out.println(h_cn);
 		System.out.println(t_cn);
 		System.out.println("Per of heads: " + head + "%");

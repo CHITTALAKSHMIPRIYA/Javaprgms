@@ -1,12 +1,3 @@
-/*************************************************************************************************************
- * 
- * purpose:WindChill
- * 
- * @author Lakshmi Priya
- * @version 1.0
- * @since 17-05-18
- * 
- * *************************************************************************************************/
 package com.bridgelabz.functions;
 
 import java.util.Scanner;
@@ -14,7 +5,9 @@ import java.util.Scanner;
 public class WindChill {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
+		System.out.println("enter temp");
 		double t=sc.nextDouble();
+		System.out.println("enter speed");
 		double v=sc.nextDouble();
 		if(t<50 && (v>3 && v<120))
 		{
@@ -24,4 +17,4 @@ public class WindChill {
 			System.out.println("Speed="+v);
 			System.out.println("windchill="+w);
 		}}
-			}
+}

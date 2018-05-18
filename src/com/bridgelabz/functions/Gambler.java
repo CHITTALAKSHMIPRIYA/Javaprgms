@@ -7,11 +7,6 @@
  * @since 17-05-18
  * 
  * **************************************************************************************************/
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 package com.bridgelabz.functions;
 
 import java.util.Scanner;
@@ -46,17 +41,8 @@ public class Gambler {
 		System.out.println("percentage of wins="+gw);
 		System.out.println("average of results="+ar);
 		System.out.println("loss="+loss);
-<<<<<<< HEAD
+		sc.close();
 		}
 		}
-=======
-		
-		
-		
-		}
-		
-
-	}
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 
 
