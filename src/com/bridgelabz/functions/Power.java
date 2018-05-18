@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*************************************************************************************************************
  * 
  * purpose:Power of 2
@@ -7,6 +8,8 @@
  * @since 17-05-18
  * 
  * *************************************************************************************************/
+=======
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 package com.bridgelabz.functions;
 import java.util.Scanner;
 
@@ -21,5 +24,9 @@ int n=sc.nextInt();
 System.out.println("enter pw");
 int pw=sc.nextInt();
 Utility.pwr(n,pw);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 }
 }

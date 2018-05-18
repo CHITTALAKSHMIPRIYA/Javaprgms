@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 /*************************************************************************************************************
  * 
  * purpose:WindChill
@@ -24,5 +28,13 @@ public class WindChill {
 			System.out.println("Temp="+t);
 			System.out.println("Speed="+v);
 			System.out.println("windchill="+w);
+<<<<<<< HEAD
 		}}
 			}
+=======
+		}
+			
+	}
+
+}
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b

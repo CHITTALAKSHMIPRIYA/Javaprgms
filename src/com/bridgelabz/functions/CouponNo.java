@@ -10,9 +10,18 @@
 package com.bridgelabz.functions;
 
 import java.util.Scanner;
+<<<<<<< HEAD
 import com.bridgelabz.util.Utility;
 
 public class CouponNo {
+=======
+
+import com.bridgelabz.util.Utility;
+//import com.bridgelabz.util.Utility.*;
+
+public class CouponNo {
+
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter numbers");
@@ -23,4 +32,9 @@ public class CouponNo {
 		
 
 	}
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b

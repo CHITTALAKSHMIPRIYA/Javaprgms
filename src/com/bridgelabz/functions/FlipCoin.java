@@ -1,6 +1,10 @@
 /*************************************************************************************************************
  * 
+<<<<<<< HEAD
  * purpose:Flip the Coin and print percentage of heads and tails
+=======
+ * purpose:FlipCoin and print percentage of heads and tails
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
  * 
  * @author Lakshmi Priya
  * @version 1.0

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 /*************************************************************************************************************
  * 
  * purpose:Quadratic Equation
@@ -25,7 +29,14 @@ public class Quadratic {
 				 System.out.println("delta="+delta);
 				 System.out.println("root1="+Root1);
 				 System.out.println("root2="+Root2);
+<<<<<<< HEAD
 				 }
+=======
+				 
+
+
+	}
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 	public static double sqrt(double x) {
 		double i=1;
 		double res=1;
@@ -37,4 +48,8 @@ public class Quadratic {
 		return i-1;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b

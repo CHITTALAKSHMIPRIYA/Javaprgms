@@ -27,4 +27,8 @@ public class Distance {
 
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
