@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
 /*************************************************************************************************************
  * 
  * purpose:WindChill
@@ -16,7 +12,6 @@ package com.bridgelabz.functions;
 import java.util.Scanner;
 
 public class WindChill {
-
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		double t=sc.nextDouble();
@@ -28,13 +23,5 @@ public class WindChill {
 			System.out.println("Temp="+t);
 			System.out.println("Speed="+v);
 			System.out.println("windchill="+w);
-<<<<<<< HEAD
 		}}
 			}
-=======
-		}
-			
-	}
-
-}
->>>>>>> 46deab3c7bb349c3d837f86c0c6412d162af240b
