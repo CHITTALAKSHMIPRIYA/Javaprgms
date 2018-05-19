@@ -13,13 +13,15 @@ import com.bridgelabz.util.*;
 public class Array2D {
    public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		System.out.println("enter num of rows");
-		int m=sc.nextInt();
-		System.out.println("enter num of cols");
-		int n=sc.nextInt();
-		int[][] a=Utility.arInt(m,n);
-		double[][] b=Utility.arDouble(m,n);
-		String[][] c=Utility.arStr(m,n);
-         Utility.print(a,b,c,m,n);
+		System.out.println("enter row size");
+		int row=sc.nextInt();
+		System.out.println("enter col size");
+		int col=sc.nextInt();
+		System.out.println("enter user choice");
+		System.out.println("1.int");
+				System.out.println("2.String");
+						System.out.println("3.double");
+						int choice=sc.nextInt();
+						Utility.input(row,col,choice);
 	}
    }

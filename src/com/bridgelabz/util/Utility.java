@@ -108,113 +108,109 @@ public static void pwr(int num)
  * @param number for 2D Array
  */
 
-public static int[][] arInt(int m,int n)
+public static void input(int row,int col,int choice)
 {
 	Scanner sc=new Scanner(System.in);
-	System.out.println("enter the elements of array");
-	int[][] a=new int[m][n];
-	for(int i=0;i<m;i++)
+	switch(choice)
 	{
-		for(int j=0;j<n;j++)
+	case 1:int[][] intAr=new int[row][col];
+	System.out.println("enter the elements of array");
+    for(int i=0;i<intAr.length;i++)
+	{
+		for(int j=0;j<intAr.length;j++)
 		{
-			a[i][j]=sc.nextInt();
+			intAr[i][j]=sc.nextInt();
 		}
 	}
-	return a;
-}
-public static double[][] arDouble(int m,int n)
-{
-	Scanner sc=new Scanner(System.in);
+	System.out.println("array elements are");
+	printArrayElement(intAr);
+	break;
+	case 2:String [][] strAr=new String[row][col];
 	System.out.println("enter the elements of array");
-	double[][] b=new double[m][n];
-	for(int i=0;i<m;i++)
+    for(int i=0;i<strAr.length;i++)
 	{
-		for(int j=0;j<n;j++)
+		for(int j=0;j<strAr.length;j++)
 		{
-			b[i][j]=sc.nextInt();
+			strAr[i][j]=sc.next();
 		}
 	}
-	return b;
-}
-public static String[][] arStr(int m,int n)
-{
-	Scanner sc=new Scanner(System.in);
+	System.out.println("array elements are");
+	printArrayElement(strAr);
+	break;
+	case 3:double[][] doubleAr=new double[row][col];
 	System.out.println("enter the elements of array");
-	String[][] c=new String[m][n];
-	for(int i=0;i<m;i++)
+    for(int i=0;i<doubleAr.length;i++)
 	{
-		for(int j=0;j<n;j++)
+		for(int j=0;j<doubleAr.length;j++)
 		{
-			c[i][j]=sc.next();
+			doubleAr[i][j]=sc.nextInt();
 		}
 	}
-	return c;
-}
-public static void print(int[][] a,double[][] b,String[][] c,int m,int n)
-{
-PrintWriter pw=new PrintWriter(System.out,true);
-//print integers
-pw.println("2D array int");
-for(int i=0;i<m;i++)
-{
-	for(int j=0;j<n;j++)
-	{
-		pw.print(a[i][j]+" ");
+	System.out.println("array elements are");
+	printArrayElement(doubleAr);
+	break;
 	}
 }
-pw.println();
-System.out.println();
-//print double
-pw.println("2D array double");
-for(int i=0;i<m;i++)
+public static  void printArrayElement(int[][] ar)
 {
-	for(int j=0;j<n;j++)
+	for(int i=0;i<ar.length;i++)
 	{
-		pw.print(b[i][j]+" ");
-	}
-}
-System.out.println();
-//print boolean
-pw.println("2D array boolean");
-for(int i=0;i<m;i++)
-{
-	for(int j=0;j<n;j++)
-	{
-		pw.print(c[i][j]+" ");
+		for(int j=0;j<ar.length;j++)
+		{
+			System.out.println(ar[i][j]+" ");
+		}
+		System.out.println();;
 	}
 }
 
+public static  void printArrayElement(String[][] ar)
+{
+	for(int i=0;i<ar.length;i++)
+	{
+		for(int j=0;j<ar.length;j++)
+		{
+			System.out.println(ar[i][j]+" ");
+		}
+		System.out.println();;
+	}
+}
+public static  void printArrayElement(double[][] ar)
+{
+	for(int i=0;i<ar.length;i++)
+	{
+		for(int j=0;j<ar.length;j++)
+		{
+			System.out.println(ar[i][j]+" ");
+		}
+		System.out.println();;
+	}
 }
 //Sum of three integers is 0
-public static void sum(int n,int b[])
+public static int sumisZero(int[] a,int length)
 {
 	int count=0;
-	for(int i=0;i<n;i++)
+	for(int i=0;i<length;i++)
 	{
-		for(int j=i+1;j<n;j++)
+		for(int j=i+1;j<length;j++)
 		{
-			for(int k=j+1;k<n;k++)
+			for(int k=i+1;k<length;k++)
 			{
-				if(b[i]+b[j]+b[k]==0)
+				if(a[i]+a[j]+a[k]==0)
+				{
+					System.out.println(a[i]+ " "+a[j]+ " "+a[k]);
 					count++;
-				int sum=b[i]+b[j]+b[k];
-					System.out.println(sum);
-					
 				}
 			}
 		}
-	System.out.println("sum of integers is 0");
-			System.out.println("count="+count);
 	}
-
+	return count;
+}
 /**
  * Function to replace String
  *
  * 
  */
-    
-
-	public static String replace(String input)
+    public static String replace(String input)
 	{
 		
 		String s="Hello <<username>>, How are you?";

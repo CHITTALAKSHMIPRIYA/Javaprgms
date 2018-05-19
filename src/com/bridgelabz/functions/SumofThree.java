@@ -9,12 +9,20 @@
  * 
  * *************************************************************************************************/
 package com.bridgelabz.functions;
-import com.bridgelabz.util.*;
 import java.util.Scanner;
+import com.bridgelabz.util.*;
 public class SumofThree {
     public static void main(String[] args) {
-		int[] b= {1,3,6,-2,-7,4};
-		int n=b.length;
-		Utility.sum(n,b);
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter size of array");
+		int size=sc.nextInt();
+		int ar[]=new int[size];
+		for(int i=0;i<ar.length;i++)
+		{
+			System.out.println("enter"+(i+1)+"value");
+			ar[i]=sc.nextInt();
+		}
+		int sum=Utility.sumisZero(ar,size);
+		System.out.println("No of triplets:"+sum);
 		}
     }
