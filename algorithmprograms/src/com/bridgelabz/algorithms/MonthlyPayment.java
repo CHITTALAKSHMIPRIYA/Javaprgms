@@ -21,7 +21,7 @@ public class MonthlyPayment {
 		double year=sc.nextDouble();
 		System.out.println("enter percentage");
 		double per=sc.nextDouble();
-		Utility.monthlyPay(loan,year,per);
+Utility.monthlyPay(loan,year,per);
 
 	}
 
