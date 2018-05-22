@@ -1,31 +1,23 @@
 /*************************************************************************************************************
  * 
- * purpose:Read in a list of words from File using binary search
+ * purpose:To compute the square root of a non negative number c
  * 
  * @author Lakshmi Priya
  * @version 1.0
- * @since 19-05-17
+ * @since 22-05-17
  * 
  * **************************************************************************************************/
- 
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
 
 import com.bridgelabz.util.Utility;
 
-public class BinarySearch {
+public class Sqrt {
    public static void main(String[] args) {
-		try {
-			Utility u=new Utility();
-		u.readFile();
-
-		}
-		catch(Exception e)
-		{
-			System.out.println("exception occured");
-		}
-
+	 double c=Double.parseDouble(args[0]);
+	 double t=c;
+	 double epsilon=1e-15;
+double res=Utility.squareRoot(c,t,epsilon);
+System.out.println(res);
 	}
 
 }

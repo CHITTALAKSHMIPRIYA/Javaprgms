@@ -1,31 +1,24 @@
 /*************************************************************************************************************
  * 
- * purpose:Read in a list of words from File using binary search
+ * purpose:To calculate temperature in celsius and farhenheit
  * 
  * @author Lakshmi Priya
  * @version 1.0
- * @since 19-05-17
+ * @since 22-05-17
  * 
  * **************************************************************************************************/
- 
-package com.bridgelabz.algorithms;
+ package com.bridgelabz.algorithms;
 
 import java.util.Scanner;
 
 import com.bridgelabz.util.Utility;
 
-public class BinarySearch {
-   public static void main(String[] args) {
-		try {
-			Utility u=new Utility();
-		u.readFile();
+public class Swapnibbles {
 
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter number");
+		int number=sc.nextInt();
+		Utility.convertBinarySwap(number);
 		}
-		catch(Exception e)
-		{
-			System.out.println("exception occured");
-		}
-
 	}
-
-}

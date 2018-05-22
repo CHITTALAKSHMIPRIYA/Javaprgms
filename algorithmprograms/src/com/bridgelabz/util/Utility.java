@@ -92,28 +92,6 @@ public class Utility {
 	}
 	
 	/**
-	 * function for bubble sort
-	 * @param ar
-	 * @return
-	 */
-	public static int[] bubbleSort(int[] ar)
-	{
-		for(int i=0;i<ar.length;i++)
-		{
-			for(int j=i;j<ar.length;j++)
-			{
-				if(ar[i]<ar[j])
-				{
-					int temp=ar[i];
-					ar[i]=ar[j];
-					ar[j]=temp;
-				}
-			}
-		}
-		return ar;
-	}
-	
-	/**
 	 * @param month
 	 * @param day
 	 * @param year
@@ -169,7 +147,7 @@ return d0;
 //Binary Search
 public void readFile() throws FileNotFoundException 
 {
-	File file=new File("/home/bridgelabz/Javaprograms/algorithmprograms/src");
+	File file=new File("/home/bridgelabz/Javaprograms/text");
 	if(file.exists())
 	{
 		if(file.canRead())
@@ -182,13 +160,13 @@ public void readFile() throws FileNotFoundException
 			//to sort the array based on alphabetical order
 			for(int i=0;i<ar.length;i++)
 			{
-				for(int j=i+1;j<ar.length-1;j++)
+				for(int j=i+1;j<ar.length;j++)
 				{
-					if(ar[i].compareTo(ar[j])<0)
+					if(ar[i].compareTo(ar[j])>0)
 					 {
-						String temp=ar[i];
-						ar[i]=ar[j];
-						ar[j]=temp;
+						String temp=ar[j];
+						ar[j]=ar[i];
+						ar[i]=temp;
 						}
 				}
 			}
@@ -253,13 +231,13 @@ public static int[] insertionSort1(int[] intAr)
  * @param strAr
  * @return
  */
-public static String[] insertionSort(String[] strAr)
+public static <T extends Comparable<T>> T[] insertionSort(T[] strAr)
 {
 	for(int i=1;i<strAr.length;i++)
 	{
-		String index=strAr[i];
+		T index=strAr[i];
 		int j=i-1;
-		while(j>=0&&strAr[j].compareTo(index)>0)
+		while(j>=0&&strAr[j].compareTo((T) index)>0)
 		{
 			strAr[j+1]=strAr[j];
 			j=j-1;
@@ -273,24 +251,14 @@ public static String[] insertionSort(String[] strAr)
 /**
  * @param ar
  */
-public static void  printArray(int[] ar)
+public static <T extends Comparable<T>> T[] printArray(T[] ar)
 {
 	for(int i=0;i<ar.length;i++)
 	{
 		System.out.print(ar[i]);
 	}
 	System.out.println();
-}
-/**
- * @param ar
- */
-public static void  printArray(String[] ar)
-{
-	for(int i=0;i<ar.length;i++)
-	{
-		System.out.print(ar[i]);
-	}
-	System.out.println();
+	return ar;
 }
 /**
  * @param ar
@@ -331,9 +299,10 @@ public static int[] binarySearch(int ar[],int key)
 /**
  * @param ar
  * @param key1
+ * @return 
  * @return
  */
-public static String[] binarySearch(String ar[],String key1)
+public static <T extends Comparable<T>> T[] binarySearch(T ar[],T key1)
 {
 	int first,last,mid;
 	first=0;
@@ -368,9 +337,10 @@ public static String[] binarySearch(String ar[],String key1)
 /**
  *  function to sort the words in string array using bubble sort
  * @param ar
+ * @return 
  * @return
  */
-public static String[]  bubbleSort(String ar[])
+public static <T extends Comparable<T>>  T[] bubbleSort(T ar[])
 {
 	for(int i=0;i<ar.length;i++)
 	{
@@ -378,7 +348,7 @@ public static String[]  bubbleSort(String ar[])
 		{
 			if(ar[i].compareTo(ar[j])>0)
 			{
-				String temp=ar[i];
+				T temp=ar[i];
 				ar[i]=ar[j];
 				ar[j]=temp;
 			}
@@ -390,12 +360,14 @@ public static String[]  bubbleSort(String ar[])
 
 
 /**
+ * function to sort the words in string array using Merge sort
  * @param ar
  * @param low
  * @param high
+ * @return 
  * @return
  */
-public static String[] mergeSort(String ar[],int low,int high)
+public static <T extends Comparable<T>> T[] mergeSort(T ar[],int low,int high)
 {
 	if(low<high)
 	{
@@ -414,7 +386,7 @@ public static String[] mergeSort(String ar[],int low,int high)
  * @param mid
  * @param end
  */
-public static void merge(String ar[],int start,int mid,int end)
+public static <T extends Comparable<T>> T[]merge(T ar[],int start,int mid,int end)
 {
 	int p=start;int q=mid+1;
 	Object arr[]=new Object[end-start+1];
@@ -443,8 +415,9 @@ public static void merge(String ar[],int start,int mid,int end)
 
 for (int l=0 ; l< k ;l++)
 {
-	  ar[start++] = (String)arr[l] ;                          
+	  ar[start++] = (T)arr[l] ;                          
 }
+return ar;
 }
 //anagram
 public static int[] sort(int[] ar)
@@ -489,7 +462,144 @@ public static void search(int low, int high)
     	System.out.println("The number is "+low);
     }
 }
+
+/**
+ * function to compute the square root of non negative number 
+ * @param c
+ * @param t
+ * @param e
+ * @return
+ */
+public static double squareRoot(double c,double t,double e)
+{
+	while(Math.abs(t-c/t)>e*t)
+	{
+		t=(c/t+t)/2;
+	}
+	return t;	
+		}
+
+
+/**
+ * function to convert decimal to binary
+ * @param num
+ * @return
+ */
+public static String convertBinary(int num)
+{
+	int pwr=1;
+	String str="";
+	while(pwr<=num/2)
+	{
+		pwr=pwr*2;
+	}
+	while(pwr>0)
+	{
+		if(num<pwr)
+		{
+			str=str+0;
+		}
+		else {
+			str=str+1;
+			num=num-pwr;
+			}
+		pwr=pwr/2;
+	}
+	return str;
 }
+/**
+ * @param notes
+ * @param change
+ * @param length
+ * @return
+ */
+public static int count(int notes[],int change,int length)
+{
+	int count=0;
+	for(int i=length-1;i>=0;i--)
+	{
+		while(change>=notes[i])
+		{
+			change=change-notes[i];
+			System.out.println(notes[i]+"");
+			count++;
+		}
+	}
+	System.out.println();
+	return count;
+}
+public static void convertBinarySwap(int num)
+{
+	int pwr=1;
+	String str="";
+	while(pwr<=num/2)
+	{
+		pwr=pwr*2;
+	}
+	while(pwr>0)
+	{
+		if(num<pwr)
+		{
+		   str=str+0;
+		}
+		else {
+			str=str+1;
+			num=num-pwr;
+			}
+		pwr=pwr/2;
+	}
+	System.out.println(str);;
+	swap(str);
+}
+/**
+ * @param str
+ */
+public static void swap(String str)
+{
+	if(str.length()<8)
+	{
+		while(str.length()<8)
+		{
+			str="0"+str;
+		}
+	}
+	
+	char ar[]=str.toCharArray();
+	for(int i=0;i<(ar.length-1)/2;i++)
+	{
+		char ch=ar[i];
+		ar[i]=ar[i+ar.length/2];
+		ar[i+ar.length/2]=ch;
+	}
+	str=String.valueOf(ar);
+	System.out.println("after swapping the string is"+str);
+	int num=Integer.parseInt(str);
+	int decimal=0;
+	int pwr=0;
+	while(true)
+	{
+		if(num==0) {
+			break;
+		}
+		else
+		{
+			int temp=num%10;
+			decimal=(int) (decimal+temp*Math.pow(2, pwr));
+			num=num/10;
+			pwr++;
+		}
+	}
+	System.out.println(decimal);
+	while(decimal%2==0)
+	{
+		decimal=decimal/2;
+	}
+	if(decimal==1)
+		System.out.println("its a power of 2");
+	else
+		System.out.println("not powerof 2");
+	}
+ }
 
 
 

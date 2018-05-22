@@ -19,7 +19,7 @@ public class TimeElapse {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter array size");
 		int size=sc.nextInt();
-		int intAr[]=new int[size];
+		Integer intAr[]=new Integer[size];
 		String strAr[]=new String[size];
 		System.out.println("enter integer type array");
 		for(int i=0;i<intAr.length;i++) {
@@ -54,7 +54,7 @@ public class TimeElapse {
       System.out.println("=============================================");
          
       start=(int)System.currentTimeMillis();
-      Utility.insertionSort1(intAr);
+      Utility.insertionSort(intAr);
       Utility.printArray(intAr);
       end=(int)System.currentTimeMillis();	
       System.out.println("time to sort integer using insertionsort:"+(end-start)+ " ms");
