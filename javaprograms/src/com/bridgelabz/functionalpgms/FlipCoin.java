@@ -10,22 +10,14 @@
 package com.bridgelabz.functionalpgms;
 
 import java.util.Scanner;
-
-//import com.bridgelabz.util.Utility;
-
 public class FlipCoin {
-
-	public static void main(String[] args) {
-		
-		//INITIALIZATION
-		int num,h_cn=0,t_cn=0;
-		double head,tail;
-		
+	static int h_cn=0,t_cn=0;
+	static double head,tail;
+  public static void main(String[] args) {
 		Scanner sc =new Scanner(System.in);
 		//INPUT DATA
 		System.out.print("enter the number of times to flip coin");
-		num=sc.nextInt();
-		
+		int num=sc.nextInt();
 		for(int k=0;k<num;k++)
 		{
 			double random=Math.random();

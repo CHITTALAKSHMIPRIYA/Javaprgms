@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Utility {
 	
@@ -601,29 +602,25 @@ public static void swap(String str)
 	}
 
 
-// functional programs
+static // functional programs
+Scanner sc=new Scanner(System.in);
 
+public static int scInt()
+{
+	return sc.nextInt();
+}
+public static double scDouble()
+{
+	return sc.nextDouble();
+}
 
-public static void scanner(int num)
+public static String scString()
 {
-	Scanner sc=new Scanner(System.in);
-	num =sc.nextInt();
+	return sc.next();
 }
-public static void scanner(String string)
+public static boolean scanInt()
 {
-	Scanner sc=new Scanner(System.in);
-	string =sc.nextLine();
-}
-public static void scanner(double num)
-{
-	Scanner sc=new Scanner(System.in);
-	num =sc.nextDouble();
-}
-public static boolean scanner(boolean num)
-{
-	Scanner sc=new Scanner(System.in);
-	num =sc.nextBoolean();
-	return num;
+	return sc.nextBoolean();
 }
 /**
  * Function to check leap year or not
@@ -844,6 +841,41 @@ public static int sumisZero(int[] a,int length)
 		ch[j]=t;
 		return String.valueOf(ch);
 	}
+//stack
+	public static boolean expression(String str)
+	{
+		int count=0;
+		Stack s=new Stack();
+		for(int i=0;i<str.length();i++)
+		{
+			if(str.charAt(i)=='(')
+			{
+				s.push(str.charAt(i));
+				count++;
+			}
+			if(str.charAt(i)==')')
+			{
+				if(s.isEmpty())
+				{
+					count--;
+				}
+				else
+				{
+					s.pop();
+					count--;
+				}
+			}
+		}
+		if(s.isEmpty()&& count==0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 }
 
 //

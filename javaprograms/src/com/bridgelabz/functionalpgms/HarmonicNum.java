@@ -15,8 +15,7 @@ public class HarmonicNum {
 	public static void main(String[] args) {
 		//initialization
 		double num=0;
-	
-		Scanner sc=new Scanner(System.in);
+	Scanner sc=new Scanner(System.in);
 		//Input data
 		System.out.println("enter harmonic");
 		int value=sc.nextInt();

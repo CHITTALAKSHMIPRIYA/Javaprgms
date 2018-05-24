@@ -8,18 +8,15 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.functionalpgms;
-
 import java.util.Scanner;
-
 public class Gambler {
-
-	public static void main(String[] args) {
+	static int bets=0;//total number of times games played
+	static int wins=0;//total number of times won
+   public static void main(String[] args) {
 		Scanner sc= new Scanner(System.in);
 		int stake=sc.nextInt();
 		int goal=sc.nextInt();
 		int times=sc.nextInt();
-		int bets=0;//total number of times games played
-		int wins=0;//total number of times won
 		//repeat trial times
 		for(int t=0;t<times;t++) 
 		{

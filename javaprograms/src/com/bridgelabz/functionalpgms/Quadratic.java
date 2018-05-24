@@ -12,8 +12,7 @@ package com.bridgelabz.functionalpgms;
 import java.util.Scanner;
 
 public class Quadratic {
-
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter values of a,b,c");
 		double a=sc.nextInt();

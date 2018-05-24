@@ -40,11 +40,11 @@ public static void main(String[] args)
 {
 	StopWatch sw=new StopWatch();
 	Scanner sc=new Scanner(System.in);
-	System.out.println("press 1 to start time:");
+	System.out.println("press any button to start time:");
 	sc.nextInt();
 	sw.start();
 	System.out.println();
-	System.out.println("press 2 to stop time:");
+	System.out.println("press any button to stop time:");
 	sc.nextInt();
 	sw.stop();
 	long l=sw.elapsedTime();
