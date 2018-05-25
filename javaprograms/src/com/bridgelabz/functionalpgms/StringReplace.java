@@ -8,19 +8,20 @@
  * 
  * *************************************************************************************************/
 package com.bridgelabz.functionalpgms;
-import com.bridgelabz.util.*;
 
-import java.util.Scanner;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 public class StringReplace {
-
-	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
-		System.out.println("enter username");;
-		String username=sc.nextLine();
-		String output=Utility.replace(username);
-		System.out.println(output);
-
+	public String replacePattern(String str,String replace)
+	{
+		Pattern ptn=Pattern.compile("<<[^<<]*>>");
+		Matcher mtch=ptn.matcher(str);
+		return mtch.replaceAll(replace);
 	}
-
+	public static void main(String[] args)
+	{
+		String str="Hello <<username>>, How are you?";
+		StringReplace mpr=new StringReplace();
+		System.out.println(mpr.replacePattern(str,"lakshmi"));
+	}
 }

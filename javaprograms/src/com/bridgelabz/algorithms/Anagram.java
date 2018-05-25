@@ -21,5 +21,4 @@ public class Anagram {
 	boolean res=	Utility.isAnagram(a,b);
 	System.out.println(res?"anagram":"not anagram");
 	}
-
-}
+	}

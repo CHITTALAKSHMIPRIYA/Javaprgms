@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utility {
 	
@@ -217,7 +219,7 @@ public static int[] insertionSort1(int[] intAr)
 	{
 		int index=intAr[i];
 		int j=i-1;
-		while(j>0&&intAr[j]>(index))
+		while(j>=0&&intAr[j]>(index))
 		{
 			intAr[j+1]=intAr[j];
 			j=j-1;
@@ -609,7 +611,15 @@ public final static int Int()
 {
 	return sc.nextInt();
 }
+public final static int Int1(int data)
+{
+	return sc.nextInt();
+}
 public static double Double()
+{
+	return sc.nextDouble();
+}
+public static double Double1(double data)
 {
 	return sc.nextDouble();
 }
@@ -801,20 +811,8 @@ public static int sumisZero(int[] a,int length)
 	}
 	return count;
 }
-/**
- * Function to replace String
- *
- * 
- */
-    public static String replace(String input)
-	{
-		
-		String s="Hello <<username>>, How are you?";
-		String str=s.replaceAll("<<username>>",input);
-		return str;
-	}
 
-/**
+ /**
  * Function for permutation of a String
  *
  * @param number for permutation
@@ -841,7 +839,11 @@ public static int sumisZero(int[] a,int length)
 		ch[j]=t;
 		return String.valueOf(ch);
 	}
-//stack
+	
+/**
+ * @param str
+ * @return
+ */
 	public static boolean expression(String str)
 	{
 		int count=0;
