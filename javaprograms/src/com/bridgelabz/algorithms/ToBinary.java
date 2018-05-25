@@ -7,22 +7,16 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
-
 import com.bridgelabz.util.Utility;
-		public class ToBinary
-		{	
-			public static void main(String args[])
-			{
-				Scanner scan = new Scanner(System.in);
-				System.out.println("Enter the number:");
-				int num = scan.nextInt();
-				
-	String res=	Utility.convertBinary(num);
-			System.out.println(res);
-				scan.close();
-			}
+public class ToBinary
+{
+	public static void main(String args[])
+	{
+		System.out.println("Enter the number:");
+	    int num = Utility.Int();
+	    String res=Utility.convertBinary(num);
+		System.out.println(res);
+		}
 	}
 
 

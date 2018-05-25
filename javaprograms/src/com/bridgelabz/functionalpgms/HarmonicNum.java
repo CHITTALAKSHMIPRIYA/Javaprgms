@@ -8,21 +8,17 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.functionalpgms;
-
-import java.util.Scanner;
+import com.bridgelabz.util.Utility;
 
 public class HarmonicNum {
-	public static void main(String[] args) {
-		//initialization
-		double num=0;
-	Scanner sc=new Scanner(System.in);
-		//Input data
+	static double NUM= 0;
+public static void main(String[] args) {
+		// Input data
 		System.out.println("enter harmonic");
-		int value=sc.nextInt();
-		for(double i=1;i<=value;i++)
-		{
-			num=num+(1/i);
+		int value = Utility.Int();
+		for (double i = 1; i <= value; i++) {
+			NUM=NUM+ (1 / i);
 		}
-		System.out.println("harmonic value of"+value+ "is"+num);
-		}
+		System.out.println("harmonic value of" + value + "is" +NUM);
 	}
+}

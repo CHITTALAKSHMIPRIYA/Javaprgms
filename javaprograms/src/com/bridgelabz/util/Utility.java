@@ -605,20 +605,20 @@ public static void swap(String str)
 static // functional programs
 Scanner sc=new Scanner(System.in);
 
-public static int scInt()
+public final static int Int()
 {
 	return sc.nextInt();
 }
-public static double scDouble()
+public static double Double()
 {
 	return sc.nextDouble();
 }
 
-public static String scString()
+public static String String()
 {
 	return sc.next();
 }
-public static boolean scanInt()
+public static boolean Boolean()
 {
 	return sc.nextBoolean();
 }

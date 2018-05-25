@@ -8,37 +8,39 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.functionalpgms;
-import java.util.Scanner;
+import com.bridgelabz.util.Utility;
+
 public class Gambler {
-	static int bets=0;//total number of times games played
-	static int wins=0;//total number of times won
+	static int BETS=0;//total number of times games played
+	static int WINS=0;//total number of times won
    public static void main(String[] args) {
-		Scanner sc= new Scanner(System.in);
-		int stake=sc.nextInt();
-		int goal=sc.nextInt();
-		int times=sc.nextInt();
+	   System.out.println("enter the stake amount");
+		int stake=Utility.Int();
+		System.out.println("enter goal");
+		int goal=Utility.Int();
+		System.out.println("enter the number of times");
+		int times=Utility.Int();
 		//repeat trial times
 		for(int t=0;t<times;t++) 
 		{
 			int money= stake;
 			while(money>0 && money<goal) {
-				bets++;
+				BETS++;
 				if(Math.random()<0.5)
 					money++;
 				else
 					money--;
 			}
 			if(money==goal)
-				wins++;
+				WINS++;
 		}
-		int gw=100*wins/times;
-		int ar=1*bets/times;
-		int loss=times-wins;
-		System.out.println("number of wins="+wins);
+		int gw=100*WINS/times;
+		int ar=1*BETS/times;
+		int loss=times-WINS;
+		System.out.println("number of wins="+WINS);
 		System.out.println("percentage of wins="+gw);
 		System.out.println("average of results="+ar);
 		System.out.println("loss="+loss);
-		sc.close();
 		}
 		}
 

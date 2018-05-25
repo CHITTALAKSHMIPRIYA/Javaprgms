@@ -9,19 +9,14 @@
  * **************************************************************************************************/
  
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
 import com.bridgelabz.util.*;
 public class TemperatureConversion {
      public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
 		System.out.println("enter celsius");
-		double celsius=sc.nextDouble();
+		double celsius=Utility.Double();
 		System.out.println("enter farenheit");
-		double farhenheit=sc.nextDouble();
+		double farhenheit=Utility.Double();
           Utility.celTofar(celsius);
           Utility.farhTocel(farhenheit);
-          sc.close();
 	}
-
 }

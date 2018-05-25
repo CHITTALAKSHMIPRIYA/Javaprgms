@@ -9,26 +9,19 @@
  * **************************************************************************************************/
  
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
-
 import com.bridgelabz.util.Utility;
 
 public class DayOfWeek {
-
-	
 	public static void main(String[] args) {
-	Scanner sc=new Scanner (System.in);
 	String ar[]= {"sun","mon","tues","wed","thur","fri","sat"};
 	System.out.println("enter month");
-	int month=sc.nextInt();
+	int month=Utility.Int();
 	System.out.println("enter day");
-	int day=sc.nextInt();
+	int day=Utility.Int();
 	System.out.println("enter year");
-	int year=sc.nextInt();
+	int year=Utility.Int();
     int res=Utility.dayOfWeek(month, day, year);
     System.out.println(ar[res]);
-    sc.close();
 	}
 
 }

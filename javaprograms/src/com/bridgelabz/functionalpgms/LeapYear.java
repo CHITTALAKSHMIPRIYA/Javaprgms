@@ -8,15 +8,15 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.functionalpgms;
+
 import com.bridgelabz.util.*;
 import java.util.Scanner;
 
 public class LeapYear {
 	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
-	    System.out.println("enter num");
-	int num=sc.nextInt();
-	boolean res=Utility.leap(num);
-		System.out.println(res?"leap year":"not leap year");
-    }
-    }
+		System.out.println("enter num");
+		int num = Utility.Int();
+		boolean res = Utility.leap(num);
+		System.out.println(res ? "leap year" : "not leap year");
+	}
+}

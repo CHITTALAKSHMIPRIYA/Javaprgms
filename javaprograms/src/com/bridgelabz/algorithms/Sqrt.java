@@ -8,7 +8,6 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.algorithms;
-
 import com.bridgelabz.util.Utility;
 
 public class Sqrt {
@@ -19,5 +18,4 @@ public class Sqrt {
 double res=Utility.squareRoot(c,t,epsilon);
 System.out.println(res);
 	}
-
-}
+   }

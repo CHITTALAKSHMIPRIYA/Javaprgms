@@ -9,30 +9,24 @@
  * **************************************************************************************************/
 
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
-
 import com.bridgelabz.util.Utility;
 
 public class Bubblesort {
-
-	
-	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
+public static void main(String[] args) {
+		
 		System.out.println("enter size of array");
-		int size=sc.nextInt();
+		int size=Utility.Int();
 		Integer[] ar=new Integer[size];
 		for(int i=0;i<size;i++)
 		{
 			System.out.println("enter the value at "+i+"value");
-			ar[i]=sc.nextInt();
+			ar[i]=Utility.Int();
 		}
 		for(int i=0;i<size;i++)
 		{
 			Utility.bubbleSort(ar);
 			System.out.println(ar[i]);
 		}
-sc.close();
 	}
 
 }

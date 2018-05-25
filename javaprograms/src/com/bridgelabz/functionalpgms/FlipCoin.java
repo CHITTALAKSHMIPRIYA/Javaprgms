@@ -8,32 +8,25 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.functionalpgms;
-
-import java.util.Scanner;
+import com.bridgelabz.util.Utility;
 public class FlipCoin {
-	static int h_cn=0,t_cn=0;
-	static double head,tail;
-  public static void main(String[] args) {
-		Scanner sc =new Scanner(System.in);
-		//INPUT DATA
+	static int H_CN = 0, T_CN = 0;
+	static double HEAD,TAIL;
+public static void main(String[] args) {
+		// INPUT DATA
 		System.out.print("enter the number of times to flip coin");
-		int num=sc.nextInt();
-		for(int k=0;k<num;k++)
-		{
-			double random=Math.random();
-			if(random<0.5)
-				t_cn++;
+		int num = Utility.Int();
+		for (int k = 0; k < num; k++) {
+			double random = Math.random();
+			if (random < 0.5)
+				T_CN++;
 			else
-				h_cn++;
+				H_CN++;
 		}
-		head = h_cn/(double) num*100;
-		tail = t_cn / (double)num*100;
-		System.out.println(h_cn);
-		System.out.println(t_cn);
-		System.out.println("Per of heads: " + head + "%");
-        System.out.println("Per of tails: " + tail + "%");
-		
-
-	}
-
+		HEAD= H_CN/ (double) num * 100;
+		System.out.println(H_CN);
+		System.out.println(T_CN);
+		System.out.println("Per of heads: " +HEAD + "%");
+		System.out.println("Per of tails: " +(100-HEAD));
+}
 }

@@ -1,23 +1,16 @@
 
 package com.bridgelabz.functionalpgms;
-
-import java.util.Scanner;
-
+import com.bridgelabz.util.Utility;
 import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 
 public class TicTacToe 
 {
-	static String[] board;
+    static String[] board;
 	static String turn;
-
-	public static void main(String[] args) 
+public static void main(String[] args) 
 	{
-		Scanner sc=new Scanner(System.in);
         System.out.println("please enter any number to start the game");
-        int num=sc.nextInt();
+        int num=Utility.Int();
 		board = new String[9];
 		turn = "X";
 		String winner = null;
@@ -30,7 +23,7 @@ public class TicTacToe
 		while (winner == null) 
 		{
 			int numInput;
-			numInput = sc.nextInt();
+			numInput = Utility.Int();
 				if (!(numInput > 0 && numInput <= 9)) 
 				{
 					System.out.println("Invalid input; re-enter slot number:");

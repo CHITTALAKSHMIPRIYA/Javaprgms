@@ -9,33 +9,29 @@
  * **************************************************************************************************/
 
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
-
 import com.bridgelabz.util.Utility;
-
 public class TimeElapse {
-   public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
+   public static void main(String[] args) 
+   {
 		System.out.println("enter array size");
-		int size=sc.nextInt();
+		int size=Utility.Int();
 		Integer intAr[]=new Integer[size];
 		String strAr[]=new String[size];
 		System.out.println("enter integer type array");
 		for(int i=0;i<intAr.length;i++) {
-			intAr[i]=sc.nextInt();
+			intAr[i]=Utility.Int();
 		}
 		System.out.println("enter string type array");
 		for(int i=0;i<strAr.length;i++) {
-			strAr[i]=sc.next();
+			strAr[i]=Utility.String();
 		}
 		Utility.printArray(intAr);
 		Utility.printArray(strAr);
 		System.out.println("enter the number to find");
 		long start=0;
 		long end=0;
-		int key=sc.nextInt();
-		String key1=sc.next();
+		int key=Utility.Int();
+		String key1=Utility.String();
 		start=(int)System.currentTimeMillis();	
       Utility.bubbleSort(intAr);
       Utility.binarySearch(intAr,key);
@@ -43,8 +39,7 @@ public class TimeElapse {
       System.out.println("time to search integer using binary search:"+(end-start)+ " ms");
       
       System.out.println("enter the word to find");
-      //sc.nextLine();
-      String string=sc.nextLine();
+      String string=Utility.String();
       start=(int)System.currentTimeMillis();	
       Utility.bubbleSort(strAr);
       Utility.binarySearch(strAr,key1);

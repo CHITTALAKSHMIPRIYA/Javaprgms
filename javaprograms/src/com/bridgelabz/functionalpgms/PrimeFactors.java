@@ -10,13 +10,13 @@
 package com.bridgelabz.functionalpgms;
 import java.util.Scanner;
 
+import com.bridgelabz.util.Utility;
+
 public class PrimeFactors {
    public static void main(String[] args) {
-		//command line argument
-      Scanner sc=new Scanner(System.in); 
     //initialization
       System.out.print("enter number");
-      int num=sc.nextInt();
+      int num=Utility.Int();
     //input data
       System.out.print("The prime factors of " + num +" are ");
       int i=2;

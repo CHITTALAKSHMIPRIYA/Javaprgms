@@ -9,9 +9,8 @@
  * @since 18-05-18
  * 
  * *************************************************************************************************/
- package com.bridgelabz.functionalpgms;
-
-import java.util.Scanner;
+package com.bridgelabz.functionalpgms;
+import com.bridgelabz.util.Utility;
 
 public class StopWatch 
 {
@@ -39,13 +38,12 @@ public long elapsedTime()
 public static void main(String[] args)
 {
 	StopWatch sw=new StopWatch();
-	Scanner sc=new Scanner(System.in);
 	System.out.println("press any button to start time:");
-	sc.nextInt();
+	Utility.Int();
 	sw.start();
 	System.out.println();
 	System.out.println("press any button to stop time:");
-	sc.nextInt();
+	Utility.Int();
 	sw.stop();
 	long l=sw.elapsedTime();
 	System.out.println("elapsed time="+l);

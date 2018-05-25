@@ -9,9 +9,6 @@
  * **************************************************************************************************/
  
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
-
 import com.bridgelabz.util.Utility;
 
 public class BinarySearch {

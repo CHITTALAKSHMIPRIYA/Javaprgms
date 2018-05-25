@@ -1,14 +1,12 @@
 package com.bridgelabz.functionalpgms;
-
-import java.util.Scanner;
+import com.bridgelabz.util.Utility;
 
 public class WindChill {
 	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
 		System.out.println("enter temp");
-		double t=sc.nextDouble();
+		double t=Utility.Double();
 		System.out.println("enter speed");
-		double v=sc.nextDouble();
+		double v=Utility.Double();
 		if(t<50 && (v>3 && v<120))
 		{
 			double q=Math.pow(v,0.16);

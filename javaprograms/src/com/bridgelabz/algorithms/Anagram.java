@@ -14,14 +14,12 @@ import java.util.Scanner;
 
 public class Anagram {
 	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
 		System.out.println("enter first string");
-		String a=sc.nextLine();
+		String a=Utility.String();
 		System.out.println("enter second string");
-		String b=sc.nextLine();
+		String b=Utility.String();
 	boolean res=	Utility.isAnagram(a,b);
 	System.out.println(res?"anagram":"not anagram");
-sc.close();
 	}
 
 }

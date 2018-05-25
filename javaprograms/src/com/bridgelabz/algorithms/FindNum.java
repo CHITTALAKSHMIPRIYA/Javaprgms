@@ -9,32 +9,27 @@
  * **************************************************************************************************/
 
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
-
 import com.bridgelabz.util.Utility;
 
 public class FindNum {
-
-	
-		    public static void main(String[] args) 
+	public static void main(String[] args)
+	{
+		System.out.println("Enter the value of amount");
+		int num = Utility.Int();
+		System.out.println("Think of an integer between "+0+" "+(num-1));
+		try {
+			Thread.sleep(3000);
+			}
+		catch (InterruptedException e) 
 		    {
-		    Scanner s = new Scanner(System.in);
-		        System.out.println("Enter the value of N");
-		    	int n = s.nextInt();
-		        System.out.println("Think of an integer between "+0+" "+(n-1));
-		    	try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) 
-		    	{
-					e.printStackTrace();
-				}
-		        Utility.search(0, n-1);
-		        s.close();
+			e.printStackTrace();
+			}
+		    Utility.search(0, num-1);
 		    }
+}
 		
 
 
-	}
+	
 
 

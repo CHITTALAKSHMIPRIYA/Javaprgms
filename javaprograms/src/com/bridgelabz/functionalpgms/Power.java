@@ -8,17 +8,13 @@
  * 
  * *************************************************************************************************/
 package com.bridgelabz.functionalpgms;
-import java.util.Scanner;
 
 import com.bridgelabz.util.Utility;
 
 public class Power {
-	public static void main(String[] args)
-	{
-Scanner sc=new Scanner(System.in);
-System.out.println("enter num");
-int num=sc.nextInt();
-
-Utility.pwr(num);
-}
+	public static void main(String[] args) {
+		System.out.println("enter num");
+		int num = Utility.Int();
+		Utility.pwr(num);
+	}
 }

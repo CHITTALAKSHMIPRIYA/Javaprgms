@@ -9,22 +9,16 @@
  * 
  * **************************************************************************************************/
 package com.bridgelabz.algorithms;
-
-import java.util.Scanner;
-
 import com.bridgelabz.util.Utility;
 
 public class VendingMachine {
-
 	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
 		int notes[]= {1,2,5,10,50,100,500,1000};
 		System.out.println("enter the amount");
-		int change=sc.nextInt();
+		int change=Utility.Int();
 		int length=notes.length;
 		int res=Utility.count(notes,change,length);
 		System.out.println(res);
-		sc.close();
 		}
 	}
 
