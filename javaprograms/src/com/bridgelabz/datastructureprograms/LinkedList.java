@@ -1,7 +1,5 @@
 
 package com.bridgelabz.datastructureprograms;
-
-
 public class LinkedList {
 	class Node
 	{

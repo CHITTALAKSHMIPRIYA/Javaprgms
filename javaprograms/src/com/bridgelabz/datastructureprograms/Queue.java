@@ -1,70 +1,54 @@
 
 package com.bridgelabz.datastructureprograms;
-public class Queue<T> {
-	 
-	 int capacity;
-	 int front=-1;
-	 int rear=-1;
-	int array[];
-	 Queue(int capacity)
+public class Queue{
+	public static Node front;
+	public static Node rear;
+	static int count;
+	//create anew empty list
+	public static Queue queue()
 	{
-		this.capacity=capacity;
-		array=new int[capacity];
+	return new Queue();
 	}
-	public int enqueue(T data)
+	//adding an item at the front
+	public void enqueue(Comparable item)
 	{
-		if(rear==capacity-1)
+		Node temp=new Node(item,null);
+		if(front==null)
 		{
-			System.out.println("queue is full");
-			return -1;
+			front=temp;
+			count++;
+			System.out.println(item+" added sucesfully");
+			return;
 		}
-		if(front==-1&& rear==-1)
+		rear=front;
+		while(rear.next!=null)
 		{
-			front++;
+			rear=rear.next;
 		}
-		return array[++rear]=(int) data;
-		
+		rear.next=temp;
+		rear=temp;
+		count++;
+		System.out.println(item+" added sucesfully");
 	}
-	public int dequeue()
+	public static Comparable dequeue()
 	{
-		if(front==capacity-1)
-		{
-			System.out.println("queue is empty");
-			return -1;
-		}
-		if(front>rear)
-		{
-			front=rear=-1;
-			System.out.println("queue is empty");
-			return -1;
-		}
-		return array[front++];
+		Comparable res=front.data;
+		front=front.next;
+		System.out.println("removed from queue");
+		return res;
 	}
-	public int  isEmpty(Queue queue)
+	//to find the size of list
+	public static int size()
 	{
-		if(front==capacity-1)
-		{
-			System.out.println("queue is empty");
-			return -1;
-		}
-		front++;
-		return array[front];
+		return count;
 	}
-	public void display()
+	public static boolean isEmpty()
 	{
-		for(int i=front;i<=rear;i++)
+		if(count==0)
 		{
-			System.out.println(array[i]);
+			return true;
 		}
+		return false;
 	}
-	
-	/**
-	 * @return
-	 */
-	public int capacity() {
-		this.capacity=capacity;
-		return capacity;
-	}
-	
-	
 }
+	 
