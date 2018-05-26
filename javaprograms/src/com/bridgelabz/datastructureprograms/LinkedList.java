@@ -48,6 +48,11 @@ public class LinkedList {
 		 */
 		public void display()
 		{
+			if(size==0)
+		{
+			System.out.println("empty");
+			return;
+		}
 			Node temp=head;
 			while(temp!=null) {
 				System.out.println("data:"+temp.data);		
@@ -58,14 +63,14 @@ public class LinkedList {
 		 * @param data
 		 * @param index
 		 */
-		public void addAt(Object data,int index)
+		public void addAt(int i,int index)
 		{
 		if(index==0)
 			{
-			addFirst(data);
+			addFirst(i);
 			return;
 			}
-		Node n1=new Node(data);
+		Node n1=new Node(i);
 		int count=0;
 		Node temp=head;
 		while(count<index-1)
@@ -173,22 +178,23 @@ return -1;
 		/**
 		 * @param intAr
 		 */
-		public static int[] sort(int[] intAr)
+		public static <T extends Comparable<T>>  T[] bubbleSort(T ar[])
 		{
-			for(int i=0;i<intAr.length;i++)
+			for(int i=0;i<ar.length;i++)
 			{
-				for(int j=i;j<intAr.length;j++)
+				for(int j=i;j<ar.length;j++)
 				{
-			if(intAr[i]>intAr[j])
-			{
-				int temp=intAr[i];
-				intAr[i]=intAr[j];
-				intAr[j]=temp;
+					if(ar[i].compareTo(ar[j])>0)
+					{
+						T temp=ar[i];
+						ar[i]=ar[j];
+						ar[j]=temp;
+					}
+				}
 			}
-			}
-			}
-			return intAr;
-		}
+			return ar;
+			
+        }
 			
 		}
 	

@@ -37,7 +37,7 @@ public class OrderedList {
 				}
 				for(int i=0;i<str.length;i++)
 				{
-					list.sort(intAr);
+					list.BubbleSort(intAr);
 					list.add(intAr[i]);
 				}
 				System.out.println("sorted order is");
