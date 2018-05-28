@@ -1,10 +1,13 @@
 
 package com.bridgelabz.datastructureprograms;
 public class LinkedList<T extends Comparable<T>> {
+	@SuppressWarnings("rawtypes")
 	public static Node1 head;
+	@SuppressWarnings("rawtypes")
 	public static Node1 tail;
 	static int count;
 		//to add an item at last
+	@SuppressWarnings("unchecked")
 	public static <T extends Comparable<T>> void add(T item)
 	{
 		Node1<T> temp=new Node1<T>(item,null);
@@ -26,6 +29,7 @@ public class LinkedList<T extends Comparable<T>> {
 		System.out.println(item+" added successfully");
 	}
 		//add an item at front
+	@SuppressWarnings("unchecked")
 	public static <T extends Comparable<T>> void addFirst(T item)
 	{
 		Node1<T> nodeToinsert=new Node1<T>(item,null);
@@ -47,19 +51,20 @@ public class LinkedList<T extends Comparable<T>> {
 		System.out.println(item+" added successfully");
 	}
 		//to find the size of list
-		public static int size()
+	public static int size()
 		{
 			return count;
 		}
 		//to find list is empty or not
-		public static boolean isEmpty()
+	public static boolean isEmpty()
 		{
 		  if(count==0)
 		  return true;
 		  return false;
         }
 		//to check whether an item is present or not
-		public static <T extends Comparable<T>> boolean search(T item)
+		@SuppressWarnings("unchecked")
+	public static <T extends Comparable<T>> boolean search(T item)
 		{
 			Node1<T> temp= head;
 			if(tail.data.compareTo(item)==0)
@@ -74,7 +79,8 @@ public class LinkedList<T extends Comparable<T>> {
 			}return false;
 		}
 		//to insert an item at given position
-		public static <T extends Comparable<T>> void insert(int pos,T item)
+		@SuppressWarnings("unchecked")
+	public static <T extends Comparable<T>> void insert(int pos,T item)
 		{
 			Node1<T> nodeToinsert=new Node1<T>(item);
 			if(pos>size())
@@ -104,7 +110,8 @@ public class LinkedList<T extends Comparable<T>> {
 			}
 		}
 		//to remove a specified item from list
-		public static <T extends Comparable<T>> void remove(T item)
+		@SuppressWarnings("unchecked")
+	public static <T extends Comparable<T>> void remove(T item)
 		{
 			Node1<T> temp=head,prev=null;
 			if(temp!=null&& temp.data.compareTo(item)==0)
@@ -131,7 +138,8 @@ public class LinkedList<T extends Comparable<T>> {
 			}
 		}
 		//to fetch the last item as well as to remove it
-		public static <T extends Comparable<T>> T pop()
+		@SuppressWarnings("unchecked")
+	public static <T extends Comparable<T>> T pop()
 		{
 			Node1<T> current=head;
 			Node1<T> nextNode=current.next;
@@ -154,4 +162,4 @@ public class LinkedList<T extends Comparable<T>> {
 			return c;
 		}
 			
-		}
+		}	
