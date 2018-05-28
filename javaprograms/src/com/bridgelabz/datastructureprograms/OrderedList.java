@@ -8,65 +8,60 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import com.bridgelabz.util.Utility;
+
 public class OrderedList {
     public static void main(String[] args) {
-		LinkedList list=new LinkedList();
-		
-		int count=0;
-		File f=new File("/home/bridgelabz/test3");
-		FileReader fr=null;
+    	File f=new File("/home/bridgelabz/Downloads/sts-bundle/sts-3.9.2.RELEASE/text2");
+		System.out.println("enter the num you want to search");
+		String searchItem=Utility.String();
+		//OrderedList o1=OrderedList.orderedlist();
 		BufferedReader br=null;
-		FileWriter fwrite=null;
-		BufferedWriter bwrite=null;
-		String[] str=new String[100];
 		try
 		{
-			fr=new FileReader(f);
-			br=new BufferedReader(fr);
+			br=new BufferedReader(new FileReader(f));
 			String word=br.readLine();
 			while(word!=null)
 			{
-				 str=word.split(",");
-				count++;
-				break;
-			}
-				int[] intAr=new int[str.length];
-				for(int i=0;i<intAr.length;i++)
-				{
-					intAr[i]=Integer.parseInt(str[i]);
-				}
+				String [] str=word.split(",");
+	
 				for(int i=0;i<str.length;i++)
 				{
-					list.BubbleSort(intAr);
-					list.add(intAr[i]);
+					LinkedList.add(str[i]);
 				}
-				System.out.println("sorted order is");
-				list.display();
+				break;
+			}
+		}
+			catch(Exception e)
+			{
+			e.printStackTrace();
+			}
+			if(LinkedList.search(searchItem))
+			{
+				LinkedList.remove(searchItem);
+			}else
+			{
+				LinkedList.add(searchItem);
+			}
+			String out="";
+			while(LinkedList.size()>0)
+			{
+				out=LinkedList.pop()+""+out;
+			}
+			try
+			{
+				BufferedWriter writer =new BufferedWriter(new FileWriter(f));
+				writer.write(out);
+				System.out.println("file written successfully");
+				writer.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
 				
 			}
-	
-catch(Exception e)
-		{
-	e.printStackTrace();
 		}
-		System.out.println("searching following data");
-		Scanner sc=new Scanner(System.in);
-		System.out.println("enter num");
-		int num=sc.nextInt();
-		int res=list.search(num);
-		if(res==-1)
-		{
-			list.add(num);
-			System.out.println("added num");
-	
-			list.display();
-			System.out.println("num added successfully");
-		}
-		else
-		{
-			list.removeAt(res);
-			System.out.println("num removed successfully");
-			list.display();
-		}
-    }
 }
+
+	
+	

@@ -9,74 +9,58 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.bridgelabz.util.Utility;
+
 public class UnorderedList {
     public static void main(String[] args) {
-		LinkedList list=new LinkedList();
-		int count=0;
-		File f=new File("/home/bridgelabz/test.txt");
-		FileReader fr=null;
+		File f=new File("/home/bridgelabz/Downloads/sts-bundle/sts-3.9.2.RELEASE/text2");
+		System.out.println("enter the word you want to search");
+		String searchItem=Utility.String();
 		BufferedReader br=null;
-		FileWriter fw=null;
-		BufferedWriter bw=null;
 		try
 		{
-			fr=new FileReader(f);
-			br=new BufferedReader(fr);
+			br=new BufferedReader(new FileReader(f));
 			String word=br.readLine();
 			while(word!=null)
 			{
 				String [] str=word.split(",");
-				count++;
+	
 				for(int i=0;i<str.length;i++)
 				{
-					list.add(str[i]);
+					LinkedList.add(str[i]);
 				}
 				break;
 			}
-System.out.println("searching all elements");
-		list.display();
-		System.out.println(list.size());
-		System.out.println("enter word to search in list");
-		Scanner sc=new Scanner(System.in);
-		String word1=sc.next();
-		int value=list.search(word);
-		if(value==-1)
-		{
-			System.out.println("added word");
-			list.add(word1);
-			System.out.println("name added successfully");
-			fw=new FileWriter("/home/bridgelabz/test.txt");
-			bw=new BufferedWriter(fw);
-			bw.write(word+","+word1);
-			bw.flush();
-			list.display();
 		}
-		else
-		{
-			list.removeAt(value);
-			System.out.println("word removed successfully");
-			list.display();
-		}
-}
-		catch(Exception e)
-		{
-		e.printStackTrace();
-		}
-		finally {
+			catch(Exception e)
+			{
+			e.printStackTrace();
+			}
+			if(LinkedList.search(searchItem))
+			{
+				LinkedList.remove(searchItem);
+			}else
+			{
+				LinkedList.add(searchItem);
+			}
+			String out="";
+			while(LinkedList.size()>0)
+			{
+				out=LinkedList.pop()+""+out;
+			}
 			try
 			{
-				fw.close();
-				fr.close();
-				br.close();
-				bw.close();
+				BufferedWriter writer =new BufferedWriter(new FileWriter(f));
+				writer.write(out);
+				System.out.println("file written successfully");
+				writer.close();
 			}
-			catch(IOException e)
+			catch(Exception e)
 			{
 				e.printStackTrace();
+				
 			}
-			}
-    }
+		}	
 }
-    
-
+			
 		

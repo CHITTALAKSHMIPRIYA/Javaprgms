@@ -1,201 +1,157 @@
 
 package com.bridgelabz.datastructureprograms;
-public class LinkedList {
-	class Node
+public class LinkedList<T extends Comparable<T>> {
+	public static Node1 head;
+	public static Node1 tail;
+	static int count;
+		//to add an item at last
+	public static <T extends Comparable<T>> void add(T item)
 	{
-		public Object data;
-		public Node next;
-		public Node(Object data)
+		Node1<T> temp=new Node1<T>(item,null);
+		if(head==null)
 		{
-			this.data=data;
+			head=temp;
+			count++;
+			System.out.println(item+" added successfully");
+			return;
 		}
-	}
-		public Node head=null;
-		public int size=0;
-		/**
-		 * function to add data in linked list 
-		 * @param data
-		 */
-		public void add(Object data)
+		tail=head;
+		while(tail.next!=null)
 		{
-			Node n1=new Node(data);
-			if(head==null)
+			tail=tail.next;
+		}
+		tail.next=temp;
+		tail=temp;
+		count++;
+		System.out.println(item+" added successfully");
+	}
+		//add an item at front
+	public static <T extends Comparable<T>> void addFirst(T item)
+	{
+		Node1<T> nodeToinsert=new Node1<T>(item,null);
+		if(head==null)
+		{
+			head=nodeToinsert;
+			count++;
+			System.out.println(item+" added successfully");
+			return;
+		}
+		tail=head;
+		while(tail.next!=null)
+		{
+			tail=tail.next;
+		}
+		nodeToinsert.next=head;
+		head=nodeToinsert;
+		count++;
+		System.out.println(item+" added successfully");
+	}
+		//to find the size of list
+		public static int size()
+		{
+			return count;
+		}
+		//to find list is empty or not
+		public static boolean isEmpty()
+		{
+		  if(count==0)
+		  return true;
+		  return false;
+        }
+		//to check whether an item is present or not
+		public static <T extends Comparable<T>> boolean search(T item)
+		{
+			Node1<T> temp= head;
+			if(tail.data.compareTo(item)==0)
+				return true;
+			while(temp.next!=null) {
+				if(temp.data.compareTo(item)==0)
+					return true;
+				else
+				{
+					temp=temp.next;
+				}
+			}return false;
+		}
+		//to insert an item at given position
+		public static <T extends Comparable<T>> void insert(int pos,T item)
+		{
+			Node1<T> nodeToinsert=new Node1<T>(item);
+			if(pos>size())
 			{
-				head=n1;
-				size++;
+				System.out.println("position not available");
+			
+			}
+			if(pos==1)
+			{
+				nodeToinsert.next=head;
+				nodeToinsert=head;
+				count++;
+			}
+			else
+			{
+				int trans=1;
+				Node1<T> temp=head;
+				while(trans!=pos-1)
+				{
+					temp=temp.next;
+					trans++;
+				}
+				Node1<T> n=temp.next;
+				temp.next=nodeToinsert;
+				nodeToinsert.next=n;
+				count++;
+			}
+		}
+		//to remove a specified item from list
+		public static <T extends Comparable<T>> void remove(T item)
+		{
+			Node1<T> temp=head,prev=null;
+			if(temp!=null&& temp.data.compareTo(item)==0)
+			{
+				head=temp.next;
+				count--;
+				System.out.println(item +" remove successfully");
 				return;
 			}
-			Node temp=head;
-			while (temp.next!=null)
+			while(temp!=null&& temp.data.compareTo(item)!=0)
 			{
-				temp=(Node)temp.next;
-			}
-			temp.next=n1;
-			size++;
-			}
-		/**
-		 * @param data
-		 */
-		public void addFirst(Object data)
-		{
-			Node n1=new Node(data);
-			n1.next=head;
-			head=n1;
-			size++;
-			}
-		/**
-		 * 
-		 */
-		public void display()
-		{
-			if(size==0)
-		{
-			System.out.println("empty");
-			return;
-		}
-			Node temp=head;
-			while(temp!=null) {
-				System.out.println("data:"+temp.data);		
-			temp=temp.next;	
-			}
-		}
-		/**
-		 * @param data
-		 * @param index
-		 */
-		public void addAt(int i,int index)
-		{
-		if(index==0)
-			{
-			addFirst(i);
-			return;
-			}
-		Node n1=new Node(i);
-		int count=0;
-		Node temp=head;
-		while(count<index-1)
-		{
-			temp=temp.next;
-			count++;
-		}
-		n1.next=temp.next;
-		temp.next=n1;
-		size++;
-			}
-		/**
-		 * @return
-		 */
-		public int size()
-		{
-			return size;
-		}
-		public int isEmpty()
-		{
-			return size=0;
-		}
-		/**
-		 * @param index
-		 * @return
-		 */
-		public Object removeAt(int index)
-		{
-			if(index==0)
-			{
-				Object temp=head.data;
-				head=head.next;
-				size--;
-				return temp;
-				}
-			Node t=head;
-			int count=0;
-			while(count<index-1)
-			{
-				t=(Node)t.next;
-				count++;
-			}
-			Object temp=t.next.data;
-			t.next=t.next.next;
-					size--;
-			return temp;
-		}
-		/**
-		 * @return
-		 */
-		public Object removeFirst()
-		{
-			Object temp=head.data;
-			head=(Node)head.next;
-				size--;
-				return temp;
-					}
-		/**
-		 * @param start
-		 */
-		public void reverse(Node start)
-		{
-			if(start.next!=null)
-			reverse(start.next);
-		}
-		public void reverse()
-		{
-			reverse(head);
-		}
-		public void displayMid()
-		{
-			Node mid=head;
-			int count=0;
-			while(count!=size/2)
-			{
-				mid =mid.next;
-				count++;
-			}
-			System.out.println(mid.data);
-		}
-		/**
-		 * @param data
-		 * @return
-		 */
-		public int search(Object data)
-		{
-			if(head.data.equals(data))
-			{
-				return 0;
-			}
-			Node temp=head;
-			int count=0;
-			while(temp.next!=null)
-			{
+				prev=temp;
 				temp=temp.next;
-				count++;
-				if(temp.data.equals(data))
-				{
-					System.out.println("word is present at:"+count);
-					return count;
 			}
-			}
-return -1;
-}
-		/**
-		 * @param intAr
-		 */
-		public static <T extends Comparable<T>>  T[] bubbleSort(T ar[])
-		{
-			for(int i=0;i<ar.length;i++)
+			if(temp==null)
 			{
-				for(int j=i;j<ar.length;j++)
-				{
-					if(ar[i].compareTo(ar[j])>0)
-					{
-						T temp=ar[i];
-						ar[i]=ar[j];
-						ar[j]=temp;
-					}
-				}
+				System.out.println("element not found");
 			}
-			return ar;
-			
-        }
+			else
+			{
+				prev.next=temp.next;
+				count--;
+				System.out.println(item+ " removed successfully");
+			}
+		}
+		//to fetch the last item as well as to remove it
+		public static <T extends Comparable<T>> T pop()
+		{
+			Node1<T> current=head;
+			Node1<T> nextNode=current.next;
+			if(head.next==null)
+			{
+				T c=(T)head.data;
+				head=null;
+				count--;
+				return c;
+			}
+			while(nextNode.next!=null)
+			{
+				current=current.next;
+				nextNode=current.next;
+			}
+			T c =(T)nextNode.data;
+			current.next=null;
+			current=tail;
+			count--;
+			return c;
+		}
 			
 		}
-	
-
