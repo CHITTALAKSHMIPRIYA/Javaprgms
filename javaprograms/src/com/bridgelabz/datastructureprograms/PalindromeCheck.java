@@ -3,7 +3,8 @@ package com.bridgelabz.datastructureprograms;
 
 import com.bridgelabz.util.Utility;
 
-public class PalindromeCheck {public static void main(String[] args) {
+public class PalindromeCheck {@SuppressWarnings({ "unchecked", "static-access" })
+public static void main(String[] args) {
 		Deque deque=new Deque();
 		System.out.println("enter string to check its palindrome or not");
 		String str=Utility.String();

@@ -6,6 +6,7 @@ import java.util.Random;
 import com.bridgelabz.util.Utility;
 
 public class BankingCashCounter {
+	@SuppressWarnings("static-access")
 	public static void bankTransaction(Queue queue) {
 		System.out.println("enter initial amount");
 		Double sum=Utility.Double();

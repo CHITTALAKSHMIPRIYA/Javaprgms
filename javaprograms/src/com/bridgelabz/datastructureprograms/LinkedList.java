@@ -161,5 +161,15 @@ public class LinkedList<T extends Comparable<T>> {
 			count--;
 			return c;
 		}
+		@SuppressWarnings("rawtypes")
+		public void display()
+		{
+			Node1 temp=head;
+			while(temp!=null)
+			{
+				System.out.println(temp.data);
+				temp=temp.next;
+			}
+		}
 			
 		}	

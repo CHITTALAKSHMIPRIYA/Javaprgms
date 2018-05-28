@@ -12,10 +12,10 @@ import com.bridgelabz.util.Utility;
 
 public class CouponNo {
 	public static void main(String[] args) {
-		System.out.println("enter numbers");
-		int num=Utility.Int();
-		int ar[]= new int[num];
-		Utility.random(num,ar);
+		System.out.println("enter number");
+		int number=Utility.Int();
+		int ar[]= new int[number];
+		Utility.random(number,ar);
 		Utility.distinct(ar);
 		}
 }

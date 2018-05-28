@@ -10,6 +10,7 @@ public class Queue{
 	return new Queue();
 	}
 	//adding an item at the front
+	@SuppressWarnings("rawtypes")
 	public void enqueue(Comparable item)
 	{
 		Node temp=new Node(item,null);
@@ -30,6 +31,7 @@ public class Queue{
 		count++;
 		System.out.println(item+" added sucesfully");
 	}
+	@SuppressWarnings("rawtypes")
 	public static Comparable dequeue()
 	{
 		Comparable res=front.data;

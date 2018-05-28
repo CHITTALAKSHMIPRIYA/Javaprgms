@@ -1,8 +1,6 @@
 
 package com.bridgelabz.datastructureprograms;
-
 import com.bridgelabz.util.Utility;
-
 public class Calender
 {
 	    public static void main(String[] args) 
@@ -18,16 +16,16 @@ public class Calender
 	        {
 	        	days[month] = 29;
 	        }
-	   System.out.println("   " + months[month] + " " + year);
+	   System.out.println("  " + months[month] + " " + year);
 	        System.out.println(" S  M Tu  W Th  F  S");
 	        int d = Utility.dayOfWeek1(month,1,year);
-	        for (int i = 0; i < d; i++)
+	       for(int i = 0; i < d; i++)
 	        {
 	            System.out.print("   ");
 	        }
 	        for (int i = 1; i <= days[month]; i++)
 	        {
-	            System.out.printf("%2d ", i);
+	            System.out.printf("%2d ",i);
 	            if (((i + d) % 7 == 0) || (i == days[month])) 
 	            	System.out.println();
 	        } }

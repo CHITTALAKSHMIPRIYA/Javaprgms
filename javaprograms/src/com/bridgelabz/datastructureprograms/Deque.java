@@ -10,6 +10,7 @@ public static Deque deque()
 return new Deque();
 }
 //adding an item at the front
+@SuppressWarnings("rawtypes")
 public void addFront(Comparable item)
 {
 	Node nodeToInsert=new Node(item,null);
@@ -32,6 +33,7 @@ public void addFront(Comparable item)
 	return;
 }
 //to add an item at the last
+@SuppressWarnings("rawtypes")
 public void addRear(Comparable item)
 {
 	Node temp=new Node(item,null);
@@ -66,6 +68,7 @@ public static boolean isEmpty()
 	return false;
 }
 //to check whether the item is present or not
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public static boolean search(Comparable item)
 {
 	Node temp=front;
@@ -84,6 +87,7 @@ while(temp.next!=null)
 return false;
 }
 //to remove last item and remove it
+@SuppressWarnings("rawtypes")
 public static Comparable removeFront()
 {
 	Comparable res=front.data;
@@ -91,6 +95,7 @@ public static Comparable removeFront()
 	return res;
 }
 //to 
+@SuppressWarnings("rawtypes")
 public static Comparable removeRear()
 {
 	Node current=front;

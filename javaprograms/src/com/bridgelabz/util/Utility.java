@@ -60,24 +60,19 @@ public class Utility {
 	}
 
 //
-	public static void primePalAgm(int num)
+	public static boolean primePalAgm(int num)
 	{
-		int count=0;
-		for(int i=0;i<num;i++)
-		{
-			for(int j=2;j<i;j++)
-			{
-				if(i%j==0)
-				{
-					count=0;
-					break;
-				}
-				else
-					count=1;
-			}
-		}
-		if(count==1)
-			System.out.println("given num is prime"+" "+num);
+      if(num==0||num==1)
+    	  return false;
+      for(int i=2;i<=num/2;i++)
+      {
+    	  if(num%i==0)
+    	  {
+    		  return false;
+    	  }
+      }
+		
+	return true;
 	}
 	public static boolean pal(int num)
 	{
@@ -656,10 +651,10 @@ return false;
  * @param number the number to generate random number
  */
 
-    public static void random(int n,int ar[])
+    public static void random(int num,int ar[])
 
     {
-    	for(int i=0;i<n;i++)
+    	for(int i=0;i<num;i++)
     	{
     		ar[i]=(int)(Math.random()*100);
     		for(int j=0;j<i;j++)
@@ -844,6 +839,7 @@ public static int sumisZero(int[] a,int length)
  * @param str
  * @return
  */
+	@SuppressWarnings("unchecked")
 	public static boolean expression(String str)
 	{
 		int count=0;
@@ -877,22 +873,34 @@ public static int sumisZero(int[] a,int length)
 			return false;
 		}
 	}
-	//calender
+	//Calendar
 public static int dayOfWeek1(int month,int day,int year)
 {
-//System.out.println("entered date is"+month+"/"+day+"/"+year);
 int	y0 = year - (14 - month) / 12;
-//System.out.println(y0);
 int x = y0 + y0/4 - y0/100 + y0/400;
-//System.out.println(x);
 int	m0 = month + 12 * ((14 -month) / 12) -2;
-//System.out.println(m0);
-int d0 = (day + x + 31*m0/ 12) % 7;
-//System.out.println(d0);
+int d0 = (day + x + 31*m0/ 12) % 7;	
 return d0;
  }
+
+//BinarySearchTree
+public static int treeCount(int number)
+{
+int sum=0;
+if(number<=1)
+{
+	return 1;
 }
-	
+else
+{
+	for(int i=1;i<=number;i++)
+	{
+		sum=sum+(treeCount(i-1)*treeCount(number-i));
+	}
+}
+return sum;
+}
+}
 
 
 

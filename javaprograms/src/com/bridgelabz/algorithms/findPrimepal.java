@@ -16,7 +16,7 @@ public class findPrimepal {
 	    System.out.println("enter number");
 		int num=Utility.Int();
 		Utility.primePalAgm(num);
-		boolean res=Utility.pal(num);
-		System.out.println(res?"palindrome":"not palindrome");
+		//boolean res=Utility.pal(num);
+		//System.out.println(res?"palindrome":"not palindrome");
 	}
 }
