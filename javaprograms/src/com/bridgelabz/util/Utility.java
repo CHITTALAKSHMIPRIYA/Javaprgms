@@ -637,7 +637,6 @@ public static boolean Boolean()
  *@param year
  * 
  */
-
 public  static boolean leap(int year)
 {
 if(year>1000)
@@ -649,6 +648,7 @@ if(year>1000)
 }
 return false;
 }
+
 
 /**
  * Function to generate random number
