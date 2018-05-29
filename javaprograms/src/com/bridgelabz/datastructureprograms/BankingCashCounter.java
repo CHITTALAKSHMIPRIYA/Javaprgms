@@ -2,9 +2,17 @@
 package com.bridgelabz.datastructureprograms;
 
 import java.util.Random;
-
 import com.bridgelabz.util.Utility;
 
+/*************************************************************************************************************
+ * 
+ * purpose:Simulation of Banking cash counter
+ * 
+ * @author Lakshmi Priya
+ * @version 1.0
+ * @since 26-05-18
+ * 
+ * **************************************************************************************************/
 public class BankingCashCounter {
 	@SuppressWarnings("static-access")
 	public static void bankTransaction(Queue queue) {

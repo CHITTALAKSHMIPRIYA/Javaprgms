@@ -6,11 +6,27 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Utility {
-	
+	static Scanner sc=new Scanner(System.in);
+
+	public final static int Int()
+	{
+		return sc.nextInt();
+	}
+
+	public static double Double()
+	{
+		return sc.nextDouble();
+	}
+	public static String String()
+	{
+		return sc.next();
+	}
+	public static boolean Boolean()
+	{
+		return sc.nextBoolean();
+	}
 	/**
 	 * @param a
 	 * @param b
@@ -150,7 +166,6 @@ public void readFile() throws FileNotFoundException
 	{
 		if(file.canRead())
 		{
-			Scanner sc=new Scanner(file);
 			//to read content of file
 			String content=sc.useDelimiter(" ").next();	
 			//to create array of string to store each word
@@ -184,7 +199,6 @@ public void readFile() throws FileNotFoundException
 public static void findWord(String[] ar) {
 	System.out.println();
 	//search particular word in an array
-	Scanner sc=new Scanner(System.in);
 	System.out.println("enter string to be search");
 	String find=sc.nextLine();
 	boolean found=false;
@@ -384,6 +398,7 @@ public static <T extends Comparable<T>> T[] mergeSort(T ar[],int low,int high)
  * @param mid
  * @param end
  */
+@SuppressWarnings("unchecked")
 public static <T extends Comparable<T>> T[]merge(T ar[],int start,int mid,int end)
 {
 	int p=start;int q=mid+1;
@@ -440,7 +455,6 @@ public static int[] sort(int[] ar)
  */
 public static void search(int low, int high) 
 {
-	Scanner sc = new Scanner(System.in);
     int mid = low + (high - low) / 2;
     if(low<high)
     {
@@ -546,7 +560,7 @@ public static void convertBinarySwap(int num)
 			}
 		pwr=pwr/2;
 	}
-	System.out.println(str);;
+	System.out.println(str);
 	swap(str);
 }
 /**
@@ -599,34 +613,7 @@ public static void swap(String str)
 	}
 
 
-static // functional programs
-Scanner sc=new Scanner(System.in);
-
-public final static int Int()
-{
-	return sc.nextInt();
-}
-public final static int Int1(int data)
-{
-	return sc.nextInt();
-}
-public static double Double()
-{
-	return sc.nextDouble();
-}
-public static double Double1(double data)
-{
-	return sc.nextDouble();
-}
-
-public static String String()
-{
-	return sc.next();
-}
-public static boolean Boolean()
-{
-	return sc.nextBoolean();
-}
+ // functional programs
 /**
  * Function to check leap year or not
  *@param year
@@ -711,7 +698,6 @@ public static void pwr(int num)
 
 public static void input(int row,int col,int choice)
 {
-	Scanner sc=new Scanner(System.in);
 	switch(choice)
 	{
 	case 1:int[][] intAr=new int[row][col];
@@ -843,6 +829,7 @@ public static int sumisZero(int[] a,int length)
 	public static boolean expression(String str)
 	{
 		int count=0;
+		@SuppressWarnings("rawtypes")
 		Stack s=new Stack();
 		for(int i=0;i<str.length();i++)
 		{
@@ -873,17 +860,12 @@ public static int sumisZero(int[] a,int length)
 			return false;
 		}
 	}
-	//Calendar
-public static int dayOfWeek1(int month,int day,int year)
-{
-int	y0 = year - (14 - month) / 12;
-int x = y0 + y0/4 - y0/100 + y0/400;
-int	m0 = month + 12 * ((14 -month) / 12) -2;
-int d0 = (day + x + 31*m0/ 12) % 7;	
-return d0;
- }
-
+	
 //BinarySearchTree
+/**
+ * @param number
+ * @return
+ */
 public static int treeCount(int number)
 {
 int sum=0;
@@ -900,9 +882,65 @@ else
 }
 return sum;
 }
+
+//calender
+/**
+ * @param day
+ * @param month
+ * @param year
+ * @return
+ */
+public static boolean dateValidator(int day,int month,int year)
+{
+	boolean b=false;
+	if((month==4||month==6||month==9||month==11)&&(day>30))
+	{
+		b=false;
+	}
+	else if(month==2)
+	{
+		if(year%100==0)
+		{
+			if((year%400!=0)&&day>28){
+				b=false;}
+			else if((year%400==0)&&day>29) {
+				b=false;}
+			else
+				b=true;
+			}
+		}
+	if(year%100!=0)
+	{
+		if((year%4!=0)&&day>28){
+			b=true;}
+		else if((year%4==0)&&day>29) {
+			b=false;}
+		else
+		{
+			b=true;
+		}
+	}
+	 if(day>31) {
+		b=false;
+	}
+	else
+	{
+		b=true;
+	}
+	return b;
 }
-
-
-
-
+/**
+ * @param day
+ * @param month
+ * @param year
+ * @return
+ */
+public static int dayStart(int day,int month,int year)
+{
+	int y0 = year - (14 - month) / 12;
+	int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
+	int m0 = month + 12 * ((14 - month) / 12) - 2;
+	return ((day + x + (31 * m0) / 12) % 7);
+}
+}
 

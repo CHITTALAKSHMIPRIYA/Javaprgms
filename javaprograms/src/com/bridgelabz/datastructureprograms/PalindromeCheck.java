@@ -1,7 +1,15 @@
 
 package com.bridgelabz.datastructureprograms;
-
 import com.bridgelabz.util.Utility;
+/*************************************************************************************************************
+ * 
+ * purpose:Use deque and find whether given string is palindrome or not
+ * 
+ * @author Lakshmi Priya
+ * @version 1.0
+ * @since 27-05-18
+ * 
+ * **************************************************************************************************/
 
 public class PalindromeCheck {@SuppressWarnings({ "unchecked", "static-access" })
 public static void main(String[] args) {

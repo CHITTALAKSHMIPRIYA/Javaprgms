@@ -47,4 +47,5 @@ public class Stack {
 	  }
 	  return a[top];
   }
+
 }

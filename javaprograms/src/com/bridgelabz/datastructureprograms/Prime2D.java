@@ -2,6 +2,15 @@
 package com.bridgelabz.datastructureprograms;
 
 import com.bridgelabz.util.Utility;
+/*************************************************************************************************************
+ * 
+ * purpose:Storing prime numbers using 2D array
+ * 
+ * @author Lakshmi Priya
+ * @version 1.0
+ * @since 28-05-18
+ * 
+ * **************************************************************************************************/
 
 public class Prime2D {
 	@SuppressWarnings({ "static-access", "rawtypes" })
@@ -27,12 +36,9 @@ public class Prime2D {
 			}
 		}
 		for(int i=0;i<10;i++) {
-			System.out.println("");
-			System.out.println(i+" row---->");
 		    for(int j=0;j<100;j++) {
 		        array[i][j].display();
 		    }
-		    System.out.println();
 		}
 
 	}

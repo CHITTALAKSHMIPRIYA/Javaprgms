@@ -1,9 +1,10 @@
+
 package com.bridgelabz.datastructureprograms;
 
 import com.bridgelabz.util.Utility;
 /*************************************************************************************************************
  * 
- * purpose:Storing only the prime numbers that are anagrams using 2D array using Queue
+ * purpose:Storing only the prime numbers that are anagrams using 2D array using stack in reverse order
  * 
  * @author Lakshmi Priya
  * @version 1.0
@@ -11,10 +12,11 @@ import com.bridgelabz.util.Utility;
  * 
  * **************************************************************************************************/
 
-public class PrimeAnagramQueue {
+public class PrimeAnagramStack {
+	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		LinkedList[][] array=new LinkedList[10][];
-		LinkedQueue queue=new LinkedQueue();
+		LinkedStack stack=new LinkedStack();
 		for(int i=0;i<10;i++)
 		{
 			array[i]=new LinkedList[100];
@@ -34,16 +36,18 @@ public class PrimeAnagramQueue {
 					{
 						if(Utility.isAnagram((""+j),(""+m))==true)
 						{
-							queue.insert(m);
-							queue.insert(j);
+							stack.push(m);
+							stack.push(j);
 							
 						}
 					}
 				}
 			}
-		}queue.display();
+		}stack.display();
 }
 
 	}
 
 
+
+	

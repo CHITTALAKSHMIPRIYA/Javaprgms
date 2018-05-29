@@ -22,9 +22,9 @@ public class LinkedStack {
 	   return size;
    }
    /*  Function to push an element from the stack */
-   public void push(int data)
+   public void push(Object object)
    {
-	   Node3 nptr=new Node3(data,null);
+	   Node3 nptr=new Node3(object,null);
 	   if(top==null)
 	   {
 		   top=nptr;
@@ -58,14 +58,15 @@ public class LinkedStack {
    @SuppressWarnings("null")
 public void display()
    {
+	   System.out.println("stack=");
 	   if(size==0)
 	   {
 		   System.out.println("empty");
 	   }
 	   Node3 ptr=top;
-	   while(ptr==null)
+	   while(ptr!=null)
 	   {
-		   System.out.println(ptr.getData());
+		   System.out.println(ptr.getData()+" ");
 		   ptr=ptr.getLink();
 	   }
 	   System.out.println();
