@@ -1,175 +1,262 @@
 
 package com.bridgelabz.datastructureprograms;
-public class LinkedList<T extends Comparable<T>> {
+class LinkedList {
+	private Node first;
+	private Node tail;
+	int count;
+
+	public static LinkedList list() {
+		return new LinkedList();
+	}
+
+	// to add a item to the list
 	@SuppressWarnings("rawtypes")
-	public static Node1 head;
-	@SuppressWarnings("rawtypes")
-	public static Node1 tail;
-	static int count;
-		//to add an item at last
-	@SuppressWarnings("unchecked")
-	public static <T extends Comparable<T>> void add(T item)
-	{
-		Node1<T> temp=new Node1<T>(item,null);
-		if(head==null)
-		{
-			head=temp;
+	public void add(Comparable item) {
+		if (first == null) {
+			first = new Node(item);
 			count++;
-			System.out.println(item+" added successfully");
 			return;
 		}
-		tail=head;
-		while(tail.next!=null)
-		{
-			tail=tail.next;
+		Node last = first;
+		while (last.next != null) {
+			last = last.next;
 		}
-		tail.next=temp;
-		tail=temp;
+		last.next = new Node(item);
 		count++;
-		System.out.println(item+" added successfully");
 	}
-		//add an item at front
-	@SuppressWarnings("unchecked")
-	public static <T extends Comparable<T>> void addFirst(T item)
-	{
-		Node1<T> nodeToinsert=new Node1<T>(item,null);
-		if(head==null)
-		{
-			head=nodeToinsert;
+
+	// to display in same line
+	public void display() {
+		Node last = first;
+		for (int i = 1; i <= size(); i++) {
+			System.out.print(last.data + " ");
+			last = last.next;
+		}
+	}
+
+	// to display with new line
+	public void displayln() {
+		Node last = first;
+		for (int i = 1; i <= size(); i++) {
+			System.out.println(last.data);
+			last = last.next;
+		}
+	}
+
+	// to add an item in sorted order
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void addSort(Comparable item) {
+		Node nodeToInsert = new Node(item);
+		Node current = null;
+		if (first == null || first.data.compareTo(nodeToInsert.data) >= 0) {
+			nodeToInsert.next = first;
+			first = nodeToInsert;
 			count++;
-			System.out.println(item+" added successfully");
+			System.out.println(item + " added successfully");
+			return;
+		} else {
+			current = first;
+			tail = first;
+			while (current.next != null && current.next.data.compareTo(nodeToInsert.data) < 0) {
+				current = current.next;
+			}
+			nodeToInsert.next = current.next;
+			current.next = nodeToInsert;
+			count++;
+			System.out.println(item + " added successfully");
+
+			while (tail.next != null) {
+				tail = tail.next;
+			}
 			return;
 		}
-		tail=head;
-		while(tail.next!=null)
-		{
-			tail=tail.next;
-		}
-		nodeToinsert.next=head;
-		head=nodeToinsert;
-		count++;
-		System.out.println(item+" added successfully");
 	}
-		//to find the size of list
-	public static int size()
-		{
-			return count;
+
+	// to see first data
+	@SuppressWarnings("rawtypes")
+	public Comparable peek() {
+		return first.data;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void insert(Comparable item, int pos) {
+		if (pos > count)
+			throw new IndexOutOfBoundsException();
+		if (pos == 0) {
+			first = new Node(item, first);
+			count++;
+			return;
 		}
-		//to find list is empty or not
-	public static boolean isEmpty()
-		{
-		  if(count==0)
-		  return true;
-		  return false;
-        }
-		//to check whether an item is present or not
-		@SuppressWarnings("unchecked")
-	public static <T extends Comparable<T>> boolean search(T item)
-		{
-			Node1<T> temp= head;
-			if(tail.data.compareTo(item)==0)
-				return true;
-			while(temp.next!=null) {
-				if(temp.data.compareTo(item)==0)
-					return true;
-				else
-				{
-					temp=temp.next;
-				}
-			}return false;
+		Node temp = first;
+		for (int i = 1; i < pos; i++) {
+			temp = temp.next;
 		}
-		//to insert an item at given position
-		@SuppressWarnings("unchecked")
-	public static <T extends Comparable<T>> void insert(int pos,T item)
-		{
-			Node1<T> nodeToinsert=new Node1<T>(item);
-			if(pos>size())
-			{
-				System.out.println("position not available");
+		temp.next = new Node(item, temp.next);
+		count++;
+	}
+
+	// to find out size
+	public int size() {
+		return count;
+	}
+//to get an item based on index
+	@SuppressWarnings("rawtypes")
+	public Comparable get(int pos) {
+
+		if (pos == 0) {
 			
+			return first.data;
+		}
+		if(pos==1)
+		{
+			return first.next.data;
+		}
+		if (pos == size()) {
+			Node last = first;
+			for (int i = 1; i < size() - 1; i++) {
+				last = last.next;
 			}
-			if(pos==1)
-			{
-				nodeToinsert.next=head;
-				nodeToinsert=head;
-				count++;
+			return last.next.data;
+		}
+		Node last = first;
+		for (int i = 0; i < pos - 1; i++) {
+			last = last.next;
+		}
+		return last.next.data;
+	}
+	
+	// to search an item whether present or not
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public boolean search(Comparable item) {
+		Node last = first;
+		while (last.next != null) {
+			if (last.data.compareTo(item) == 0) {
+				return true;
 			}
-			else
-			{
-				int trans=1;
-				Node1<T> temp=head;
-				while(trans!=pos-1)
-				{
-					temp=temp.next;
-					trans++;
-				}
-				Node1<T> n=temp.next;
-				temp.next=nodeToinsert;
-				nodeToinsert.next=n;
-				count++;
+			last = last.next;
+			if (last.data.compareTo(item) == 0) {
+				return true;
+			}}
+		return false;
+	}
+
+	// to find a value based on index
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public int index(Comparable item) {
+		Node last = first;
+		int count = 1;
+		if (last.data.compareTo(item) == 0)
+			return count;
+		while (last.next != null) {
+			if (last.data.compareTo(item) == 0) {
+				return count;
+			}
+			count++;
+			last = last.next;
+			if (count == size()) {
+				return count;
 			}
 		}
-		//to remove a specified item from list
-		@SuppressWarnings("unchecked")
-	public static <T extends Comparable<T>> void remove(T item)
-		{
-			Node1<T> temp=head,prev=null;
-			if(temp!=null&& temp.data.compareTo(item)==0)
-			{
-				head=temp.next;
+		return -1;
+	}
+
+	// to check whether the list empty or not
+	public boolean isEmpty() {
+		if (first == null)
+			return true;
+		return false;
+	}
+
+	// to add an item at last
+	@SuppressWarnings("rawtypes")
+	public void append(Comparable item) {
+		Node last = first;
+		while (last.next != null) {
+			last = last.next;
+		}
+		last.next = new Node(item, last.next);
+		count++;
+	}
+
+	// to remove an item
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void remove(Comparable item) {
+		if (first.data.compareTo(item) == 0) {
+			first = first.next;
+			count--;
+			return;
+		}
+		Node last = first;
+		Node temp;
+		while (last.next != null) {
+			temp = last;
+			last = last.next;
+			if (last.data.compareTo(item) == 0) {
+				temp.next = temp.next.next;
 				count--;
-				System.out.println(item +" remove successfully");
-				return;
-			}
-			while(temp!=null&& temp.data.compareTo(item)!=0)
-			{
-				prev=temp;
-				temp=temp.next;
-			}
-			if(temp==null)
-			{
-				System.out.println("element not found");
-			}
-			else
-			{
-				prev.next=temp.next;
-				count--;
-				System.out.println(item+ " removed successfully");
 			}
 		}
-		//to fetch the last item as well as to remove it
-		@SuppressWarnings("unchecked")
-	public static <T extends Comparable<T>> T pop()
-		{
-			Node1<T> current=head;
-			Node1<T> nextNode=current.next;
-			if(head.next==null)
-			{
-				T c=(T)head.data;
-				head=null;
-				count--;
-				return c;
+	}
+
+	// to remove based on index
+	@SuppressWarnings("rawtypes")
+	public Comparable pop(int pos) {
+		if (pos == 0) {
+			Node temp = first;
+			first = first.next;
+			count--;
+			return temp.data;
+		}
+		if (pos == size()) {
+			Node last = first;
+			for (int i = 1; i < size() - 1; i++) {
+				last = last.next;
 			}
-			while(nextNode.next!=null)
-			{
-				current=current.next;
-				nextNode=current.next;
-			}
-			T c =(T)nextNode.data;
-			current.next=null;
-			current=tail;
+			Node temp = last.next;
+			last.next = null;
+			count--;
+			return temp.data;
+		}
+		Node last = first;
+		for (int i = 1; i < pos - 1; i++) {
+			last = last.next;
+		}
+		Node temp = last.next;
+		last.next = last.next.next;
+		count--;
+		return temp.data;
+	}
+
+	// to remove last element and show
+	@SuppressWarnings("rawtypes")
+	public Comparable pop() {
+		Node last = first;
+		if (first.next == null) {
+			Comparable c = first.data;
+			first = null;
 			count--;
 			return c;
 		}
-		@SuppressWarnings("rawtypes")
-		public void display()
-		{
-			Node1 temp=head;
-			while(temp!=null)
-			{
-				System.out.println(temp.data);
-				temp=temp.next;
-			}
+		for (int j = 1; j < size() - 1; j++) {
+			last = last.next;
 		}
-			
-} 
+		Node temp = last.next;
+		last.next = null;
+		count--;
+		return temp.data;
+	}
+	@SuppressWarnings("rawtypes")
+	public Comparable removeFront()
+	{
+		if(first==null)
+		{
+			return "empty";
+		}
+		  Comparable data=first.data;
+		  first =first.next;
+			 count--;
+			 return data;
+	}
+}
+	

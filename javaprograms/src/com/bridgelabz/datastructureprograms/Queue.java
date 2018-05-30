@@ -1,57 +1,40 @@
 
 package com.bridgelabz.datastructureprograms;
 public class Queue{
-	public static Node front;
-	public static Node rear;
-	static int count;
-	//create anew empty list
-	public static Queue queue()
-	{
-	return new Queue();
+   LinkedList l = LinkedList.list();
+
+	// to return an empty queue
+	static Queue queue() {
+		return new Queue();
 	}
-	//adding an item at the front
+
+	// to add in the queue
 	@SuppressWarnings("rawtypes")
-	public void enqueue(Comparable item)
-	{
-		Node temp=new Node(item,null);
-		if(front==null)
-		{
-			front=temp;
-			count++;
-			System.out.println(item+" added sucesfully");
-			return;
-		}
-		rear=front;
-		while(rear.next!=null)
-		{
-			rear=rear.next;
-		}
-		rear.next=temp;
-		rear=temp;
-		count++;
-		System.out.println(item+" added sucesfully");
+	public void enqueue(Comparable item) {
+		l.add(item);
 	}
+
+	// to display items
+	public void display() {
+		l.displayln();
+	}
+
+	// to remove an element
 	@SuppressWarnings("rawtypes")
-	public static Comparable dequeue()
-	{
-		Comparable res=front.data;
-		front=front.next;
-		System.out.println("removed from queue");
-		return res;
+	public Comparable dequeue() {
+		return (l.pop(0));
 	}
-	//to find the size of list
-	public static int size()
-	{
-		return count;
+
+	// to find the size
+	public int size() {
+		return l.size();
 	}
-	public static boolean isEmpty()
-	{
-		if(count==0)
-		{
-			return true;
-		}
-		return false;
+
+	// to check whether the queue is empty or not
+	boolean isEmpty() {
+		return l.isEmpty();
 	}
+
 }
 
 	

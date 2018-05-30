@@ -15,18 +15,18 @@ public class CalenderStack {
   public static void main(String[] args) {
 		int month = Integer.parseInt(args[0]);
 		int year = Integer.parseInt(args[1]);
-		LinkedStack first[][] = new LinkedStack[6][];
+		StackList first[][] = new StackList[6][];
 		for (int i = 0; i < 6; i++) {
-			first[i] = new LinkedStack[7];
+			first[i] = new StackList[7];
 			for (int j = 0; j < 7; j++) {
-				first[i][j] = new LinkedStack();
+				first[i][j] = new StackList();
 			}
 		}
-        LinkedStack a[][] = new LinkedStack[6][];
+        StackList a[][] = new StackList[6][];
 		for (int i = 0; i < 6; i++) {
-			a[i] = new LinkedStack[7];
+			a[i] = new StackList[7];
 			for (int j = 0; j < 7; j++) {
-				a[i][j] = new LinkedStack();
+				a[i][j] = new StackList();
 			}
 		}
 		int day = 1;
@@ -44,11 +44,9 @@ public class CalenderStack {
 				if (Utility.dateValidator(day, month, year)) {
 					j = Utility.dayStart(day, month, year);
 					if (day < 10) {
-						//first[i][j].pop();
 						first[i][j].push(" " + day);
 						day++;
 					} else {
-						//first[i][j].pop();
 						first[i][j].push("" + day);
 						day++;
 					}

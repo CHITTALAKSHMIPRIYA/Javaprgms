@@ -1,64 +1,69 @@
 
 package com.bridgelabz.datastructureprograms;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-
-import com.bridgelabz.util.Utility;
 
 public class UnorderedList {
-    public static void main(String[] args) {
-		File f=new File("/home/bridgelabz/Downloads/sts-bundle/sts-3.9.2.RELEASE/text2");
-		System.out.println("enter the word you want to search");
-		String searchItem=Utility.String();
-		BufferedReader br=null;
-		try
-		{
-			br=new BufferedReader(new FileReader(f));
-			String word=br.readLine();
-			while(word!=null)
-			{
-				String [] str=word.split(",");
-	
-				for(int i=0;i<str.length;i++)
-				{
-					LinkedList.add(str[i]);
-				}
-				break;
-			}
-		}
-			catch(Exception e)
-			{
-			e.printStackTrace();
-			}
-			if(LinkedList.search(searchItem))
-			{
-				LinkedList.remove(searchItem);
-			}else
-			{
-				LinkedList.add(searchItem);
-			}
-			String out="";
-			while(LinkedList.size()>0)
-			{
-				out=LinkedList.pop()+""+out;
-			}
-			try
-			{
-				BufferedWriter writer =new BufferedWriter(new FileWriter(f));
-				writer.write(out);
-				System.out.println("file written successfully");
-				writer.close();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-				
-			}
-		}	
-}
-			
+
+	LinkedList li=new LinkedList();
+	// to create a new empty list
+	public static UnorderedList list() {
+		return new UnorderedList();
+	}
+
+	// to add an item to the list
+	public  void add(Comparable item) {
+		li.add(item);
+	}
+
+	// to add an item to the last
+	public  void append(Comparable item) {
+		li.add(item);	
+	}
+
+	// to add an item in specified position
+	public  void insert(int pos,Comparable item) {
+		li.insert(item,pos);		
+	}
+
+	// to find the size of the list
+	public  int size() {
+		return li.size();
+	}
+
+	// to find a a list empty or not
+	public boolean isEmpty() {
+		return li.isEmpty();
+	}
+
+	// to return a index of a particular value
+	public  int index(Comparable item) {
+		return li.index(item);
 		
+	}
+
+	// to check whethrt the item is present or not
+	public  boolean search(Comparable item) {
+
+		return li.search(item);
+	}
+
+	// to remove a specified item from the list
+	public void remove(Comparable item) {
+		li.remove(item);	
+	}
+
+	// to fetch the last item as well as to remove it
+	public  Comparable pop() {
+		return li.pop();
+	}
+
+	public  void display() {
+		li.display();
+	}
+
+	// to fetch an item from specified position and to revove it
+	public  Comparable pop(int pos) {
+		return li.pop(pos);
+		
+}
+}

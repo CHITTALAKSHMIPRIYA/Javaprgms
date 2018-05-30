@@ -1,65 +1,64 @@
 
 package com.bridgelabz.datastructureprograms;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import com.bridgelabz.util.Utility;
-
 public class OrderedList {
-    public static void main(String[] args) {
-    	File f=new File("/home/bridgelabz/Downloads/sts-bundle/sts-3.9.2.RELEASE/text2");
-		System.out.println("enter the num you want to search");
-		String searchItem=Utility.String();
-		//OrderedList o1=OrderedList.orderedlist();
-		BufferedReader br=null;
-		try
-		{
-			br=new BufferedReader(new FileReader(f));
-			String word=br.readLine();
-			while(word!=null)
-			{
-				String [] str=word.split(",");
-	
-				for(int i=0;i<str.length;i++)
-				{
-					LinkedList.add(str[i]);
-				}
-				break;
-			}
-		}
-			catch(Exception e)
-			{
-			e.printStackTrace();
-			}
-			if(LinkedList.search(searchItem))
-			{
-				LinkedList.remove(searchItem);
-			}else
-			{
-				LinkedList.add(searchItem);
-			}
-			String out="";
-			while(LinkedList.size()>0)
-			{
-				out=LinkedList.pop()+""+out;
-			}
-			try
-			{
-				BufferedWriter writer =new BufferedWriter(new FileWriter(f));
-				writer.write(out);
-				System.out.println("file written successfully");
-				writer.close();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-				
-			}
-		}
-}
+	 LinkedList l=new LinkedList();
 
-	
-	
+		// to create a new empty list
+		public  static OrderedList orderedlist() {
+			return new OrderedList();
+		}
+
+		// to add an item to the list
+		@SuppressWarnings("rawtypes")
+		public void add(Comparable item) {
+			l.addSort(item);
+		}
+
+		// to find the size of the list
+		public int size() {
+			return l.size();
+		}
+
+		// to find a a list empty or not
+		public boolean isEmpty() {
+			return l.isEmpty();
+		}
+
+		// to return a index of a particular value
+		@SuppressWarnings("rawtypes")
+		public  int index(Comparable item) {
+			return l.index(item);
+		}
+
+		// to check whether the item is present or not
+		@SuppressWarnings("rawtypes")
+		public  boolean search(Comparable item) {
+
+			return l.search(item);
+		}
+
+		// to remove a specified item from the list
+		@SuppressWarnings("rawtypes")
+		public void remove(Comparable item) {
+			l.remove(item);
+		}
+
+		// to fetch the last item as well as to remove it
+		@SuppressWarnings("rawtypes")
+		public Comparable pop() {
+
+			return l.pop();
+		}
+
+		public void display() {
+			l.display();
+		}
+
+		// to fetch an item from specified position and to remove it
+		@SuppressWarnings("rawtypes")
+		public Comparable pop(int pos) {
+
+			return l.pop(pos);
+		}
+
+}

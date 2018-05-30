@@ -13,10 +13,9 @@ import com.bridgelabz.util.Utility;
  * **************************************************************************************************/
 
 public class PrimeAnagramStack {
-	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		LinkedList[][] array=new LinkedList[10][];
-		LinkedStack stack=new LinkedStack();
+		StackList stack=new StackList();
 		for(int i=0;i<10;i++)
 		{
 			array[i]=new LinkedList[100];
@@ -30,10 +29,10 @@ public class PrimeAnagramStack {
 			for(int j=100*i;j<100*(i+1)-1;j++)
 			{
 				int k=0;
-				if(Utility.primePalAgm(j))
-				{
 					for(int m=j+1;m<100*(i+1);m++)
 					{
+						if(Utility.primePalAgm(j)&&Utility.primePalAgm(m))
+						{
 						if(Utility.isAnagram((""+j),(""+m))==true)
 						{
 							stack.push(m);

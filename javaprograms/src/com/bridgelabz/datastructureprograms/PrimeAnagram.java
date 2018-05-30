@@ -30,10 +30,10 @@ public class PrimeAnagram {
 			int k=0;
 			for(int j=100*i;j<100*(i+1);j++)
 			{
-				if(Utility.primePalAgm(j))
-				{
 					for(int m=j+1;m<100*(i+1);m++)
 					{
+						if(Utility.primePalAgm(j)&&Utility.primePalAgm(m))
+						{
 						if(Utility.isAnagram((""+j),(""+m))==true)
 						{
 							array[i][k++].add(j);

@@ -773,6 +773,11 @@ public static  void printArrayElement(double[][] ar)
 	}
 }
 //Sum of three integers is 0
+/**
+ * @param a
+ * @param length
+ * @return
+ */
 public static int sumisZero(int[] a,int length)
 {
 	int count=0;
@@ -866,24 +871,22 @@ public static int sumisZero(int[] a,int length)
  * @param number
  * @return
  */
-public static int treeCount(int number)
+public static int treeCount(int nodes)
 {
-int sum=0;
-if(number<=1)
+int output=0;
+output=factorial(2*nodes)/(factorial(nodes+1)*factorial(nodes));
+return output;}
+public static int factorial(int number)
 {
-	return 1;
-}
-else
-{
-	for(int i=1;i<=number;i++)
+	int fact=1;
+	for(int i=0;i<number;i++)
 	{
-		sum=sum+(treeCount(i-1)*treeCount(number-i));
+		fact+=fact*i;
 	}
-}
-return sum;
+	return fact;
 }
 
-//calender
+//Calendar
 /**
  * @param day
  * @param month
@@ -892,43 +895,23 @@ return sum;
  */
 public static boolean dateValidator(int day,int month,int year)
 {
-	boolean b=false;
-	if((month==4||month==6||month==9||month==11)&&(day>30))
+	boolean d=false;
+	if(((month== 4 || month == 6 || month == 9 || month == 11) && (day >30)) 
+			|| (day>31)
+			|| (month==2 && year % 100 == 0 && year % 400 != 0 && day > 28) 
+			|| (month==2 && year % 400 == 0 && day > 29)
+			|| (month==2 && year % 100 != 0 && year % 4 != 0 && day > 28) 
+			|| (month==2 && year % 100 != 0 && year % 4 == 0 && day > 29))
 	{
-		b=false;
-	}
-	else if(month==2)
-	{
-		if(year%100==0)
-		{
-			if((year%400!=0)&&day>28){
-				b=false;}
-			else if((year%400==0)&&day>29) {
-				b=false;}
-			else
-				b=true;
-			}
-		}
-	if(year%100!=0)
-	{
-		if((year%4!=0)&&day>28){
-			b=true;}
-		else if((year%4==0)&&day>29) {
-			b=false;}
-		else
-		{
-			b=true;
-		}
-	}
-	 if(day>31) {
-		b=false;
-	}
-	else
-	{
-		b=true;
-	}
-	return b;
+		d=false;
+	} 
+    else {
+        d=true;
+    }		
+	return d;
 }
+
+
 /**
  * @param day
  * @param month

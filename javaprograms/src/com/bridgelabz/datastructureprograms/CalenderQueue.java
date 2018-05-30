@@ -15,13 +15,13 @@ public class CalenderQueue {
 public static void main(String[] args) {
 	int month=Integer.parseInt(args[0]);
 	int year=Integer.parseInt(args[1]);
-	LinkedQueue[][] a=new LinkedQueue[6][];
+  Queue[][] a=new Queue[6][];
 	for(int i=0;i<6;i++)
 	{
-		a[i]=new LinkedQueue[7];
+		a[i]=new Queue[7];
 		for(int j=0;j<7;j++)
 		{
-			a[i][j]=new LinkedQueue();
+			a[i][j]=new Queue();
 		}
 	}
 	int day=1;
@@ -32,7 +32,7 @@ public static void main(String[] args) {
     for(int i=0;i<6;i++) {
     	for(int j=0;j<7;j++)
     	{
-    		a[i][j].insert("  ");
+    		a[i][j].enqueue("  ");
     	}
     }
     for(int i=0;i<6;i++) {
@@ -43,14 +43,14 @@ public static void main(String[] args) {
     			j=Utility.dayStart(day,month,year);
     			if(day<10)
     			{
-    				a[i][j].remove();
-    				a[i][j].insert(" "+day);
+    				a[i][j].dequeue();
+    				a[i][j].enqueue(" "+day);
     				day++;
     			}
     			else
     			{
-    				a[i][j].remove();
-    				a[i][j].insert(""+day);
+    				a[i][j].dequeue();
+    				a[i][j].enqueue(""+day);
     				day++;
     			}
     			
@@ -68,7 +68,7 @@ public static void main(String[] args) {
     {
     	for(int j=0;j<7;j++)
     	{
-    		System.out.print(a[i][j].remove()+" ");
+    		System.out.print(a[i][j].dequeue()+" ");
     	}
     	System.out.println();
     }
