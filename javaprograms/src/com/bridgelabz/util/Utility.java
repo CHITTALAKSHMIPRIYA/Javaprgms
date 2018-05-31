@@ -21,7 +21,7 @@ public class Utility {
 	}
 	public static String String()
 	{
-		return sc.next();
+		return sc.nextLine();
 	}
 	public static boolean Boolean()
 	{
@@ -924,6 +924,47 @@ public static int dayStart(int day,int month,int year)
 	int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
 	int m0 = month + 12 * ((14 - month) / 12) - 2;
 	return ((day + x + (31 * m0) / 12) % 7);
+}
+//cards initialization
+public static String[][] cardsIntialization(String[][] deck,String[] SUIT,String[] RANK)
+{
+	for(int i=0;i<SUIT.length;i++)
+	{
+		for(int j=0;j<RANK.length;j++)
+		{
+			deck[i][j]=SUIT[i]+" - " +RANK[j];
+		}
+	}
+	return deck;
+}
+//shuffling cards
+public static String[][] shufflingCards(String[][] deck,int suitsize,int ranksize)
+{
+	for(int i=0;i<suitsize;i++)
+	{
+		for(int j=0;j<ranksize;j++)
+		{
+       int random=(int)(Math.random()*suitsize);
+       int random1=(int)(Math.random()*ranksize);
+       String temp=deck[random][random1];
+       deck[random][random1]=deck[i][j];
+       deck[i][j]=temp;
+		}
+	}
+	return deck;
+}
+//printing cards
+public static void  printingcards(String[][] deck)
+{
+	for(int i=0;i<4;i++)
+	{
+		System.out.println("person "+ (i+1));
+		for(int j=0;j<9;j++)
+		{
+			System.out.println(deck[i][j]+" ");
+		}
+		System.out.println();
+	}
 }
 }
 

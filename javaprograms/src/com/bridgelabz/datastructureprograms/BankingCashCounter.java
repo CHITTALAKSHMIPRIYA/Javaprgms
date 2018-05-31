@@ -54,7 +54,7 @@ public class BankingCashCounter {
 	    }
 	    break;
 	    default:System.out.println("wrong choice");
-	    i--;
+	    
 	    break;
 	    }
 	    System.out.println("updated money to bank:"+sum);

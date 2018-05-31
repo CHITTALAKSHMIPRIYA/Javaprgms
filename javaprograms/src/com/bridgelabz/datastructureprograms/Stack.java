@@ -21,7 +21,7 @@ public class Stack {
 	@SuppressWarnings("rawtypes")
 	public void push(Comparable value) {
 		if (top == maxSize - 1)
-			System.err.println("stack overflowed");
+			System.out.println("stack overflowed");
 		stackAr[++top] = value;
 	}
 
@@ -51,4 +51,5 @@ public class Stack {
 	public int size() {
 		return top;
 	}
+	
 }

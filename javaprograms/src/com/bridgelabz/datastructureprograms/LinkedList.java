@@ -175,7 +175,7 @@ class LinkedList {
 		while (last.next != null) {
 			last = last.next;
 		}
-		last.next = new Node(item, last.next);
+		last.next = new Node(item);
 		count++;
 	}
 
@@ -202,7 +202,7 @@ class LinkedList {
 	// to remove based on index
 	@SuppressWarnings("rawtypes")
 	public Comparable pop(int pos) {
-		if (pos == 0) {
+			if (pos == 0) {
 			Node temp = first;
 			first = first.next;
 			count--;
