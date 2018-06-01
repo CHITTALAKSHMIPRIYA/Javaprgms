@@ -4,6 +4,7 @@ package com.bridgelabz.util;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -535,6 +536,7 @@ public static int count(int notes[],int change,int length)
 			change=change-notes[i];
 			System.out.println(notes[i]+"");
 			count++;
+			
 		}
 	}
 	System.out.println();
@@ -838,12 +840,12 @@ public static int sumisZero(int[] a,int length)
 		Stack s=new Stack();
 		for(int i=0;i<str.length();i++)
 		{
-			if(str.charAt(i)=='(')
+			if(str.charAt(i)=='(' || str.charAt(i)=='{')
 			{
 				s.push(str.charAt(i));
 				count++;
 			}
-			if(str.charAt(i)==')')
+			if(str.charAt(i)==')'||str.charAt(i)=='}')
 			{
 				if(s.isEmpty())
 				{
@@ -926,6 +928,12 @@ public static int dayStart(int day,int month,int year)
 	return ((day + x + (31 * m0) / 12) % 7);
 }
 //cards initialization
+/**
+ * @param deck
+ * @param SUIT
+ * @param RANK
+ * @return
+ */
 public static String[][] cardsIntialization(String[][] deck,String[] SUIT,String[] RANK)
 {
 	for(int i=0;i<SUIT.length;i++)
@@ -938,6 +946,12 @@ public static String[][] cardsIntialization(String[][] deck,String[] SUIT,String
 	return deck;
 }
 //shuffling cards
+/**
+ * @param deck
+ * @param suitsize
+ * @param ranksize
+ * @return
+ */
 public static String[][] shufflingCards(String[][] deck,int suitsize,int ranksize)
 {
 	for(int i=0;i<suitsize;i++)
@@ -954,6 +968,9 @@ public static String[][] shufflingCards(String[][] deck,int suitsize,int ranksiz
 	return deck;
 }
 //printing cards
+/**
+ * @param deck
+ */
 public static void  printingcards(String[][] deck)
 {
 	for(int i=0;i<4;i++)
@@ -966,5 +983,6 @@ public static void  printingcards(String[][] deck)
 		System.out.println();
 	}
 }
+
 }
 
