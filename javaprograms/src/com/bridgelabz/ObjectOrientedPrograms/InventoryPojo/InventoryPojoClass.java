@@ -1,47 +1,46 @@
 
 package com.bridgelabz.ObjectOrientedPrograms.InventoryPojo;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-import org.codehaus.jackson.map.ObjectMapper;
+import java.util.ArrayList;
 
 public class InventoryPojoClass {
-    public static void main(String[] args) {
-		ObjectMapper map=new ObjectMapper();
-		PojoRice pr=new PojoRice();
-		pr.setPrice("55");
-		pr.setType("Basmathi Rice");
-		pr.setWeight("5");
-		PojoRice pr1=new PojoRice();
-		pr1.setPrice("40");
-		pr1.setType("Steamed Rice");
-		pr1.setWeight("2");
-		PojoRice pr2=new PojoRice();
-		pr2.setPrice("65");
-		pr2.setType("Jasmine Rice");
-		pr2.setWeight("10");
-		
-  try {
-	  FileWriter fr=new FileWriter("/home/bridgelabz/inm.json");
-	  String json=map.writeValueAsString(pr);
-	  System.out.println(json);
-	  fr.write(json);
-	  fr.flush();
-	  String json1=map.writeValueAsString(pr1);
-	  System.out.println(json1);
-	  fr.write(json1);
-	  fr.flush();
-	  String json2=map.writeValueAsString(pr2);
-	  System.out.println(json2);
-	  fr.write(json2);
-	  fr.flush();
-	 }
-  catch(IOException e)
-  {
-	  e.printStackTrace();
-  }
-
-
-
-}}
+	ArrayList<Product> riceList=new ArrayList<Product>();
+	ArrayList<Product> wheatList=new ArrayList<Product>();
+	ArrayList<Product> pulseList=new ArrayList<Product>();
+	/**
+	 * @return the riceList
+	 */
+	public ArrayList<Product> getRiceList() {
+		return riceList;
+	}
+	/**
+	 * @param riceList the riceList to set
+	 */
+	public void setRiceList(ArrayList<Product> riceList) {
+		this.riceList = riceList;
+	}
+	/**
+	 * @return the wheatList
+	 */
+	public ArrayList<Product> getWheatList() {
+		return wheatList;
+	}
+	/**
+	 * @param wheatList the wheatList to set
+	 */
+	public void setWheatList(ArrayList<Product> wheatList) {
+		this.wheatList = wheatList;
+	}
+	/**
+	 * @return the pulseList
+	 */
+	public ArrayList<Product> getPulseList() {
+		return pulseList;
+	}
+	/**
+	 * @param pulseList the pulseList to set
+	 */
+	public void setPulseList(ArrayList<Product> pulseList) {
+		this.pulseList = pulseList;
+	}
+}

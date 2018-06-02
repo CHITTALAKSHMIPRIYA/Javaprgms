@@ -22,7 +22,7 @@ public class Utility {
 	}
 	public static String String()
 	{
-		return sc.nextLine();
+		return sc.next();
 	}
 	public static boolean Boolean()
 	{

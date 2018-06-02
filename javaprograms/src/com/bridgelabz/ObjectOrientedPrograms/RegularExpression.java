@@ -17,7 +17,6 @@ public class RegularExpression {
 	  Matcher matcher=pattern.matcher(template);
 	  return template=matcher.replaceAll(replacewith);
   }
-	
 	public static void main(String[] args) {
 	 System.out.println("enter name");
 	 String name=Utility.String();
@@ -36,8 +35,5 @@ public class RegularExpression {
 	 template=RegularExpression.replace(template,regex3,date);
 	 template=RegularExpression.replace(template,regex4,phnno);
 	 System.out.println(template);
-			 
-
 	}
-
-}
+	}
