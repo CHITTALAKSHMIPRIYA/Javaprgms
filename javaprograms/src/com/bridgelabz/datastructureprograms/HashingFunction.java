@@ -65,7 +65,7 @@ public class HashingFunction {
 	        }
 	        list.display();
 	        for (int i = 0; i < array.length; i++) {
-	            Integer value =(Integer) list.removeFront();
+	            Integer value = list.removeFront();
 	            remainder = value % 11;
 	            map.put(remainder, value);
 	        }

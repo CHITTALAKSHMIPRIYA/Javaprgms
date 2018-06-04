@@ -247,16 +247,16 @@ class LinkedList {
 		return temp.data;
 	}
 	@SuppressWarnings("rawtypes")
-	public Comparable removeFront()
+	public Integer removeFront()
 	{
 		if(first==null)
 		{
-			return "empty";
+			return 0;
 		}
 		  Comparable data=first.data;
 		  first =first.next;
 			 count--;
-			 return data;
+			 return (Integer) data;
 	}
 }
 	
