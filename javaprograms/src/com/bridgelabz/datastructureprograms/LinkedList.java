@@ -42,6 +42,14 @@ class LinkedList {
 			last = last.next;
 		}
 	}
+	 public void display1() {
+		 
+		 Node temp=first;
+		 while(temp!=null) {
+			 System.out.print(temp.data+" ");
+			 temp=(Node) temp.next;
+		 }
+}
 
 	// to add an item in sorted order
 	@SuppressWarnings({ "unchecked", "rawtypes" })

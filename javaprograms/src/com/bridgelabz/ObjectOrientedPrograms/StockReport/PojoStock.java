@@ -1,7 +1,5 @@
 
 package com.bridgelabz.ObjectOrientedPrograms.StockReport;
-
-
 public class PojoStock {
 	private String stockName;
 	private String stockShare;

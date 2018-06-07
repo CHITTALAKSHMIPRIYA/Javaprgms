@@ -1,1 +1,19 @@
-{"stockList":[{"stockName":"fjswk","stockShare":"3","sharePrice":"90"},{"stockName":"hfvgfj","stockShare":"4","sharePrice":"80"},{"stockName":"cbvsdj","stockShare":"8","sharePrice":"60"}]}
+{
+	"stockList": [
+		{
+			"stockName": "fjswk",
+			"stockShare": "3",
+			"sharePrice": "90"
+		},
+		{
+			"stockName": "hfvgfj",
+			"stockShare": "4",
+			"sharePrice": "80"
+		},
+		{
+			"stockName": "cbvsdj",
+			"stockShare": "8",
+			"sharePrice": "60"
+		}
+	]
+}

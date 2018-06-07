@@ -25,13 +25,13 @@ import com.bridgelabz.util.Utility;
 
 public class inventorData {
 	static String string = "", string1 = "", string2 = "";
-	static int value = 0;
-	static int sumRice = 0;
-	static int totalRice = 0;
-	static int sumWheat = 0;
-	static int totalWheat = 0;
-	static int sumPulses = 0;
-	static int totalPulses = 0;
+	static int value;
+	static int sumRice;
+	static int totalRice;
+	static int sumWheat;
+	static int totalWheat;
+	static int sumPulses;
+	static int totalPulses;
 
 	public static void main(String[] args) throws IOException, ParseException {
 		InventoryPojoClass invent = new InventoryPojoClass();

@@ -1,168 +1,230 @@
 
 package com.bridgelabz.ObjectOrientedPrograms.AddressBook;
 
-import java.util.Comparator;
+import com.bridgelabz.util.Utility;
 
 public class Person {
-  private  String firstName;
-  private String lastName;
-  private String address;
-  private String city;
-  private String state;
-  private String ZIP;
-  private String phone;
- Person(String firstName,String lastName,String address,String city,String state,String ZIP,String phone)
- {
-	 this.firstName=firstName;
-	 this.lastName=lastName;
-	 this.address=address;
-	 this.city=city;
-	 this.state=state;
-	 this.ZIP=ZIP;
-	 this.phone=phone;
- }
+   static String firstName;
+   static String lastName;
+  static String address;
+  static String city;
+  static String state;
+  static String ZIP;
+  static String phone;
+  
+  
 
-
- /**
- * @return the firstName
- */
-public String getFirstName() {
-	return firstName;
-}
-
-
-/**
- * @param firstName the firstName to set
- */
-public void setFirstName(String firstName) {
-	this.firstName = firstName;
-}
-
-
-/**
- * @return the lastName
- */
-public String getLastName() {
-	return lastName;
-}
-
-
-/**
- * @param lastName the lastName to set
- */
-public void setLastName(String lastName) {
-	this.lastName = lastName;
-}
-
-
-/**
- * @return the address
- */
-public String getAddress() {
-	return address;
-}
-
-
-/**
- * @param address the address to set
- */
-public void setAddress(String address) {
-	this.address = address;
-}
-
-
-/**
- * @return the city
- */
-public String getCity() {
-	return city;
-}
-
-
-/**
- * @param city the city to set
- */
-public void setCity(String city) {
-	this.city = city;
-}
-
-
-/**
- * @return the state
- */
-public String getState() {
-	return state;
-}
-
-
-/**
- * @param state the state to set
- */
-public void setState(String state) {
-	this.state = state;
-}
-
-
-/**
- * @return the zIP
- */
-public String getZIP() {
-	return ZIP;
-}
-
-
-/**
- * @param zIP the zIP to set
- */
-public void setZIP(String zIP) {
-	ZIP = zIP;
-}
-
-
-/**
- * @return the phone
- */
-public String getPhone() {
-	return phone;
-}
-
-
-/**
- * @param phone the phone to set
- */
-public void setPhone(String phone) {
-	this.phone = phone;
-}
-
-
-public void Update(String address,String city,String state,String ZIP,String phone)
-{
-	 this.address=address;
-	 this.city=city;
-	 this.state=state;
-	 this.ZIP=ZIP;
-	 this.phone=phone;
-}
- class CompareByName implements Comparator<Person>
- {
-	@Override
-	public int compare(Person person1,Person person2) {
-		int compareByLastName=((Person)person1).getLastName().compareTo(((Person)person2).getLastName());
-		if(compareByLastName!=0)
-			return compareByLastName;
-		else
-			return ((Person)person1).getFirstName().compareTo(((Person)person2).getFirstName());
+  public Person() {
+		setFirstName();
+		setLastName();
+		setAddress();
+		setCity();
+		setState();
+		setZip();
+		setPhone();
 	}
- }
- class CompareByZIP implements Comparator<Person>
- {
-	@Override
-	public int compare(Person person1,Person person2) {
-		int compareByLastName=((Person)person1).getZIP().compareTo(((Person)person2).getZIP());
-		if(compareByLastName!=0)
-			return compareByLastName;
-		else
-			return ((Person)person1).getZIP().compareTo(((Person)person2).getZIP());
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param address
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @param phone
+	 */
+	public Person(String firstName, String lastName, String address, String city, String state, String zip, String phone) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.ZIP = zip;
+		this.phone = phone;
 	}
- }
+
+	/**
+	 * 
+	 */
+	public void setFirstName() {
+		this.firstName = Utility.String();
+	}
+
+	/**
+	 * 
+	 */
+	public void setLastName() {
+		this.lastName = Utility.String();
+	}
+
+	/**
+	 * 
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	/**
+	 * 
+	 */
+	public void setAddress() {
+		
+		this.address =  Utility.String();
+	}
+	/**
+	 * 
+	 */
+	public void setCity() {
+		this.city = Utility.String();
+	}
+	
+	/**
+	 * 
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	/**
+	 * 
+	 */
+	public void setState() {
+		this.state = Utility.String();
+	}
+	/**
+	 * 
+	 */
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	/**
+	 * 
+	 */
+	public void setZip() {
+		this.ZIP =Utility.String();
+	}
+	/**
+	 * 
+	 */
+	public void setZip(String zip) {
+		this.ZIP =zip;
+	}
+	/**
+	 * 
+	 */
+	public void setPhone(String mobile) {
+		this.phone = phone;
+	}
+	/**
+	 * 
+	 */
+	public void setPhone() {
+		this.phone = Utility.String();
+	}
+	
+	/**
+	 * @return
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getAddress() {
+		return address;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getCity() {
+		return city;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getState() {
+		return state;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getZip() {
+		return ZIP;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getPhone() {
+		return phone;
+	}
+
+	
+	public static class CompareByName {
+
+		public CompareByName() {
+		}
+		public int compare(Object obj1, Object obj2) throws ClassCastException {
+			Person person1 = (Person) obj1;
+			Person person2 = (Person) obj2;
+			int compareByLastName=person1.lastName.compareTo(person2.lastName);
+			if(compareByLastName!=0)
+			{
+				return compareByLastName;
+			}
+			else {
+				return (person1.firstName.compareTo(person2.firstName));
+			}
+		}
+		public boolean equals(Object obj1, Object obj2) throws ClassCastException {
+			Person person1 = (Person) obj1;
+			Person person2 = (Person) obj2;
+			return compare(person1,person2) == 0 ? true : false;
+		}
+	}
+	public static class CompareByZip {
+
+		/**
+		 * 
+		 */
+		public CompareByZip() {
+		}
+
+
+		public int compare(Object obj1, Object obj2) throws ClassCastException {
+			Person person1 = (Person) obj1;
+			Person person2 = (Person) obj2;
+			int compareByZip=person1.ZIP.compareTo(person2.ZIP);
+			if(compareByZip!=0)
+			{
+				return compareByZip;
+			}
+			else {
+				return new CompareByName().compare(person1, person2);
+			}
+			
+		}
+
+		public boolean equals(Object obj1, Object obj2) throws ClassCastException {
+			Person person1 = (Person) obj1;
+			Person person2 = (Person) obj2;
+			return person1.ZIP.compareTo(person2.ZIP) == 0 ? true : false;
+		}
 }
+}
+
+
+

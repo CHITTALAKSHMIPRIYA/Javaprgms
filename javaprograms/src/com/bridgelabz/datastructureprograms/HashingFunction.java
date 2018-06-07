@@ -33,7 +33,7 @@ public class HashingFunction {
 		{
          array[i]=new LinkedList();
 	}
-		 File f = new File("/home/bridgelabz/Downloads/sts-bundle/sts-3.9.2.RELEASE/HashMap");
+		 File f = new File("/home/bridgelabz/Downloads/sts-bundle/sts-3.9.2.RELEASE/hashmap");
 	        FileReader fr = null;
 	        FileWriter fw = null;
 	        BufferedWriter bw = null;
@@ -70,18 +70,28 @@ public class HashingFunction {
 	            map.put(remainder, value);
 	        }
 	        System.out.println(map.entrySet());
-	        System.out.println("Enter the word to search in the linked list");
+	        System.out.println("Enter the num to search in the linked list");
 	        int number1 = 0;
 	        number1 = Utility.Int();
 	        if (map.containsValue(number1)) {
 	            int key = number1 % 11;
 	            map.remove(key);
-	            System.out.println("Word removed Successfully");
+	            System.out.println("num removed Successfully");
 	            System.out.println(map.entrySet());
 	        } else {
 	            int key1 = number1 % 11;
 	            map.put(key1, map.get(key1) + "," + number1);
 	            System.out.println(map.entrySet());
 	        }
+	       /* try {
+				BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+				writer.write(number1);
+				writer.flush();
+				System.out.println();
+				System.out.println("file written successfully");
+				writer.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}*/
 	    }
 }
