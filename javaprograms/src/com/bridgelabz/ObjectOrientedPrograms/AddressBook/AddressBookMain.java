@@ -11,7 +11,7 @@ public class AddressBookMain {
 
  public static void main(String[] args) {
 		AddressBookcontroller ac=new AddressBookcontroller();
-		System.out.println(" ADDRESSBOOK");
+		System.out.println("ADDRESSBOOK");
 		boolean close = false;
 		while (close == false) {
 			System.out.println("1.NEW \n2.ADD \n3.EDIT \n4.DELETE \n5.SAVE \n6.SORT BY NAME "
