@@ -1,198 +1,248 @@
 
 package com.bridgelabz.ObjectOrientedPrograms.AddressBook;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.Vector;
+import java.text.ParseException;
+import java.util.ArrayList;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.util.Utility;
 
-public class AddressBook{
-	Vector<Person> addressbook=new Vector<Person>();
-	static File file;
-	public AddressBook()
-	{
-		setFile();
-	}
-	
-	public void addPerson()
-	{
-		System.out.println("enter first name");
-		String firstName=Utility.String();
-		System.out.println("enter last name");
-		String lastName=Utility.String();
-		System.out.println("enter address");
-		String address=Utility.String();
-		System.out.println("enter state name");
-		String state=Utility.String();
-		System.out.println("enter city name");
-		String city=Utility.String();
-		System.out.println("enter ZIP");
-		String ZIP=Utility.String();
-		System.out.println("enter phone num");
-		String phone=Utility.String();
-		addressbook.add(new Person(firstName,lastName,address,state,city,ZIP,phone));
-		writeToJSON(toJsonarray(toJsonObject()), getFile());
-		System.out.println(" Added successfully");
-        printAll();
-	}
-	public int getNumberofPersons()
-	{
-		return addressbook.size();
-	}
-	public String getFullNameOfPerson(int index)
-	{
-		return addressbook.get(index).getFirstName()+addressbook.get(index).getFirstName();
-	}
-	public String[] getOtherPersonInformation(int index)
-	{
-		String[] otherInformation=new String[5];
-		otherInformation[0]=addressbook.get(index).getAddress();
-		otherInformation[1]=addressbook.get(index).getState();
-		otherInformation[2]=addressbook.get(index).getCity();
-		otherInformation[3]=addressbook.get(index).getZip();
-		otherInformation[4]=addressbook.get(index).getPhone();
-		return otherInformation;
-	
-	}
-	public void updatePerson() throws FileNotFoundException, IOException, ParseException
-	{
-		System.out.println("select based on index");
-		int index=Utility.Int();
-		System.out.println("choose what u want to update");
-		System.out.println("1 address \n2 state\n3 city\n4 ZIP\n5 phone");
-	    int choice =Utility.Int();
-	   switch(choice)
-	    {
-	    case 1:   addressbook.get(index).setAddress();
-	              break;
-	    case 2:   addressbook.get(index).setState();
-                  break;
-	    case 3:   addressbook.get(index).setCity();
-                  break;
-	    case 4:   addressbook.get(index).setZip();
-                  break;
-	    case 5:   addressbook.get(index).setPhone();
-                  break;
-        default:  System.out.println("Invalid choice");
-                  break;
-	    }
-                  writeToJSON(toJsonarray(toJsonObject()), getFile());
-                  System.out.println("updated successfully");
-	    
-	    }
-	   
-
-	public void removePerson() throws FileNotFoundException, IOException, ParseException
-	{
-		System.out.println("select based on index");
-		int index=Utility.Int();
-		addressbook.remove(index);
-		writeToJSON(toJsonarray(toJsonObject()),getFile());
-	}
-public void sortByName()
-	{
-		Comparator cmp=(Object obj1,Object obj2)->
-		{
-			Person p1=(Person)obj1;
-			Person p2=(Person)obj2;
-			int value=new Person.CompareByName().compare(p1,p2);
-			return value;
-		};
-	}
-	
-	public void sortByZIP()
-	{
-		@SuppressWarnings("rawtypes")
-		Comparator cmp=(Object obj1,Object obj2)->
-		{
-			Person p1=(Person)obj1;
-			Person p2=(Person)obj2;
-			int value=new Person.CompareByZip().compare(p1,p2);
-			return value;
-		};
-	}
-	public void printAll()
-	{
-		for(int i=0;i<addressbook.size();i++)
-		{
-			System.out.println("first name:"+addressbook.get(i).getFirstName());
-			System.out.println("last name:"+addressbook.get(i).getLastName());
-			System.out.println("address:"+addressbook.get(i).getAddress());
-			System.out.println("state:"+addressbook.get(i).getState());
-			System.out.println("city:"+addressbook.get(i).getCity());
-			System.out.println("phone:"+addressbook.get(i).getPhone());
-			System.out.println("ZIP:"+addressbook.get(i).getZip());
-		}
-	}
-	@SuppressWarnings("unchecked")
-	public JSONObject toJsonObject()
-	{
-		JSONObject object=new JSONObject();
-		object.put("First Name",Person.firstName);
-		object.put("Last Name",Person.lastName);
-		object.put("Address",Person.address);
-		object.put("State",Person.state);
-		object.put("city",Person.city);
-		object.put("ZIP",Person.ZIP);
-		object.put("phone",Person.phone);
-		return object;
-	}
-	public JSONArray toJsonarray(JSONObject object)
-	{
-		JSONArray array=new JSONArray();
-		array.add(object);
-		return array;
-	}
-	public void writeToJSON(JSONArray array,File file)
-	{
-		try {
-			if(!file.exists())
-			{
-				file.createNewFile();
-			}
-			FileWriter fw=new FileWriter(file.getAbsoluteFile(),true);
-			BufferedWriter bw=new BufferedWriter(fw);
-			bw.write(array.toString());
-			bw.close();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	public void setFile()
-	{
-		System.out.println("enter file name");
-		String filename=Utility.String();
-		file=new File("/home/bridgelabz/Javaprograms/javaprograms/src/com/bridgelabz/ObjectOrientedPrograms/"
-				+ "AddressBook/Addressbook.json");
-	}
-	public File getFile()
-	{
-		return file;
+public class AddressBook {
+ArrayList<Person> list =new ArrayList<>();
+static Person person;
+AddressBookManager manager=new AddressBookManager();
+static ObjectMapper mapper=new ObjectMapper();
+static File file=new File("/home/bridgelabz/Javaprograms/javaprograms/src/com/bridgelabz/ObjectOrientedPrograms/"
+		+ "AddressBook/addressbook.json") ;
+/**
+ * @throws JsonGenerationException
+ * @throws JsonMappingException
+ * @throws IOException
+ * @throws ParseException
+ * @throws org.json.simple.parser.ParseException
+ */
+public void addPerson() throws JsonGenerationException, JsonMappingException, IOException, ParseException, org.json.simple.parser.ParseException
+{
+	 System.out.println("Enter how many details you need");
+     int value = Utility.Int();
+     for (int i = 0; i < value; i++) {
+	 person= new Person();
+	System.out.println("enter first name");
+	String firstName=Utility.String();
+	person.setFirstName(firstName);
+	System.out.println("enter last name");
+	String lastName=Utility.String();
+    person.setLastName(lastName);
+	System.out.println("enter address");
+	String address=Utility.String();
+	person.setAddress(address);
+	System.out.println("enter state name");
+	String state=Utility.String();
+	person.setState(state);
+	System.out.println("enter city name");
+	String city=Utility.String();
+	person.setCity(city);
+	System.out.println("enter ZIP");
+	String ZIP=Utility.String();
+	person.setZip(ZIP);
+	System.out.println("enter phone num");
+    String phone=Utility.String();
+    person.setPhone(phone);
+    list.add(person);
+     }
+    JSONObject Ob = person.toJsonObject();
+    mapper.writeValue((file), list);
+    System.out.println("person added successfully");
+   manager.option();
+ 
+}
+/**
+ * @throws JsonGenerationException
+ * @throws JsonMappingException
+ * @throws IOException
+ * @throws ParseException
+ * @throws org.json.simple.parser.ParseException
+ */
+public void update() throws JsonGenerationException, JsonMappingException, IOException, ParseException, org.json.simple.parser.ParseException
+{
+	  Person p = search();
+      int index = list.indexOf(p);
+      System.out.println(index);
+	System.out.println("choose what u want to update");
+	System.out.println("1 address \n2 state\n3 city\n4 ZIP\n5 phone");
+    int choice =Utility.Int();
+    switch(choice)
+    {
+    case 1:System.out.println("enter address");
+           String address=Utility.String();
+           list.get(index).setAddress(address);
+           mapper.writeValue((file), list);
+           break;
+    case 2:System.out.println("enter state");
+           String state=Utility.String();
+           list.get(index).setState(state);
+           mapper.writeValue((file), list);
+           break;
+    case 3:System.out.println("enter city");
+           String city=Utility.String();
+           list.get(index).setCity(city);
+           mapper.writeValue((file), list);
+           break;
+    case 4:System.out.println("enter zip");
+           String ZIP=Utility.String();
+           list.get(index).setZip(ZIP);
+           mapper.writeValue((file), list);
+           break;
+    case 5:System.out.println("enter phone");
+           String phone=Utility.String();
+           list.get(index).setPhone(phone);
+           mapper.writeValue((file), list);
+           break;
     }
-	public void shownames() throws FileNotFoundException, IOException, ParseException
+   manager.option();
+}
+/**
+ * @throws JsonGenerationException
+ * @throws JsonMappingException
+ * @throws IOException
+ * @throws ParseException
+ * @throws org.json.simple.parser.ParseException
+ */
+
+public void delete() throws JsonGenerationException, JsonMappingException, IOException, ParseException, org.json.simple.parser.ParseException
+{
+	int index= searchByindex();
+	System.out.println(index);
+	list.remove(index+1);
+	mapper.writeValue((file), list);
+	manager.option();
+}
+/**
+ * @return
+ */
+public Person search()
+{
+	System.out.println("enter the first name to search");
+	String firstname=Utility.String();
+	for(int i=0;i<list.size();i++)
 	{
-		JSONParser parser=new JSONParser();
-		Object obj=parser.parse(new FileReader(getFile()));
-		JSONArray name=(JSONArray)obj;
-		for(int i=0;i<name.size();i++)
+		if(list.get(i).getFirstName().equals(firstname));
 		{
-			JSONObject jsnobj=(JSONObject)name.get(i);
-			System.out.println(i + "     " + jsnobj.get("First Name") );
+		System.out.println("name found");
+	    return list.get(i);
+        }
+	}
+	System.out.println("not found");
+	return null;
+}
+/**
+ * @return
+ */
+public int searchByindex()
+{
+	System.out.println("enter the first name to search");
+	String firstName=Utility.String();
+	System.out.println(list.size());
+	for(int i=0;i<list.size();i++)
+	{
+		if(list.get(i).getFirstName().equals(firstName));
+		{
+		System.out.println("name found");
+		return i;
 		}
 	}
-	
+	return 0;
+}
+/**
+ * @throws JsonGenerationException
+ * @throws JsonMappingException
+ * @throws IOException
+ * @throws ParseException
+ * @throws org.json.simple.parser.ParseException
+ */
+public void sortByName() throws JsonGenerationException, JsonMappingException, IOException, ParseException, org.json.simple.parser.ParseException 
+{
+	JSONArray addressArray=person.loadObject();
+	System.out.println(addressArray);
+    ArrayList<JSONObject> arrayList = new ArrayList<JSONObject>();
+    for (int i = 0; i < addressArray.size(); i++) {
+        JSONObject temp = (JSONObject) addressArray.get(i);
+        arrayList.add(temp);
+    }
+    for(int i=0;i<arrayList.size()-1;i++)
+    {
+    	for(int j=0;j<arrayList.size()-1-i;j++)
+    	{
+    		JSONObject object1 = (JSONObject) arrayList.get(i);
+            String person1 = (String) object1.get("lastName");
+            JSONObject object2 = (JSONObject) arrayList.get(j+1);
+            String person2 = (String) object2.get("lastName");
+            if (person1.compareTo(person2) > 0) {
+                JSONObject temp = object1;
+                arrayList.set(i, object2);
+                arrayList.set(j+1, object1);
+            }
+}
+    	}
+    mapper.writeValue((file), arrayList);
+   manager.option();
+    }
+/**
+ * @throws JsonGenerationException
+ * @throws JsonMappingException
+ * @throws IOException
+ * @throws ParseException
+ * @throws org.json.simple.parser.ParseException
+ */
+public void sortByZIP() throws JsonGenerationException, JsonMappingException, IOException, ParseException, org.json.simple.parser.ParseException 
+{
+	JSONArray addressArray=person.loadObject();
+	System.out.println(addressArray);
+    ArrayList<JSONObject> arrayList = new ArrayList<JSONObject>();
+    for (int i = 0; i < addressArray.size(); i++) {
+        JSONObject temp = (JSONObject) addressArray.get(i);
+        arrayList.add(temp);
+    }
+    for(int i=0;i<arrayList.size()-1;i++)
+    {
+    	for(int j=0;j<arrayList.size();j++)
+    	{
+    		JSONObject object1 = (JSONObject) arrayList.get(i);
+            String person1 = (String) object1.get("zip");
+            JSONObject object2 = (JSONObject) arrayList.get(j+1);
+            String person2 = (String) object2.get("zip");
+            if (person1.compareTo(person2) > 0) {
+                JSONObject temp = object1;
+                arrayList.set(i, object2);
+                arrayList.set(j+1, object1);
+            }
+}
+    	}
+    mapper.writeValue((file), arrayList);
+    manager.option();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -1,230 +1,137 @@
-
+/**
+ * 
+ */
 package com.bridgelabz.ObjectOrientedPrograms.AddressBook;
 
-import com.bridgelabz.util.Utility;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+/**
+ * @author bridgelabz
+ *
+ */
 public class Person {
-   static String firstName;
-   static String lastName;
-  static String address;
-  static String city;
-  static String state;
-  static String ZIP;
-  static String phone;
-  
-  
-
-  public Person() {
-		setFirstName();
-		setLastName();
-		setAddress();
-		setCity();
-		setState();
-		setZip();
-		setPhone();
-	}
-
-	/**
-	 * @param firstName
-	 * @param lastName
-	 * @param address
-	 * @param city
-	 * @param state
-	 * @param zip
-	 * @param phone
-	 */
-	public Person(String firstName, String lastName, String address, String city, String state, String zip, String phone) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.ZIP = zip;
-		this.phone = phone;
-	}
-
-	/**
-	 * 
-	 */
-	public void setFirstName() {
-		this.firstName = Utility.String();
-	}
-
-	/**
-	 * 
-	 */
-	public void setLastName() {
-		this.lastName = Utility.String();
-	}
-
-	/**
-	 * 
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	/**
-	 * 
-	 */
-	public void setAddress() {
-		
-		this.address =  Utility.String();
-	}
-	/**
-	 * 
-	 */
-	public void setCity() {
-		this.city = Utility.String();
-	}
-	
-	/**
-	 * 
-	 */
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	/**
-	 * 
-	 */
-	public void setState() {
-		this.state = Utility.String();
-	}
-	/**
-	 * 
-	 */
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	/**
-	 * 
-	 */
-	public void setZip() {
-		this.ZIP =Utility.String();
-	}
-	/**
-	 * 
-	 */
-	public void setZip(String zip) {
-		this.ZIP =zip;
-	}
-	/**
-	 * 
-	 */
-	public void setPhone(String mobile) {
-		this.phone = phone;
-	}
-	/**
-	 * 
-	 */
-	public void setPhone() {
-		this.phone = Utility.String();
-	}
-	
-	/**
-	 * @return
-	 */
-	public String getFirstName() {
-		return firstName;
-	}
-
-	/**
-	 * @return
-	 */
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * @return
-	 */
-	public String getAddress() {
-		return address;
-	}
-
-	/**
-	 * @return
-	 */
-	public String getCity() {
-		return city;
-	}
-
-	/**
-	 * @return
-	 */
-	public String getState() {
-		return state;
-	}
-
-	/**
-	 * @return
-	 */
-	public String getZip() {
-		return ZIP;
-	}
-
-	/**
-	 * @return
-	 */
-	public String getPhone() {
-		return phone;
-	}
-
-	
-	public static class CompareByName {
-
-		public CompareByName() {
-		}
-		public int compare(Object obj1, Object obj2) throws ClassCastException {
-			Person person1 = (Person) obj1;
-			Person person2 = (Person) obj2;
-			int compareByLastName=person1.lastName.compareTo(person2.lastName);
-			if(compareByLastName!=0)
-			{
-				return compareByLastName;
-			}
-			else {
-				return (person1.firstName.compareTo(person2.firstName));
-			}
-		}
-		public boolean equals(Object obj1, Object obj2) throws ClassCastException {
-			Person person1 = (Person) obj1;
-			Person person2 = (Person) obj2;
-			return compare(person1,person2) == 0 ? true : false;
-		}
-	}
-	public static class CompareByZip {
-
-		/**
-		 * 
-		 */
-		public CompareByZip() {
-		}
-
-
-		public int compare(Object obj1, Object obj2) throws ClassCastException {
-			Person person1 = (Person) obj1;
-			Person person2 = (Person) obj2;
-			int compareByZip=person1.ZIP.compareTo(person2.ZIP);
-			if(compareByZip!=0)
-			{
-				return compareByZip;
-			}
-			else {
-				return new CompareByName().compare(person1, person2);
-			}
-			
-		}
-
-		public boolean equals(Object obj1, Object obj2) throws ClassCastException {
-			Person person1 = (Person) obj1;
-			Person person2 = (Person) obj2;
-			return person1.ZIP.compareTo(person2.ZIP) == 0 ? true : false;
-		}
+  private String firstName;
+  private String lastName;
+  private String address;
+  private String city;
+  private String state;
+  private String zip;
+  private String phone;
+/**
+ * @return the firstName
+ */
+public String getFirstName() {
+	return firstName;
 }
+/**
+ * @param firstName the firstName to set
+ */
+public void setFirstName(String firstName) {
+	this.firstName = firstName;
+}
+/**
+ * @return the lastName
+ */
+public String getLastName() {
+	return lastName;
+}
+/**
+ * @param lastName the lastName to set
+ */
+public void setLastName(String lastName) {
+	this.lastName = lastName;
+}
+/**
+ * @return the address
+ */
+public String getAddress() {
+	return address;
+}
+/**
+ * @param address the address to set
+ */
+public void setAddress(String address) {
+	this.address = address;
+}
+/**
+ * @return the city
+ */
+public String getCity() {
+	return city;
+}
+/**
+ * @param city the city to set
+ */
+public void setCity(String city) {
+	this.city = city;
+}
+/**
+ * @return the state
+ */
+public String getState() {
+	return state;
+}
+/**
+ * @param state the state to set
+ */
+public void setState(String state) {
+	this.state = state;
+}
+/**
+ * @return the zip
+ */
+public String getZip() {
+	return zip;
+}
+/**
+ * @param zip the zip to set
+ */
+public void setZip(String zip) {
+	this.zip = zip;
+}
+/**
+ * @return the phone
+ */
+public String getPhone() {
+	return phone;
+}
+/**
+ * @param phone the phone to set
+ */
+public void setPhone(String phone) {
+	this.phone = phone;
+}
+public JSONObject toJsonObject()
+{
+	JSONObject jobj=new JSONObject();
+	jobj.put("FirstName",firstName);
+	jobj.put("lastName",lastName);
+	jobj.put("address",address);
+	jobj.put("state",state);
+	jobj.put("city",city);
+	jobj.put("ZIP",zip);
+	jobj.put("phone",phone);
+	return jobj;
+}
+public JSONArray loadObject() throws FileNotFoundException, IOException, ParseException
+{
+	JSONParser parser=new JSONParser();
+	Object obj=parser.parse(new FileReader("/home/bridgelabz/Javaprograms/javaprograms/src/com/bridgelabz/"
+			+ "ObjectOrientedPrograms/AddressBook/addressbook.json"));
+	JSONArray array=(JSONArray) obj;
+	for(int i=0;i<array.size();i++)
+	{
+		JSONObject arrobj=(JSONObject)array.get(i);
+	}
+	return array;
+	
 }
 
-
-
+}
