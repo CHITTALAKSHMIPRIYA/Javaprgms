@@ -4,10 +4,10 @@ package com.bridgelabz.util;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
-
+import com.bridgelabz.datastructureprograms.LinkedList;
 
 
 public class Utility {
@@ -985,188 +985,64 @@ public static void  printingcards(String[][] deck)
 		System.out.println();
 	}
 }
-//
-public static String[] cardSuffle() {
-	String[] deck=new String[52];
-    
-	int count=0;
-	String cards;
-	while(count<52) {
-		cards=generateCards();
-		if(count==0) {
-			deck[0]=cards;
-			count++;
-		}
-		else {
-			if(checkDistinctCards(deck,count,cards)) {
-				deck[count]=cards;
-				count++;
-			}
-		}
-	}
-	
-	return deck;
-}
-
+//player object deck of cards
 /**
- * Method to Store the Cards for 4 Players
+ * @param cards
+ * @return
  */
-public static void playerCards() {
-	LinkedList<String> mylist = new LinkedList();
-	String[] deck= cardSuffle();
-	LinkedList<String> player1= new LinkedList();
-	LinkedList<String> player2= new LinkedList();
-	LinkedList<String> player3= new LinkedList();
-	LinkedList<String> player4= new LinkedList();
-	for(int i=0;i<deck.length;i++) {
-		mylist.add(deck[i]);
-	}
-	for(int i=0;i<52;i++) {
-		if(i<13) {
-			player1.add(mylist.pop());
-		}
-		else if(i>=13 && i< 26) {
-			player2.add(mylist.pop());
-		}
-		else if(i>=26 && i<39) {
-			player3.add(mylist.pop());
-		}
-		else if(i<52)
-			player4.add(mylist.pop());
-	}
-
-	String[][] player1Data= new String[4][4];
-	String[][] player2Data= new String[4][4];
-	String[][] player3Data= new String[4][4];
-	String[][] player4Data= new String[4][4];
-	int count=0;
-	for(int i=0;i<4;i++) {
-		for(int j=0;j<4;j++) {
-			if(count<13) {
-				player1Data[i][j]=player1.pop();
-				count++;
+public static String[][] distributeCards(LinkedList[] cards)
+{
+	Random r=new Random();
+	String[][] players=new String[4][9];
+	for(int i=0;i<4;i++)
+	{
+		for(int j=0;j<9;j++)
+		{
+			int pos=r.nextInt(51);
+			if(!cards[pos].isEmpty())
+			{
+				players[i][j]=(String)cards[pos].pop();
 			}
-			else {
-				player1Data[i][j]=" ";
-				count++;
-			}
-		}
-	}
-	count=0;
-	for(int i=0;i<4;i++) {
-		for(int j=0;j<4;j++) {
-			if(count<13) {
-				player2Data[i][j]=player2.pop();
-				count++;
-			}
-			else {
-				player2Data[i][j]=" ";
-				count++;
-			}
-		}
-	}
-	count=0;
-	for(int i=0;i<4;i++) {
-		for(int j=0;j<4;j++) {
-			if(count<13) {
-				player3Data[i][j]=player3.pop();
-				count++;
-			}
-			else {
-				player3Data[i][j]=" ";
-				count++;
-			}
-		}
-	}
-	count=0;
-	for(int i=0;i<4;i++) {
-		for(int j=0;j<4;j++) {
-			if(count<13) {
-				player4Data[i][j]=player4.pop();
-				count++;
-			}
-			else {
-				player4Data[i][j]=" ";
-				count++;
-			}
-		}
-	}
-	System.out.println("PLAYER 1 CARDS");
-	for(int p=0;p<4;p++) {
-		System.out.print("|");
-		for(int q=0;q<4;q++) {
-			if(player1Data[p][q]!=null && (p+q)<12)
-				System.out.print(player1Data[p][q]+" |");
-			
 			else
-				System.out.print("");
+			{
+				j--;
+			}
 		}
-		System.out.println();
 	}
-	System.out.println();
-	System.out.println("PLAYER 2 CARDS");
-	for(int p=0;p<4;p++) {
-		System.out.print("|");
-		for(int q=0;q<4;q++) {
-			if(player2Data[p][q]!=null)
-			System.out.print(player2Data[p][q]+" |");
-		}
-		System.out.println();
-	}
-	System.out.println();
-	System.out.println("PLAYER 3 CARDS");
-	for(int p=0;p<4;p++) {
-		System.out.print("|");
-		for(int q=0;q<4;q++) {
-			if(player3Data[p][q]!=null)
-			System.out.print(player3Data[p][q]+" |");
-		}
-		System.out.println();
-	}
-	System.out.println();
-	System.out.println("PLAYER 4 CARDS");
-	for(int p=0;p<4;p++) {
-		System.out.print("|");
-		for(int q=0;q<4;q++) {
-			if(player4Data[p][q]!=null)
-			System.out.print(player4Data[p][q]+" |");
-		}
-		System.out.println();
-	}
+	return players;
 }
 
 /**
- * Method to Check a card is Distinct or not to store
- * @param arr takes the array of cards
- * @param count takes the number of cards in the array
- * @param cards takes the new cards to check distinction
- * @return a boolean
+ * @param players
+ * @return
  */
-public static boolean checkDistinctCards(String[] arr,int count,String cards) {
-	for(int i=0;i<count;i++) {
-		if(arr[i].equals(cards)) {
-			return false;
+public static LinkedList[] rearrange(String[][] players)
+{
+	LinkedList[] arrange=new LinkedList[52];
+	for(int i=0;i<4;i++)
+	{
+		arrange[i]=new LinkedList();
+		for(int j=0;j<9;j++)
+		{
+			arrange[i].addSort(players[i][j]);
 		}
 	}
-	return true;
+	return arrange;
 }
-	
 /**
- * Method to generate a Valid Cards Randomly  
- * @return the string of generated card
+ * @param arrange
  */
-public static String generateCards() {
-	String[] cardClass= {"Heart","Spades","Clubs","Diamonds"};
-	String[] cardRank= {"king","Queen","Jack","Ace","2","3","4","5","6","7","8","9","10"};
-	java.util.Random ran=new java.util.Random();
-	int indexClass = ran.nextInt(4);
-	int indexRank = ran.nextInt(13);
-	StringBuilder str= new StringBuilder();
-	StringBuilder str2 = new StringBuilder();
-	String card = str.append(cardRank[indexRank])+" "+str2.append(cardClass[indexClass]);
-	return card;
+public static void showBySorted(LinkedList[] arrange)
+{
+  for(int i=0;i<4;i++)
+	{   
+		System.out.println("Player "+(i+1)+" sorting cards");
+		for(int j=0;j<9;j++)
+		{
+			System.out.print("|"+arrange[i].pop(0)+"|    ");
+		}
+		System.out.println();
+		System.out.println();
+	}
 }
 }
-
-
-

@@ -1,6 +1,6 @@
 
 package com.bridgelabz.datastructureprograms;
-class LinkedList {
+public class LinkedList {
 	private Node first;
 	private Node tail;
 	int count;

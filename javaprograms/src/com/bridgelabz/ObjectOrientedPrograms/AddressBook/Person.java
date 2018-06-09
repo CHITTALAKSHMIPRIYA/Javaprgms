@@ -24,6 +24,26 @@ public class Person {
   private String state;
   private String zip;
   private String phone;
+ 
+/**
+ * @param firstName
+ * @param lastName
+ * @param address
+ * @param city
+ * @param state
+ * @param zip
+ * @param phone
+ */
+/*public Person(String firstName, String lastName, String address, String city, String state, String zip, String phone) {
+	super();
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.address = address;
+	this.city = city;
+	this.state = state;
+	this.zip = zip;
+	this.phone = phone;
+}*/
 /**
  * @return the firstName
  */
@@ -108,6 +128,7 @@ public String getPhone() {
 public void setPhone(String phone) {
 	this.phone = phone;
 }
+@SuppressWarnings("unchecked")
 public JSONObject toJsonObject()
 {
 	JSONObject jobj=new JSONObject();
