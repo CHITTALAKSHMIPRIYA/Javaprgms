@@ -12,6 +12,8 @@ public class Stack {
 		top = -1;
 	}
 
+	
+
 	// to create a empty stack
 	public static Stack stack(int size) {
 		return new Stack(size);
@@ -50,6 +52,13 @@ public class Stack {
 	// to find the size of the stack
 	public int size() {
 		return top;
+	}
+	public void display()
+	{
+		for(int i=0;i<=top;i++)
+		{
+			System.out.println(stackAr[i]);
+		}
 	}
 	
 }

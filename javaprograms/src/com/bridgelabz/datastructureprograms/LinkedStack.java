@@ -1,74 +1,81 @@
-
+/**
+ * 
+ */
 package com.bridgelabz.datastructureprograms;
 
 import java.util.NoSuchElementException;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public class LinkedStack {
-   protected Node3 top;
-   protected int size;
-   public LinkedStack()
-   {
-	   top=null;
-	   size=0;
-   }
-   /*  Function to check if stack is empty */
-   public boolean isEmpty()
-   {
-	   return top==null;
-   }
-   /*  Function to get the size of the stack */
-   public int getSize()
-   {
-	   return size;
-   }
-   /*  Function to push an element from the stack */
-   public void push(Object object)
-   {
-	   Node3 nptr=new Node3(object,null);
-	   if(top==null)
+	protected Node3 top;
+	   protected int size;
+	   public LinkedStack()
 	   {
-		   top=nptr;
+		   top=null;
+		   size=0;
 	   }
-	   else
+	   /*  Function to check if stack is empty */
+	   public boolean isEmpty()
 	   {
-		   nptr.setLink(top);
-		   top=nptr;
+		   return top==null;
 	   }
-	   size++;
-   }
-   /*  Function to pop an element from the stack */
-   public Object pop()
-   {
-       if (isEmpty() )
+	   /*  Function to get the size of the stack */
+	   public int getSize()
+	   {
+		   return size;
+	   }
+	   /*  Function to push an element from the stack */
+	   public void push(Object object)
+	   {
+		   Node3 nptr=new Node3(object,null);
+		   if(top==null)
+		   {
+			   top=nptr;
+		   }
+		   else
+		   {
+			   nptr.setLink(top);
+			   top=nptr;
+		   }
+		   size++;
+	   }
+	   /*  Function to pop an element from the stack */
+	   public Object pop()
+	   {
+	       if (isEmpty() )
 
-           throw new NoSuchElementException("Underflow Exception") ;
-	   Node3 ptr=top;
-	   top=ptr.getLink();
-	   size--;
-	return ptr.getData();
-   }
-   /*  Function to check the top element of the stack */
-   public Object peek1()
-   {
-   	if(isEmpty())
-   		throw new NoSuchElementException("Underflow Exception");
-   	return top.getData();
-   }
-   /*  Function to display the status of the stack */
-   @SuppressWarnings("null")
-public void display()
-   {
-	   System.out.println("stack=");
-	   if(size==0)
-	   {
-		   System.out.println("empty");
+	           throw new NoSuchElementException("Underflow Exception") ;
+		   Node3 ptr=top;
+		   top=ptr.getLink();
+		   size--;
+		return ptr.getData();
 	   }
-	   Node3 ptr=top;
-	   while(ptr!=null)
+	   /*  Function to check the top element of the stack */
+	   public Object peek1()
 	   {
-		   System.out.println(ptr.getData()+" ");
-		   ptr=ptr.getLink();
+	   	if(isEmpty())
+	   		throw new NoSuchElementException("Underflow Exception");
+	   	return top.getData();
 	   }
-	   System.out.println();
-   }
+	   /*  Function to display the status of the stack */
+	   @SuppressWarnings("null")
+	public void display()
+	   {
+		   System.out.println("stack=");
+		   if(size==0)
+		   {
+			   System.out.println("empty");
+		   }
+		   Node3 ptr=top;
+		   while(ptr!=null)
+		   {
+			   System.out.println(ptr.getData()+" ");
+			   ptr=ptr.getLink();
+		   }
+		   System.out.println();
+	   }
+		    
 }

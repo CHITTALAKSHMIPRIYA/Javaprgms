@@ -1,7 +1,13 @@
-
+/**
+ * 
+ */
 package com.bridgelabz.datastructureprograms;
-class Node3
-{
+
+/**
+ * @author bridgelabz
+ *
+ */
+public class Node3 {
 	protected Object data;
 	protected Node3 link;
 	
@@ -37,4 +43,3 @@ public Node3 getLink()
 }
 
 }
-

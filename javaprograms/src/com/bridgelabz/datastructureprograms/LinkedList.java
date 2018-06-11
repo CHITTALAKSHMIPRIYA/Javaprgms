@@ -235,6 +235,24 @@ public class LinkedList {
 		count--;
 		return temp.data;
 	}
+	public Comparable removeAt(int index) {
+        if (index == 0) {
+            Comparable temp = first.data;
+            first =  first.next;
+            count--;
+            return temp;
+        }
+        Node t = first;
+        int counter = 0;
+        while (counter < index - 1) {
+            t = t.next;
+            counter++;
+        }
+        Comparable temp = t.next.data;
+        t.next = t.next.next;
+        count--;
+        return temp;
+}
 
 	// to remove last element and show
 	@SuppressWarnings("rawtypes")

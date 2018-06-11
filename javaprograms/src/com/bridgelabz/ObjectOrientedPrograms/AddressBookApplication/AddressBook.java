@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.bridgelabz.ObjectOrientedPrograms.AddressBookApplication;
 
 import java.io.BufferedWriter;
@@ -19,10 +17,7 @@ import org.json.simple.parser.JSONParser;
 
 import com.bridgelabz.util.Utility;
 
-/**
- * @author bridgelabz
- *
- */
+
 public class AddressBook implements Serializable {
 	Vector<Person> addressBook;
 	static File fileLocation;
@@ -317,7 +312,7 @@ public class AddressBook implements Serializable {
 
 	/**
 	 *this method is written to put an json object into a json array
-	 * @param contactObject whwre the json object will be loaded
+	 * @param contactObject where the json object will be loaded
 	 */
 	@SuppressWarnings("unchecked")
 	public void toJsonArray(JSONObject contactObject) {

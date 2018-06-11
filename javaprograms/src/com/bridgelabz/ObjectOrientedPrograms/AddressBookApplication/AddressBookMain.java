@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.bridgelabz.ObjectOrientedPrograms.AddressBookApplication;
 
 import java.io.FileNotFoundException;
@@ -10,10 +8,6 @@ import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.util.Utility;
 
-/**
- * @author bridgelabz
- *
- */
 public class AddressBookMain {
 
 	/**

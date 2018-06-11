@@ -34,6 +34,10 @@ public class Queue{
 	boolean isEmpty() {
 		return l.isEmpty();
 	}
+	public void insert(Comparable item,int pos)
+	{
+		return;
+	}
 
 }
 

@@ -1,29 +1,11 @@
 [
 	{
-		"ZIP": "a",
-		"Address": "w",
-		"State": "w",
-		"First Name": "w",
-		"City": "w",
-		"Last Name": "w",
-		"Mobile": "s"
-	},
-	{
-		"ZIP": "f",
-		"Address": "f",
-		"State": "f",
-		"First Name": "f",
-		"City": "f",
-		"Last Name": "f",
-		"Mobile": "f"
-	},
-	{
-		"ZIP": "f",
-		"Address": "f",
-		"State": "f",
-		"First Name": "f",
-		"City": "f",
-		"Last Name": "f",
-		"Mobile": "f"
+		"ZIP": "d",
+		"Address": "d",
+		"State": "d",
+		"First Name": "d",
+		"City": "velgode",
+		"Last Name": "d",
+		"Mobile": "d"
 	}
 ]
