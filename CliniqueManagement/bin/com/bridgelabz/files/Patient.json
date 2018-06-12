@@ -1,0 +1,14 @@
+[
+	{
+		"patientName": "and",
+		"patientID": 5,
+		"patientMobileNUm": 12343765,
+		"patientAge": 25
+	},
+	{
+		"patientName": "and",
+		"patientID": 5,
+		"patientMobileNUm": 5687587,
+		"patientAge": 43
+	}
+]

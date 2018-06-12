@@ -57,7 +57,7 @@ public class Stack {
 	{
 		for(int i=0;i<=top;i++)
 		{
-			System.out.println(stackAr[i]);
+			System.out.print(stackAr[i]);
 		}
 	}
 	

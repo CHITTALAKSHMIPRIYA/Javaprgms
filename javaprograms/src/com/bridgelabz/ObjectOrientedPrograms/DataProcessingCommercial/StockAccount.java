@@ -12,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -27,14 +26,22 @@ import com.bridgelabz.datastructureprograms.Queue;
 import com.bridgelabz.util.Utility;
 
 public class StockAccount {
-    List<Stock> list = new ArrayList<Stock>();
+    ArrayList<Stock> list = new ArrayList<Stock>();
     static File file;
-    static ObjectMapper map = new ObjectMapper();
-    static File FILEPATH = new File(
+  
+    static File FILE = new File(
             "/home/bridgelabz/Javaprograms/javaprograms/src/com/bridgelabz/ObjectOrientedPrograms/DataProcessingCommercial/StockAccount.json");
     static Queue queue = new Queue();
     static LinkedStack stack = new LinkedStack();
+    static ObjectMapper map = new ObjectMapper();
+/**
+ * 
+ */
+public StockAccount() {
+       super();
+   }
     /**
+     * this method is to create a new account from file
      * @param filename
      * @throws IOException
      */
@@ -42,51 +49,30 @@ public class StockAccount {
         file = new File(
                 "/home/bridgelabz/Downloads/sts-bundle/sts-3.9.2.RELEASE/processing",
                 filename);
-        System.out.println("path-->" + file.getAbsolutePath());
+       System.out.println(file.getAbsolutePath());
         try {
             file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     /**
-     * @param companyShares
-     * @return
+     * @param filepath
+     * @throws IOException
      */
-    @SuppressWarnings("unchecked")
-	public static JSONObject toJsonObject(Stock companyShares) {
-        JSONObject obj = new JSONObject();
-
-        obj.put("symbol", companyShares.getSymbol());
-        obj.put("numberOfShares", companyShares.getNoOfShares());
-        obj.put("price", companyShares.getPrice());
-        obj.put("Value", companyShares.getValue());
-        obj.put("dateTime", companyShares.getDateTime());
-        return obj;
+    public void createNewFile(String filepath) throws IOException {
+        File f = new File(filepath);
+        if (f.createNewFile()) {
+            System.out.println("file  created");
+        } else {
+            System.out.println("file  exists");
+        }
+        return;
     }
-
-    /**
-     *
-     */
-    public StockAccount() {
-        super();
-    }
-
-    public JSONArray readFromFile(String filePath) throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
-        JSONParser parser = new JSONParser();
-        JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
-        return jsonArray;
-    }
-
-    public void writeIntoFile(JSONArray jsonArray, String filePath)
-            throws JsonGenerationException, JsonMappingException, IOException {
-
-        map.writeValue(new File(filePath), jsonArray);
-    }
-
-    public static Stock makeCompanySharesObject() {
-
+/**
+ * @return
+ */
+    public static Stock cmpnysharesObject() {
         Stock companyShares = new Stock();
         System.out.println("Enter the symbol of shares:");
         String symbol = Utility.String();
@@ -102,85 +88,150 @@ public class StockAccount {
         return companyShares;
     }
 
-    private void updateNewAccount(String filePath, String symbol, int buyShares, double amount) throws IOException {
-        FileWriter filewriter = new FileWriter(filePath);
-        BufferedWriter bw = new BufferedWriter(filewriter);
-        String fileData = "shares of " + symbol + "\n" + "total shares present " + buyShares + "\n"
+   /**
+ * @param filepath
+ * @param symbol
+ * @param buyShares
+ * @param amount
+ * @throws IOException
+ */
+public void updateAccount(String filepath, String symbol, int buyShares, double amount) throws IOException {
+        FileWriter fw = new FileWriter(filepath);
+        BufferedWriter bw = new BufferedWriter(fw);
+        String fileData = "shares  " + symbol + "\n" + "total shares present " + buyShares + "\n"
                 + "amount remaining " + amount + "\n" + "DateTime  " + LocalDateTime.now() + "\n" + "\n";
         bw.write(fileData);
-        bw.flush();
-        bw.close();
+       bw.flush();
+       bw.close();
     }
 
-    public void printEntries(String filePath) throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
-        JSONArray array = readFromFile(filePath);
-        for (int i = 0; i < array.size(); i++) {
-            System.out.println(array.get(i));
+    /**
+     * @param filePath
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ParseException
+     * @throws org.json.simple.parser.ParseException
+     */
+    public void save(String filePath) throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+        JSONArray ar = readFromFile(filePath);
+        for (int i = 0; i < ar.size(); i++) {
+            System.out.println(ar.get(i));
         }
     }
 
+    /**
+     * @param filePath
+     * @param newAccountPath
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ParseException
+     * @throws org.json.simple.parser.ParseException
+     */
     @SuppressWarnings("unchecked")
-    public void sell(String filePath, String newAccountPath) throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
-        printEntries(filePath);
-        Stock companyShares = makeCompanySharesObject();
+    public void sell(String filePath, String newpath) throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+        save(filePath);
+        Stock companyShares = cmpnysharesObject();
         JSONObject jsonObject = toJsonObject(companyShares);
         stack.push((String) jsonObject.get("symbol"));
         JSONArray jsonArray = readFromFile(filePath);
         System.out.println(jsonArray);
-        jsonArray.add("array-->" + jsonObject);
-        writeIntoFile(jsonArray, filePath);
-        writeIntoFile(jsonArray, newAccountPath);
-        System.out.println("\n Your shares added to the shares account successfully..");
-        System.out.println("\n Symbol is added to the stack..");
+        jsonArray.add(jsonObject);
+        writeToFile(jsonArray, filePath);
+        writeToFile(jsonArray, newpath);
+        System.out.println("shares added to  account");
+        System.out.println("Symbol added to  stack");
         stack.display();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String date = dateFormat.format(new Date());
         queue.enqueue(date);
-        System.out.println("\n DateTime added to queue!!");
+        System.out.println("DateTime added to queue");
         queue.display();
 
     }
 
-    public void buy(int amount, String symbol, String filePath, String newAccountFilePath)
+    /**
+     * @param amount
+     * @param symbol
+     * @param filepath
+     * @param newAccountFilePath
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ParseException
+     * @throws org.json.simple.parser.ParseException
+     */
+    @SuppressWarnings("unchecked")
+	public void buy(int amount, String symbol, String filepath, String newAccountFilePath)
             throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
-        JSONArray array = readFromFile(filePath);
+        JSONArray array = readFromFile(filepath);
         System.out.println(array);
-        System.out.println("Please enter how many shares you want to buy?");
+        System.out.println(" enter shares you want to buy?");
         int buyShares = Utility.Int();
         for (int i = 0; i < array.size(); i++) {
-            JSONObject temporary = (JSONObject) array.get(i);
-            System.out.println(temporary);
-            if (symbol.equals(temporary.get("symbol"))) {
+            JSONObject term= (JSONObject) array.get(i);
+            System.out.println(term);
+            if (symbol.equals(term.get("symbol"))) {
 
-                long temp = (long) temporary.get("numberOfShares") - buyShares;
-                temporary.put("numberOfShares", temp);
+                long temp = (long) term.get("numberOfShares") - buyShares;
+                term.put("numberOfShares", temp);
                 array.remove(i);
-                array.add(i, temporary);
-                amount = (int) (amount - (buyShares * (long) temporary.get("price")));
-                writeIntoFile(array, filePath);
-                updateNewAccount(newAccountFilePath, symbol, buyShares, amount);
-                stack.push((String) temporary.get("symbol"));
-                System.out.println("\n Transaction done!! Symbol pushed to the Stack");
+                array.add(i, term);
+                amount = (int) (amount - (buyShares * (long) term.get("price")));
+                writeToFile(array, filepath);
+                updateAccount(newAccountFilePath, symbol, buyShares, amount);
+                stack.push((String) term.get("symbol"));
+                System.out.println("Symbol pushed to the Stack");
                 stack.display();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String date = dateFormat.format(new Date());
                 queue.enqueue(date);
-                System.out.println("\n DateTime added to queue!!");
+                System.out.println("DateTime added to queue");
                 queue.display();
                 break;
-
-            }
+                }
         }
 
     }
-    public void createNewFile(String filePath) throws IOException {
-        File file = new File(filePath);
-        // Create the file
-        if (file.createNewFile()) {
-            System.out.println("File is created!");
-        } else {
-            System.out.println("File already exists.");
-        }
-        return;
+    /**
+     * @param companyShares
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+	public static JSONObject toJsonObject(Stock companyShares) {
+        JSONObject obj = new JSONObject();
+        obj.put("symbol", companyShares.getSymbol());
+        obj.put("numberOfShares", companyShares.getNoOfShares());
+        obj.put("price", companyShares.getPrice());
+        obj.put("Value", companyShares.getValue());
+        obj.put("dateTime", companyShares.getDateTime());
+        return obj;
     }
+
+    /**
+     * @param filepath
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ParseException
+     * @throws org.json.simple.parser.ParseException
+     */
+    public JSONArray readFromFile(String filepath) throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+        JSONParser parser = new JSONParser();
+        JSONArray jsonAr = (JSONArray) parser.parse(new FileReader(filepath));
+        return jsonAr;
+    }
+
+    /**
+     * @param jsonArray
+     * @param filepath
+     * @throws JsonGenerationException
+     * @throws JsonMappingException
+     * @throws IOException
+     */
+    public void writeToFile(JSONArray jsonArray, String filepath)
+            throws JsonGenerationException, JsonMappingException, IOException {
+
+        map.writeValue(new File(filepath), jsonArray);
+    }
+
+   
 }

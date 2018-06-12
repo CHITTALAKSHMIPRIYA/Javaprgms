@@ -1,0 +1,23 @@
+[
+	{
+		"doctorID": 145,
+		"doctorName": "Dr.Srinivasulu",
+		"doctorSpecialization": "cardiologist",
+		"doctorAvailability": "both",
+		"count": 3
+	},
+	{
+		"doctorID": 67,
+		"doctorName": "mani",
+		"doctorSpecialization": "yes",
+		"doctorAvailability": "am",
+		"count": 2
+	},
+	{
+		"doctorID": 65,
+		"doctorName": "nani",
+		"doctorSpecialization": "pm",
+		"doctorAvailability": "psyhfjh",
+		"count": 3
+	}
+]

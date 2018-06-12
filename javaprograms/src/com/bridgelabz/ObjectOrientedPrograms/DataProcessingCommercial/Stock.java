@@ -1,16 +1,10 @@
-/**
- * 
- */
+
 package com.bridgelabz.ObjectOrientedPrograms.DataProcessingCommercial;
 
-/**
- * @author bridgelabz
- *
- */
 public class Stock {
 private String symbol;
 private double price;
-private int numberOfShares;
+private int noOfShares;
 private String dateTime;
 /**
  * @return the symbol
@@ -40,13 +34,13 @@ public void setPrice(double price) {
  * @return the noOfShares
  */
 public int getNoOfShares() {
-	return numberOfShares;
+	return noOfShares;
 }
 /**
  * @param noOfShares the noOfShares to set
  */
 public void setNoOfShares(int noOfShares) {
-	this.numberOfShares = noOfShares;
+	this.noOfShares = noOfShares;
 }
 /**
  * @return the dateTime
@@ -61,10 +55,10 @@ public void setDateTime(String dateTime) {
 	this.dateTime = dateTime;
 }
 public double getValue() {
-    return numberOfShares * price;
+    return noOfShares * price;
 }
 
 public String toString() {
-    return "\nShare Details: \n" + symbol + ", " + numberOfShares + ", " + price;
+    return "\nShare Details: \n" + symbol + ", " + noOfShares + ", " + price;
 }
 }
