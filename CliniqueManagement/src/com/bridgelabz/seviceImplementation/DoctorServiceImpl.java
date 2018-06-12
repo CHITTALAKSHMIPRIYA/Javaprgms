@@ -78,7 +78,7 @@ public class DoctorServiceImpl implements DoctorService{
 	}
 
 
-	public void searchBydoctorName(String name) {
+	public boolean searchBydoctorName(String name) {
 		try 
 		{
 			doctorlist=Utility.parseJSONArray(file, Doctor.class);
@@ -100,6 +100,7 @@ public class DoctorServiceImpl implements DoctorService{
 		{
 			System.out.println("doctor is not available");
 		}
+		return search;
 		
 	}
 

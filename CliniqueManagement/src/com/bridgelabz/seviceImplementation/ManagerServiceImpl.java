@@ -1,20 +1,20 @@
 
 package com.bridgelabz.seviceImplementation;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import com.bridgelabz.Utility.Utility;
+import com.bridgelabz.model.Appointment;
 import com.bridgelabz.model.Doctor;
 import com.bridgelabz.model.Patient;
 import com.bridgelabz.service.ManagerService;
 
 
 public class ManagerServiceImpl implements ManagerService{
-
-
 Doctor doctor=new Doctor();
  Patient patient=new Patient();
 ArrayList<Doctor> doctorlist=new ArrayList<Doctor>() ;
@@ -22,7 +22,14 @@ ArrayList<Patient> patientlist=new ArrayList<Patient>();
 DoctorServiceImpl docimpl=new DoctorServiceImpl();
 PatientServiceImpl patimpl=new PatientServiceImpl();
    
-
+Appointment appointment = new Appointment();
+ArrayList<Appointment> appointmentList = new ArrayList<>();
+File appFile = new File(
+		"/home/bridgelabz/Javaprograms/CliniqueManagement/src/com/bridgelabz/files/Appointment.json");
+File doctorFile = new File(
+		"/home/bridgelabz/Javaprograms/CliniqueManagement/src/com/bridgelabz/files/Doctor.json");
+File patientFile = new File(
+"/home/bridgelabz/Javaprograms/CliniqueManagement/src/com/bridgelabz/files/Patient.json");
     public  void addDoctor() throws JsonParseException, JsonMappingException, IOException 
    {
 	doctorlist=Utility.parseJSONArray(docimpl.file, Doctor.class);
@@ -137,15 +144,7 @@ PatientServiceImpl patimpl=new PatientServiceImpl();
 
 		
 	}
-	public void deleteDoctor() {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	public void updateDoctor() {
-		// TODO Auto-generated method stub
-		
-	}
 	public void updatePatientByMobileNum(int patientID) throws JsonParseException, JsonMappingException, IOException {
 		patientlist	=Utility.parseJSONArray(patimpl.file,Patient.class);
 		boolean search=false;
@@ -171,13 +170,64 @@ PatientServiceImpl patimpl=new PatientServiceImpl();
 
 		
 	}
-	
-	public void updatePatient() {
-		// TODO Auto-generated method stub
-		
+	public void addAppointement(int index) throws JsonParseException, JsonMappingException, IOException {
+		appointmentList = Utility.parseJSONArray(appFile, Appointment.class);
+
+		for (int i = 0; i < doctorlist.size(); i++) {
+			if (i == index) {
+				appointment.setDoctorName(doctorlist.get(index).getDoctorName());
+				appointment.setDoctorID(doctorlist.get(index).getDoctorID());
+			}
+		}
+
+		System.out.println("Enter patient Name");
+		String patientName = Utility.String();
+		appointment.setPatientName(patientName);
+		System.out.println("Enter Patient Id");
+		int patientId = Utility.Int();
+		appointment.setPatientID(patientId);
+		appointment.setTimeStamp(appointment.getTimeStamp());
+
+		appointmentList.add(appointment);
+
+		Utility.mapper.writeValue(appFile, appointmentList);
 	}
-	public void deletePatient() {
-		// TODO Auto-generated method stub
+
+	public void fixAppontement( String fixedDoctor)
+			throws JsonParseException, JsonMappingException, IOException {
+
+		int count;
+		int index = 0;
+		doctorlist = Utility.parseJSONArray(doctorFile, Doctor.class);
+
 		
+			for (int i = 0; i < doctorlist.size(); i++) {
+				if (doctorlist.get(i).getDoctorName().equalsIgnoreCase(fixedDoctor)) {
+					index = i;
+					break;
+				}
+			}
+			count=doctorlist.get(index).getCount();
+			if(count<=5) {
+				addPatient();
+				addAppointement(index);
+				count=count+1;
+				doctorlist.get(index).setCount(count);
+				Utility.mapper.writeValue(doctorFile, doctorlist);
+}
+	}
+	public void printReport() {
+		try {
+			appointmentList = Utility.parseJSONArray(appFile, Appointment.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (Appointment list:appointmentList) {
+			try {
+				System.out.println(Utility.mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+}
 	}
 }

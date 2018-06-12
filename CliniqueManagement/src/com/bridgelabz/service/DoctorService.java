@@ -10,7 +10,7 @@ public interface DoctorService {
 	public void showDoctorDetails() throws JsonParseException, JsonMappingException, IOException;
 	public void searchByDoctorID(int doctorID);
 	public void searchByDoctorSpecialization(String specialization);
-	public void searchBydoctorName(String name);
+	public boolean searchBydoctorName(String name);
 	public void searchByAvailability();
 
 }

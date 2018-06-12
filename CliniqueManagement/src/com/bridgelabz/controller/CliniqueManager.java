@@ -20,20 +20,27 @@ public class CliniqueManager {
 		PatientServiceImpl patserviceimpl=new PatientServiceImpl();
 		ManagerServiceImpl manserviceimpl=new ManagerServiceImpl();
 		System.out.println("WELCOME TO TIMES CLINIQUE");
-		System.out.println("Add doctor details");
-		System.out.println("show doctor details");
-		System.out.println("Take Appointment");
-		System.out.println("Add Patient details");
-		System.out.println("show patient details");
+		System.out.println("1.Show popular doctor");
+		System.out.println("2.Take Appointment");
+		System.out.println("3.Doctor details");
+		System.out.println("4.Patient details");
+		System.out.println("5.Print Report");
 		while(choice<10)
 		{
 			System.out.println("enter choice");
 			 choice=Utility.Int();
 			 switch(choice)
 			 {
-			 case 1:docserviceimpl.showDoctorDetails();
-			        break;
-			 case 2:System.out.println("Doctor details"); 
+			 case 1:
+					System.out.println("Show popular Doctor");
+					patserviceimpl.showPopularDoctor();
+					break;
+				case 2:
+					System.out.println("Take Appointment");
+					patserviceimpl.takeAppointment();
+	break;
+		
+			 case 3:System.out.println("Doctor details"); 
 			        System.out.println("Add doctor details");
 			        System.out.println("update doctor details");
 			        System.out.println("delete doctor details");
@@ -72,7 +79,7 @@ public class CliniqueManager {
 	                }
 			        doption++;
 			  }
-		case 3:
+		case 4:
 			System.out.println("Patient Details");
 			System.out.println("1:Show Patient Details");
 			System.out.println("2:SEARCH PATIENT BY NAME");
@@ -129,14 +136,17 @@ public class CliniqueManager {
 				default:
 					System.out.println("Exit");
 				}
-				ch++;
 			}
 			break;
-
+		case 5:
+			System.out.println("Print report");
+			 manserviceimpl.printReport();
+			break;
 		default:
-			System.out.println("sssssssss");
+			System.out.println("Exit");
 		}
-		choice++;
+
+		
 	}
 
 }
