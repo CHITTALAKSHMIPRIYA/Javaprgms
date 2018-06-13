@@ -21,7 +21,7 @@ public class AddressBookMain {
 		// TODO Auto-generated method stub
 		AddressBookController ac = new AddressBookController();
 
-		System.out.println("**********************SIMPLE ADDRESSBOOK**********************");
+		System.out.println("ADDRESSBOOK");
 		boolean quit=false;
 		while(quit==false)
 		{

@@ -17,7 +17,6 @@ import org.json.simple.parser.JSONParser;
 
 import com.bridgelabz.util.Utility;
 
-
 public class AddressBook implements Serializable {
 	Vector<Person> addressBook;
 	static File fileLocation;
@@ -25,34 +24,35 @@ public class AddressBook implements Serializable {
 
 	public AddressBook() {
 		setFile();
-		
+
 	}
-	
+
 	/**
 	 * this method is written to read json file and adding into an vector
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public void readfromJson() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void readfromJson()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader(fileLocation));
 		JSONArray oldarray = (JSONArray) obj;
-		if(oldarray.isEmpty())
-		{
-			contactArray=new JSONArray();
-		}
-		else {
-		for (int i = 0; i < oldarray.size(); i++) {
-			JSONObject objson = (JSONObject) oldarray.get(i);
-			contactArray.add(objson);
-		}
+		if (oldarray.isEmpty()) {
+			contactArray = new JSONArray();
+		} else {
+			for (int i = 0; i < oldarray.size(); i++) {
+				JSONObject objson = (JSONObject) oldarray.get(i);
+				contactArray.add(objson);
+			}
 		}
 	}
 
 	/**
 	 * to add a person into address book
+	 * 
 	 * @param firstName
 	 * @param lastName
 	 * @param address
@@ -63,9 +63,10 @@ public class AddressBook implements Serializable {
 	 * @throws ParseException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public void addfirstPerson() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void addfirstPerson()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		readfromJson();
 		System.out.println("Enter first name:");
 		String firstName = Utility.String();
@@ -85,17 +86,17 @@ public class AddressBook implements Serializable {
 		addressBook.add(new Person(firstName, lastName, address, city, state, zip, mobile));
 		System.out.println("Contact added successfully!!! Please save to avoid deleting the details");
 	}
-	
-	
 
 	/**
-	 *to add person afterwards
+	 * to add person afterwards
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public void addPerson() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void addPerson()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		loadObject();
 		readfromJson();
 		System.out.println("Enter first name:");
@@ -119,6 +120,7 @@ public class AddressBook implements Serializable {
 	/**
 	 * 
 	 * this method is written to update details of a person
+	 * 
 	 * @param address
 	 * @param city
 	 * @param state
@@ -127,10 +129,11 @@ public class AddressBook implements Serializable {
 	 * @throws ParseException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
 	@SuppressWarnings("unchecked")
-	public void updatePerson() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void updatePerson()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		showNames();
 		JSONParser parser = new JSONParser();
 		Person temp = null;
@@ -149,7 +152,7 @@ public class AddressBook implements Serializable {
 						objson.get("ZIP").toString(), objson.get("Mobile").toString());
 			} else {
 				contactArray.add(objson);
-			}			
+			}
 		}
 
 		System.out.println("choose what you want to update");
@@ -190,16 +193,17 @@ public class AddressBook implements Serializable {
 
 	}
 
-
 	/**
 	 * this method is written to remove a person for json file to add a new one
+	 * 
 	 * @param index
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public void removeOld(int index) throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void removeOld(int index)
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		JSONParser parser = new JSONParser();
 		Object javaObjct = parser.parse(new FileReader(getFile()));
 		JSONArray oldjsonArray = (JSONArray) javaObjct;
@@ -216,13 +220,15 @@ public class AddressBook implements Serializable {
 
 	/**
 	 * this method is written to remove a person for json file
+	 * 
 	 * @param index
 	 * @throws ParseException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public void removePerson() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void removePerson()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		showNames();
 		System.out.println("choose your contact based on your index:");
 		int index = Utility.Int();
@@ -240,16 +246,17 @@ public class AddressBook implements Serializable {
 		writeToJson(newArray, getFile());
 	}
 
-	
 	/**
 	 * this method is written to sort the persons along with first name
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
 	@SuppressWarnings("unchecked")
-	public void sortByName() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void sortByName()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		Object obj = new JSONParser().parse(new FileReader(getFile()));
 		JSONArray addressArray = (JSONArray) obj;
 		for (int i = 0; i < addressArray.size() - 1; i++) {
@@ -263,18 +270,20 @@ public class AddressBook implements Serializable {
 				}
 			}
 		}
-		contactArray=addressArray;
+		contactArray = addressArray;
 		writeToJson(addressArray, getFile());
 	}
 
 	/**
 	 * this method is written to sort the persons along with zip code
+	 * 
 	 * @throws ParseException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public void sortByZip() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void sortByZip()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		Object obj = new JSONParser().parse(new FileReader(getFile()));
 		JSONArray addressArray = (JSONArray) obj;
 		for (int i = 0; i < addressArray.size() - 1; i++) {
@@ -288,12 +297,13 @@ public class AddressBook implements Serializable {
 				}
 			}
 		}
-		contactArray=addressArray;
+		contactArray = addressArray;
 		writeToJson(addressArray, getFile());
 	}
 
 	/**
 	 * this method is written to put a person details into an json object
+	 * 
 	 * @return jsonobject after putting the person's details
 	 */
 	@SuppressWarnings("unchecked")
@@ -311,8 +321,10 @@ public class AddressBook implements Serializable {
 	}
 
 	/**
-	 *this method is written to put an json object into a json array
-	 * @param contactObject where the json object will be loaded
+	 * this method is written to put an json object into a json array
+	 * 
+	 * @param contactObject
+	 *            where the json object will be loaded
 	 */
 	@SuppressWarnings("unchecked")
 	public void toJsonArray(JSONObject contactObject) {
@@ -320,9 +332,10 @@ public class AddressBook implements Serializable {
 	}
 
 	/**
-	 * this method is written to write a json array to a  json file
-	 * @param contactArray i.e. a json array while shold be written
-	 * @param fileLocation is the path where it will be written
+	 * this method is written to write a json array to a json file
+	 * 
+	 * @param fileLocation
+	 *            is the path where it will be written
 	 */
 	public void writeToJson(JSONArray contactArray, File fileLocation) {
 		try {
@@ -343,7 +356,8 @@ public class AddressBook implements Serializable {
 	}
 
 	/**
-	 * this method is written to set a file name. File path will be asked after calling the method 
+	 * this method is written to set a file name. File path will be asked after
+	 * calling the method
 	 */
 	public void setFile() {
 		System.out.println("enter file name:");
@@ -353,8 +367,11 @@ public class AddressBook implements Serializable {
 	}
 
 	/**
-	 * this method is written to set a file name while passing a file while calling the method
-	 * @param file address in string format
+	 * this method is written to set a file name while passing a file while calling
+	 * the method
+	 * 
+	 * @param file
+	 *            address in string format
 	 */
 	public void setFile(String file) {
 		fileLocation = new File("/home/bridgelabz/Javaprograms/javaprograms/src/com/bridgelabz/ObjectOrientedPrograms/"
@@ -363,6 +380,7 @@ public class AddressBook implements Serializable {
 
 	/**
 	 * this method is written to get the file location
+	 * 
 	 * @return curently using file location
 	 */
 	public File getFile() {
@@ -370,15 +388,17 @@ public class AddressBook implements Serializable {
 	}
 
 	/**
-	 * this method is written to load all jsonobject into vector whenever we open or create an addressbook i.e json file
-	 * @throws org.json.simple.parser.ParseException 
+	 * this method is written to load all jsonobject into vector whenever we open or
+	 * create an addressbook i.e json file
+	 * 
+	 * @throws org.json.simple.parser.ParseException
 	 */
 	public void loadObject() throws org.json.simple.parser.ParseException, ParseException {
 		Vector<Person> tempvector = new Vector<Person>();
 		JSONParser parser = new JSONParser();
-		Object obj=null;
+		Object obj = null;
 		try {
-		obj = parser.parse(new FileReader(getFile()));
+			obj = parser.parse(new FileReader(getFile()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -395,13 +415,16 @@ public class AddressBook implements Serializable {
 	}
 
 	/**
-	 * this method is written to print all the names of an existing addressbook along with index
+	 * this method is written to print all the names of an existing addressbook
+	 * along with index
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
-	 * @throws org.json.simple.parser.ParseException 
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public void showNames() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
+	public void showNames()
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader(getFile()));
 		JSONArray name = (JSONArray) obj;
@@ -411,4 +434,3 @@ public class AddressBook implements Serializable {
 		}
 	}
 }
-

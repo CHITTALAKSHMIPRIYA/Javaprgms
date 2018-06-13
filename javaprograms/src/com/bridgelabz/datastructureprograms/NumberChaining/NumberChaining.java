@@ -11,10 +11,7 @@ import java.util.Map;
 
 import com.bridgelabz.util.Utility;
 
-/**
- * @author bridgelabz
- *
- */
+
 public class NumberChaining {
 	 static int totalSlot = 11;
 	    static int slotNumber;

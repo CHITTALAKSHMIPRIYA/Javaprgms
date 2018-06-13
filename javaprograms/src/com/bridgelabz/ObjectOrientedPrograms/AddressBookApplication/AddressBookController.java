@@ -66,6 +66,6 @@ public class AddressBookController {
 
 	public void doSortByZip() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		a1.sortByZip();
-		//doSave();
+	
 }
 }
