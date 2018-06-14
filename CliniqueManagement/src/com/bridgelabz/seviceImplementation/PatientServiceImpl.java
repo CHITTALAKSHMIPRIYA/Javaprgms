@@ -46,7 +46,7 @@ public class PatientServiceImpl implements PatientService,Serializable {
 							e.printStackTrace();
 						}
 					} else {
-						System.out.println("enterd wrong tray again!!!!");
+						System.out.println("enterd wrong try again!!!!");
 					}
 				}
 

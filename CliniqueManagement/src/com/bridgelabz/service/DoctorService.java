@@ -11,6 +11,6 @@ public interface DoctorService {
 	public void searchByDoctorID(int doctorID);
 	public void searchByDoctorSpecialization(String specialization);
 	public boolean searchBydoctorName(String name);
-	public void searchByAvailability();
+	public boolean searchByDoctorAvailability(String availability);
 
 }

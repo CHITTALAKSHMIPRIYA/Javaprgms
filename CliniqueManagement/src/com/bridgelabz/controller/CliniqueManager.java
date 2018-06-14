@@ -9,6 +9,22 @@ import com.bridgelabz.Utility.Utility;
 import com.bridgelabz.seviceImplementation.DoctorServiceImpl;
 import com.bridgelabz.seviceImplementation.ManagerServiceImpl;
 import com.bridgelabz.seviceImplementation.PatientServiceImpl;
+/*************************************************************************************************************
+ * 
+ * purpose:This programme is used to manage a list of
+   Doctors associated with the Clinique. This also manages the list of patients who use the
+   clinique. It manages Doctors by Name, Id, Specialization and Availability (AM, PM or
+   both). It manages Patients by Name, ID, Mobile Number and Age. The Program allows
+   users to search Doctor by name, id, Specialization or Availability. Also the programs
+   allows users to search patient by name, mobile number or id. The programs allows
+   patients to take appointment with the doctor. A doctor at any availability time can see
+   only 5 patients. If exceeded the user can take appointment for patient at different date or
+   availability time. Print the Doctor Patient Report.
+ * @author Lakshmi Priya
+ * @version 1.0
+ * @since 11-06-18
+ * 
+ * **************************************************************************************************/
 
 public class CliniqueManager {
 
@@ -77,7 +93,7 @@ public class CliniqueManager {
                             docserviceimpl.searchByDoctorSpecialization(specialization);
                             break;
 	                }
-			        doption++;
+			      
 			  }
 		case 4:
 			System.out.println("Patient Details");
@@ -89,9 +105,8 @@ public class CliniqueManager {
 			System.out.println("6:UPDATE PATIENT BY AGE");
 			System.out.println("7:UPDATE PATIENT BY MOBILE NUMBER");
 			System.out.println("8:DELETE PATIENT BY ID");
-			System.out.println("9:SEARCH FAMOUS DOCTOR");
 			int ch = 0;
-			while (ch < 10) {
+			while (ch <9) {
 				System.out.println("Enter your choice");
 				ch = Utility.Int();
 				switch (ch) {
@@ -136,6 +151,7 @@ public class CliniqueManager {
 				default:
 					System.out.println("Exit");
 				}
+				
 			}
 			break;
 		case 5:
@@ -145,6 +161,7 @@ public class CliniqueManager {
 		default:
 			System.out.println("Exit");
 		}
+			 
 
 		
 	}
