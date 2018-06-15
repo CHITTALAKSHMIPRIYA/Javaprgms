@@ -1036,7 +1036,7 @@ public static void showBySorted(LinkedList[] arrange)
 {
   for(int i=0;i<4;i++)
 	{   
-		System.out.println("Player "+(i+1)+" sorting cards");
+		System.out.println("Player "+(i+1)+" sorted cards");
 		for(int j=0;j<9;j++)
 		{
 			System.out.print("|"+arrange[i].pop(0)+"|    ");

@@ -64,7 +64,7 @@ public class LinkedStack {
 	   @SuppressWarnings("null")
 	public void display()
 	   {
-		   System.out.println("stack=");
+		   System.out.print("stack=");
 		   if(size==0)
 		   {
 			   System.out.println("empty");

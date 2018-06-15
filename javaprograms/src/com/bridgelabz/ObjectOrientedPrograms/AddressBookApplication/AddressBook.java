@@ -17,7 +17,7 @@ import org.json.simple.parser.JSONParser;
 
 import com.bridgelabz.util.Utility;
 
-public class AddressBook implements Serializable {
+public class AddressBook  {
 	Vector<Person> addressBook;
 	static File fileLocation;
 	static JSONArray contactArray = new JSONArray();
@@ -83,8 +83,10 @@ public class AddressBook implements Serializable {
 		System.out.println("Enter mobile:");
 		String mobile = Utility.String();
 		loadObject();
+		
 		addressBook.add(new Person(firstName, lastName, address, city, state, zip, mobile));
 		System.out.println("Contact added successfully!!! Please save to avoid deleting the details");
+		AddressBookController.doSave();
 	}
 
 	/**
@@ -97,7 +99,9 @@ public class AddressBook implements Serializable {
 	 */
 	public void addPerson()
 			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
-		loadObject();
+		try
+		{
+			loadObject();
 		readfromJson();
 		System.out.println("Enter first name:");
 		String fistName = Utility.String();
@@ -114,7 +118,14 @@ public class AddressBook implements Serializable {
 		System.out.println("Enter mobile:");
 		String mob = Utility.String();
 		addressBook.add(new Person(fistName, lstName, adress, cty, stat, zp, mob));
+		//writeToJson(contactArray, getFile());
 		System.out.println("Contact added successfully!!! Please save to avoid deleting the details");
+		AddressBookController.doSave();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -188,8 +199,9 @@ public class AddressBook implements Serializable {
 		tempobj.put("ZIP", temp.getZip());
 		tempobj.put("Mobile", temp.getMobile());
 		contactArray.add(tempobj);
-		System.out.println("file saved and write successfully");
 		writeToJson(contactArray, getFile());
+		System.out.println("file saved and write successfully");
+		//writeToJson(contactArray, getFile());
 
 	}
 

@@ -50,14 +50,15 @@ public class AddressBookController {
     	a1=new AddressBook();
     	a1.loadObject();
     }
-	public void doSave() {
+	public static void doSave() {
+	
 		a1.toJsonArray(a1.toJsonObject());
 		a1.writeToJson(a1.contactArray, a1.getFile());
 	}
 
 	public void doExit()
 	{
-//		a1.writeToJson(a1.contactArray, a1.getFile());		
+		a1.writeToJson(a1.contactArray, a1.getFile());		
 	}
 	public void doSortByName() throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
 		a1.sortByName();

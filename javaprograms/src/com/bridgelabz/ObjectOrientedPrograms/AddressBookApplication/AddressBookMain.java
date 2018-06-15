@@ -44,6 +44,7 @@ public class AddressBookMain {
 		              
 		       case 2:ac.doSave(); 
 		              close=true;
+		              //quit=true;
 		              System.out.println("Saved and exit from address book");
 		       break;
 		       case 3:ac.doExit();
@@ -59,7 +60,7 @@ public class AddressBookMain {
 		 boolean closed=false;
 		 while(closed==false)
 		 {
-			 System.out.println("1.Add person \n2.Edit person \n3.Delete person \n4.Sort by name \n5.Sort by ZIP \n6.Save \n7.Close");
+			 System.out.println("1.Add person \n2.Edit person \n3.Delete person \n4.Sort by name \n5.Sort by ZIP \n6.Save ");
 		     int ch=Utility.Int(); 
 		     switch(ch)
 		     {
@@ -84,6 +85,7 @@ public class AddressBookMain {
 		     case 6:ac.doSave();
 		     System.out.println("Address book closed");
    	         closed=true;
+   	         quit=true;
 		     break;
 		     case 7:ac.doExit();
 		     System.out.println("Address book closed");

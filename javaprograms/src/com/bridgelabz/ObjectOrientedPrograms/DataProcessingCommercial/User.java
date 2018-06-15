@@ -28,7 +28,7 @@ public class User {
         stockData.createNewFile(path);
        
         System.out.println("Operations u want 2 perform");
-        System.out.println("1.SELL \n2.BUY \n3.QUIT");
+        System.out.println("1.BUY \n2.SELL \n3.QUIT");
         int choice=Utility.Int();
        
         String filepath="/home/bridgelabz/Javaprograms/javaprograms/src/com/bridgelabz/ObjectOrientedPrograms/DataProcessingCommercial/StockAccount.json";

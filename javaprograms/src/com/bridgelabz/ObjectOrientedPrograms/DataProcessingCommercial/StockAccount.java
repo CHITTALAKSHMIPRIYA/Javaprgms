@@ -171,8 +171,8 @@ public void updateAccount(String filepath, String symbol, int buyShares, double 
             System.out.println(term);
             if (symbol.equals(term.get("symbol"))) {
 
-                long temp = (long) term.get("numberOfShares") - buyShares;
-                term.put("numberOfShares", temp);
+                long temp = (long) term.get("noOfShares") - buyShares;
+                term.put("noOfShares", temp);
                 array.remove(i);
                 array.add(i, term);
                 amount = (int) (amount - (buyShares * (long) term.get("price")));
