@@ -1,8 +1,1 @@
-[
-	{
-		"patientName": "tony",
-		"patientID": 5,
-		"patientMobileNUm": 5687587,
-		"patientAge": 43
-	}
-]
+[{"patientName":"tony","patientID":5,"patientMobileNUm":5687587,"patientAge":43},{"patientName":"bvh","patientID":233,"patientMobileNUm":4556,"patientAge":23},{"patientName":"dbh","patientID":23,"patientMobileNUm":34565,"patientAge":12},{"patientName":"jg","patientID":56,"patientMobileNUm":988508,"patientAge":13},{"patientName":"gddhs","patientID":23,"patientMobileNUm":68575768,"patientAge":23},{"patientName":"sds","patientID":12,"patientMobileNUm":343546,"patientAge":21},{"patientName":"fhf","patientID":65,"patientMobileNUm":556757,"patientAge":34},{"patientName":"vhvh","patientID":65,"patientMobileNUm":23536,"patientAge":12}]

@@ -305,6 +305,7 @@ File patientFile = new File(
 				count=count+1;
 				doctorlist.get(index).setCount(count);
 				Utility.mapper.writeValue(doctorFile, doctorlist);
+				System.out.println("Appointment fixed");
 }
 	}
 	public void printReport() {

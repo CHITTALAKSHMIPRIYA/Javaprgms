@@ -16,7 +16,7 @@ import com.bridgelabz.model.Doctor;
 import com.bridgelabz.model.Patient;
 import com.bridgelabz.service.PatientService;
 
-public class PatientServiceImpl implements PatientService,Serializable {
+public class PatientServiceImpl implements PatientService {
 	DoctorServiceImpl doctorServiceImpl = new DoctorServiceImpl();
 	ManagerServiceImpl managerServiceImpl = new ManagerServiceImpl();
 	public ArrayList<Patient> patientlist=new ArrayList<>();
@@ -24,48 +24,27 @@ public class PatientServiceImpl implements PatientService,Serializable {
 	File file=new File("/home/bridgelabz/Javaprograms/CliniqueManagement/src/com/bridgelabz/files/Patient.json");
 	public void takeAppointment() throws JsonParseException, JsonMappingException, IOException {
 		doctorServiceImpl.showDoctorDetails();
-		System.out.println("Search Doctor by name, id or specialization");
-		int choice = 0;
-		while (choice < 4) {
-			System.out.println("Enter your choice");
-			choice = Utility.Int();
-			switch (choice) {
-			case 1:
-				System.out.println("Enter the doctor name");
-			
-				String fixedDoctor = Utility.String();
-				boolean avail = doctorServiceImpl.searchBydoctorName(fixedDoctor);
-				System.out.println("index" + avail);
-				if (avail) {
-					System.out.println("do you want to take appointment? type yes");
-					String appointment = Utility.String();
-					if (appointment.equalsIgnoreCase("yes")) {
-						try {
-							managerServiceImpl.fixAppontement(fixedDoctor);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					} else {
-						System.out.println("enterd wrong try again!!!!");
-					}
-				}
+		
+System.out.println("Search Doctor by name\n");
+		
+		System.out.println("Enter the doctor name");
+		String fixedDoctor = Utility.String();
+		boolean avail = doctorServiceImpl.searchBydoctorName(fixedDoctor);
+		// System.out.println("index" + avail);
+		if (avail) {
 
-				break;
-			case 2:
-				System.out.println("Enter doctor Id");
-				int did1 = Utility.Int();
-				doctorServiceImpl.searchByDoctorID(did1);
-				break;
-			case 3:
-				System.out.println("Enter Doctor Specialization");
-				String spcl = Utility.String();
-				doctorServiceImpl.searchByDoctorSpecialization(spcl);
-				break;
+			try {
+				managerServiceImpl.fixAppontement(fixedDoctor);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			choice++;
+		} else {
+			System.out.println("Doctor is not available!!!!");
 		}
+		doctorServiceImpl.showDoctorDetails();
 
-	}
+}
+	
 
 	public void showPatientDetails() throws JsonGenerationException, JsonMappingException, IOException {
 		
@@ -147,7 +126,7 @@ public class PatientServiceImpl implements PatientService,Serializable {
 			 int count=managerServiceImpl.doctorlist.get(i).getCount();
 			countPatients.add(count);
 		}
-		 System.out.println("Popular doctor: "+Collections.max(countPatients));
+		// System.out.println("Popular doctor: "+Collections.max(countPatients));
 		 for (int i = 0; i < managerServiceImpl.doctorlist.size(); i++) {
 			if(managerServiceImpl.doctorlist.get(i).getCount()==Collections.max(countPatients)) {
 				String popular=managerServiceImpl.doctorlist.get(i).getDoctorName();

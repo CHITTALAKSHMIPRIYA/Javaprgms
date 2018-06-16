@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.bridgelabz.designPatterns.VisitorPattern;
 
 /**
