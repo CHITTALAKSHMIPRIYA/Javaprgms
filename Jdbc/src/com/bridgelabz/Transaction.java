@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Savepoint;
 
 public class Transaction {
 
@@ -13,13 +14,16 @@ public class Transaction {
 	public static void main(String[] args) {
 	   Connection con=null;
 	   PreparedStatement pstmt=null;
+	   PreparedStatement pstmt1=null;
 	   try {
 		   Class.forName("com.mysql.jdbc.Driver");
 			 String dbUrl="jdbc:mysql://localhost:3306/bridgelabz?user=root&password=root";
 			  con=DriverManager.getConnection(dbUrl);
 			  con.setAutoCommit(false);//setting auto-commit off
 			  String query="insert into students_info values(?,?,?)";
+			  String query1="insert into student1_otherinfo values(?,?,?)";
 			  pstmt=con.prepareStatement(query);
+			  pstmt1=con.prepareStatement(query1);
 			  BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 			  while(true){  
 				  
@@ -37,8 +41,16 @@ public class Transaction {
 				  pstmt.setInt(1,regno);  
 				  pstmt.setString(2,firstname);  
 				  pstmt.setString(3,lastname);  
-				  pstmt.executeUpdate();  
-				    
+				  pstmt.executeUpdate(); 
+				  
+				  Savepoint point=con.setSavepoint();
+				 
+				  pstmt1.setInt(1,regno);  
+				  pstmt1.setString(2,firstname);  
+				  pstmt1.setString(3,lastname);  
+				  pstmt1.executeUpdate();  
+				  con.commit();
+				  
 				  System.out.println("commit/rollback");  
 				  String answer=br.readLine();  
 				  if(answer.equals("commit")){  
@@ -47,7 +59,7 @@ public class Transaction {
 				  if(answer.equals("rollback")){  
 				  con.rollback();  
 				  }  
-				    
+				  
 				    
 				  System.out.println("Want to add more records y/n");  
 				  String ans=br.readLine();  
